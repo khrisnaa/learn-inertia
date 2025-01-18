@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Client\HomeController as ClientHomeController;
+use App\Http\Controllers\Client\FavoriteController as ClientFavoriteController;
+use App\Http\Controllers\Client\TourController as ClientTourController;
+use App\Http\Controllers\Client\ContactController as ClientContactController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -23,5 +28,19 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+// Client Routes
+Route::name('client.')->group(function () {
+    Route::get('/home', [ClientHomeController::class, 'index'])->name('home');
+    Route::get('/tours', [ClientTourController::class, 'index'])->name('tours.index');
+    Route::get('/tours/{tour}', [ClientTourController::class, 'show'])->name('tours.show');
+    Route::get('/favorites', [ClientFavoriteController::class, 'index'])->name('favorites.index');
+    // Route::post('/favorites/{tour}', [ClientFavoriteController::class, 'store'])->name('favorites.store');
+    // Route::delete('/favorites/{tour}', [ClientFavoriteController::class, 'destroy'])->name('favorites.destroy');
+    Route::get('/contact-us', [ClientContactController::class, 'index'])->name('contact.index');
+    // Route::post('/contact-us', [ClientContactController::class, 'store'])->name('contact.store');
+});
+
 
 require __DIR__.'/auth.php';
