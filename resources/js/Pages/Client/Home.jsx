@@ -1,6 +1,7 @@
 import React from "react";
 import ClientLayout from "@/Layouts/ClientLayout";
 import Carousel from "./Partials/HeroCarousel";
+import AboutSection from "./Partials/AboutSection";
 
 const OPTIONS = { loop: true };
 const IMAGES = [
@@ -14,7 +15,8 @@ const Home = () => {
     return (
         <ClientLayout>
             <Carousel slides={IMAGES} options={OPTIONS} />
-            <div className="h-screen"></div>
+            <AboutSection />
+            <div className="h-screen bg-accent-primary"></div>
         </ClientLayout>
     );
 };
