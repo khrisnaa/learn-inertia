@@ -6,6 +6,7 @@ import RecomendedTourSection from "./Partials/RecomendedTourSection";
 import ParallaxCarousel from "./Partials/ParallaxCarousel";
 import TestimonialsSection from "./Partials/TestimonialsSection";
 import FaqSection from "./Partials/FaqSection";
+import ContactSection from "./Partials/ContactSection";
 
 const OPTIONS = { loop: true };
 const OPTIONS2 = { loop: false };
@@ -24,6 +25,7 @@ const Home = () => {
             <RecomendedTourSection />
             <TestimonialsSection />
             <FaqSection />
+            <ContactSection />
         </ClientLayout>
     );
 };

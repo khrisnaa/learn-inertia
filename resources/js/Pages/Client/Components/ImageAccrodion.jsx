@@ -62,7 +62,7 @@ const ImageAccrodion = ({ images }) => {
                                         : "bg-transparent border border-secondary text-secondary"
                                 }`}
                             >
-                                <span className=" uppercase">More Details</span>
+                                <span>More Details</span>
                                 <ChevronRight />
                             </Button>
                         </div>
@@ -76,4 +76,4 @@ const ImageAccrodion = ({ images }) => {
 
 export default ImageAccrodion;
 
-const CATEGORIES = ["Wildlife", "Adventure", "Mountain", "Fresh", "Nature"];
+const CATEGORIES = ["Wildlife", "Adventure", "Mountain", "Fresh"];

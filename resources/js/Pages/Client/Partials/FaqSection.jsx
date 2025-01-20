@@ -30,10 +30,10 @@ const FaqSection = () => {
                     <FaqCard />
                 </div>
                 <div className="flex-[0.7] space-y-4">
-                    <div className="h-64 rounded-lg overflow-hidden ">
+                    <div className="h-64 rounded-lg group overflow-hidden ">
                         <img
                             src="/assets/images/dummy_hero.jpg"
-                            className="object-cover"
+                            className="object-cover scale-125 group-hover:scale-100 transition-all duration-500"
                         />
                     </div>
                     <div className="space-y-1">
