@@ -2,11 +2,19 @@ import React from "react";
 import SectionLabel from "../Components/SectionLabel";
 import { CircleArrowUp, CircleCheck } from "lucide-react";
 import ExploreButton from "../Components/ExploreButton";
+import ImageAccrodion from "../Components/ImageAccrodion";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/Components/ui/carousel";
 
 const TestimonialsSection = () => {
     return (
         <div className="min-h-screen p-12">
-            <div className="flex h-[50vh]  p-12">
+            <div className="flex h-[50vh] p-12">
                 <div className="flex-1 space-y-8">
                     <SectionLabel
                         label="The Opinions"
@@ -33,8 +41,29 @@ const TestimonialsSection = () => {
                     </div>
                 </div>
             </div>
+            <div className="px-12">
+                <Carousel>
+                    <CarouselContent>
+                        <CarouselItem>
+                            <ImageAccrodion images={IMAGES} />
+                        </CarouselItem>
+                        <CarouselItem>
+                            <ImageAccrodion images={IMAGES} />
+                        </CarouselItem>
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                </Carousel>
+            </div>
         </div>
     );
 };
 
 export default TestimonialsSection;
+
+const IMAGES = [
+    "/assets/images/dummy_hero.jpg",
+    "/assets/images/image_2.jpeg",
+    "/assets/images/image_3.jpeg",
+    "/assets/images/image_5.jpeg",
+];

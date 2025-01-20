@@ -1,3 +1,4 @@
+import { Button } from "@/Components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useCallback, useEffect, useState } from "react";
 
@@ -41,14 +42,14 @@ export const PrevButton = (props) => {
     const { children, ...restProps } = props;
 
     return (
-        <button
-            className="p-2 disabled:cursor-not-allowed disabled:-rotate-180 transition-all duration-500 hover:bg-secondary hover:text-primary rounded-full border-gray-300 border flex items-center justify-center"
+        <Button
+            className="h-8 w-8  transition-all duration-500 hover:bg-secondary hover:text-primary rounded-full border-gray-300 border flex items-center justify-center"
             type="button"
             {...restProps}
         >
-            <ChevronLeft />
+            <ChevronLeft className="h-4 w-4" />
             {children}
-        </button>
+        </Button>
     );
 };
 
@@ -56,13 +57,13 @@ export const NextButton = (props) => {
     const { children, ...restProps } = props;
 
     return (
-        <button
-            className="p-2 disabled:-rotate-180 disabled:cursor-not-allowed transition-all duration-500 rounded-full border-gray-300 border hover:bg-secondary hover:text-primary flex items-center justify-center"
+        <Button
+            className="h-8 w-8 transition-all duration-500 rounded-full border-gray-300 border hover:bg-secondary hover:text-primary flex items-center justify-center"
             type="button"
             {...restProps}
         >
             <ChevronRight />
             {children}
-        </button>
+        </Button>
     );
 };
