@@ -32,6 +32,7 @@ export default {
                 accent: {
                     DEFAULT: "hsl(var(--accent))",
                     foreground: "hsl(var(--accent-foreground))",
+                    primary: "hsl(var(--accent-primary))",
                 },
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",

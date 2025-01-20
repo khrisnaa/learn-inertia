@@ -60,8 +60,8 @@ const HeroCarousel = (props) => {
                                 selected={i === selectedIndex}
                                 index={i}
                                 image={image}
-                                title={"Lonely Life at the Baltimore"}
-                                desc={"Shot by A6000"}
+                                title={"Lonely Life at the Highlands"}
+                                desc={"Bandung, Nusa Tenggara Utara"}
                             />
                         ))}
                     </div>
