@@ -32,27 +32,31 @@ const ImageAccrodion = ({ images }) => {
                                 ))}
                             </div>
                         </div>
-                        <div className="space-y-2 z-[2]">
-                            <h4
-                                className={`line-clamp-2 text-lg  font-medium transition-all duration-500 ${
-                                    selectedIndex === i
-                                        ? "translate-y-0 "
-                                        : "translate-y-4 "
-                                } `}
-                            >
-                                Majestic Creature of the White African
-                            </h4>
-                            <p
-                                className={`text-sm  font-extralight line-clamp-2 transition-all duration-500 ease-in-out transform ${
-                                    selectedIndex === i
-                                        ? "opacity-100 translate-y-0"
-                                        : "opacity-0 translate-y-4"
-                                }`}
-                            >
-                                Lorem ipsum, dolor sit amet consectetur
-                                adipisicing elit. Perferendis velit non iure
-                                itaque. Deleniti, excepturi corrupti.
-                            </p>
+                        <div className="space-y-4 z-[2]">
+                            <div className="space-y-2">
+                                <h4
+                                    className={`line-clamp-2  text-lg  font-medium transition-all duration-500 ${
+                                        selectedIndex === i
+                                            ? "translate-y-0"
+                                            : "translate-y-2 "
+                                    } `}
+                                >
+                                    "This is the Greatest Being I have ever
+                                    seen"
+                                </h4>
+                                <div
+                                    className={`text-sm font-extralight pb-2 line-clamp-2 transition-all duration-500 ease-in-out transform ${
+                                        selectedIndex === i
+                                            ? "opacity-100 translate-y-0"
+                                            : "opacity-0 translate-y-4 hidden"
+                                    }`}
+                                >
+                                    <p className="text-secondary">
+                                        Cole Parmer{" "}
+                                    </p>
+                                    <span className="text-xs ">Farmer</span>
+                                </div>
+                            </div>
 
                             <Button
                                 variant="secondary"
