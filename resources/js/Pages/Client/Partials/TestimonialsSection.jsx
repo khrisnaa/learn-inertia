@@ -13,8 +13,8 @@ import {
 
 const TestimonialsSection = () => {
     return (
-        <div className="min-h-screen p-12">
-            <div className="flex h-[50vh] p-12">
+        <div className="min-h-screen p-12 space-y-12">
+            <div className="flex h-[50vh]">
                 <div className="flex-1 space-y-8">
                     <SectionLabel
                         label="The Opinions"
@@ -41,7 +41,7 @@ const TestimonialsSection = () => {
                     </div>
                 </div>
             </div>
-            <div className="px-12">
+            <div className="">
                 <Carousel>
                     <CarouselContent>
                         <CarouselItem>
@@ -63,7 +63,7 @@ export default TestimonialsSection;
 
 const IMAGES = [
     "/assets/images/dummy_hero.jpg",
-    "/assets/images/image_2.jpeg",
-    "/assets/images/image_3.jpeg",
-    "/assets/images/image_5.jpeg",
+    "/assets/images/dummy_hero.jpg",
+    "/assets/images/dummy_hero.jpg",
+    "/assets/images/dummy_hero.jpg",
 ];
