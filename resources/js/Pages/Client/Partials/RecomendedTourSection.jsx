@@ -7,8 +7,8 @@ import ParallaxCarousel from "./ParallaxCarousel";
 const RecomendedTourSection = () => {
     return (
         <div className="bg-accent-primary">
-            <div className="flex h-[50vh]  p-12">
-                <div className="flex-1 space-y-12">
+            <div className="flex h-[50dvh]  p-12">
+                <div className="flex-1 space-y-8">
                     <SectionLabel
                         label="For You"
                         icon={
