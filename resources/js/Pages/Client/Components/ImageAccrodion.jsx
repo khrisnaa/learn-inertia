@@ -56,7 +56,7 @@ const ImageAccrodion = ({ images }) => {
 
                             <Button
                                 variant="secondary"
-                                className={`rounded-full  py-4 px-6 text-sm w-full flex justify-between ${
+                                className={`rounded-full   text-sm w-full flex justify-between ${
                                     selectedIndex == i
                                         ? ""
                                         : "bg-transparent border border-secondary text-secondary"

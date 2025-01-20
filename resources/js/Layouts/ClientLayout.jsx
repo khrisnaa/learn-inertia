@@ -1,3 +1,4 @@
+import Footer from "@/Pages/Client/Partials/Footer";
 import Navbar from "@/Pages/Client/Partials/Navbar";
 import React from "react";
 
@@ -8,6 +9,9 @@ const ClientLayout = ({ children }) => {
                 <Navbar />
             </div>
             {children}
+            <div className="px-12 bg-accent-primary">
+                <Footer />
+            </div>
         </main>
     );
 };
