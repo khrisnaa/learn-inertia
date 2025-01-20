@@ -2,15 +2,16 @@ import { Button } from "@/Components/ui/button";
 import { ArrowRight, Info } from "lucide-react";
 import React from "react";
 import ExploreButton from "../Components/ExploreButton";
+import SectionLabel from "../Components/SectionLabel";
 
 const AboutSection = () => {
     return (
         <div className="w-full flex px-12 py-24   ">
             <div className="flex-1  flex flex-col justify-between ">
-                <div className="space-y-1">
-                    <Info className="text-muted-foreground w-5 h-5" />
-                    <p className="text-sm">About Us</p>
-                </div>
+                <SectionLabel
+                    label="About Us"
+                    icon={<Info className="text-muted-foreground w-5 h-5" />}
+                />
                 <div className="text-sm text-muted-foreground">
                     <p className="max-w-96">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
