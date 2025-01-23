@@ -6,7 +6,7 @@ const FaqCard = () => {
     return (
         <div className="group transition-all duration-500 hover:border-none cursor-pointer">
             <div className="rounded-lg h-24 relative before:absolute before:bottom-0 before:h-[.5px] before:w-full before:left-0 before:bg-gray-400 transition-all duration-500 group-hover:before:w-0 before:transition-all before:duration-500  p-4 group-hover:bg-accent-primary flex justify-between items-center">
-                <span>2015</span>
+                <span>01</span>
                 <h4 className="text-lg max-w-xs">
                     Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
                 </h4>

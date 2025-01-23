@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/Components/ui/avatar";
 import { Button } from "@/Components/ui/button";
 import { Separator } from "@/Components/ui/separator";
+import { Link } from "@inertiajs/react";
 import React from "react";
 
 const Navbar = () => {
@@ -16,13 +17,13 @@ const Navbar = () => {
                 <span className="text-2xl  uppercase font-grotesk">DREDGE</span>
             </div>
             <nav className="flex bg-black/20 py-2 backdrop-blur-lg h-12 px-6 rounded-3xl items-center space-x-4 text-sm">
-                <div>Home</div>
+                <Link href="/home">Home</Link>
                 <Separator orientation="vertical" />
-                <div>Explore</div>
+                <Link href="/explore">Explore</Link>
                 <Separator orientation="vertical" />
-                <div>Wishlist</div>
+                <Link href="/wishlist">Wishlist</Link>
                 <Separator orientation="vertical" />
-                <div>Contact Us</div>
+                <Link href="/contact-us">Contact Us</Link>
             </nav>
             <div className="flex gap-3 items-center">
                 <Button variant="secondary" className="px-6 h-12 rounded-3xl">

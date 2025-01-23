@@ -9,6 +9,6 @@ class FavoriteController extends Controller
 {
     public function index()
     {
-        return inertia('Client/Favorite');
+        return inertia('Client/Favorites');
     }
 }
