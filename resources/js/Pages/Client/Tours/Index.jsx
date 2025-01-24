@@ -3,34 +3,52 @@ import React, { useEffect, useRef } from "react";
 import { useScroll, motion, useTransform } from "motion/react";
 import { cn } from "@/lib/utils";
 import ExploreZoomParallax from "../Partials/ExploreZoomParallax";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CircleHelp } from "lucide-react";
+import ExploreHeadline from "../Partials/ExploreHeadline";
+import SectionLabel from "../Components/SectionLabel";
+import ContactSection from "../Partials/ContactSection";
+import ImageContainer from "../Partials/ImageContainer";
+import ExploreLabel from "../Partials/ExploreLabel";
 
 const Index = () => {
     return (
         <ClientLayout>
-            <div className="h-[60vh]  px-12 py-24 flex items-center justify-between">
-                <p className="text-5xl text-muted-foreground max-w-2xl">
-                    <span className="font-medium text-secondary">Penis</span> is
-                    driven by a deep passion for{" "}
-                    <span className="font-medium text-secondary">
-                        capturing life's
-                    </span>{" "}
-                    most{" "}
-                    <span className="font-medium text-secondary">
-                        precious moments
-                    </span>{" "}
-                    with artistry and a touch of magic
-                </p>
-
-                <button className="flex group gap-4 h-fit rotate-90">
-                    Scroll More
-                    <span className="group-hover:translate-x-4 transition-all duration-500">
-                        <ArrowRight />
-                    </span>
-                </button>
-            </div>
+            <ExploreHeadline />
             <ExploreZoomParallax />
-            <div className="h-[100vh]" />
+            <div className="h-[50vh]" />
+            <div>
+                <ExploreLabel />
+                <div className="px-12 py-4 h-screen">
+                    <div className="grid h-full grid-cols-5 grid-rows-2 gap-8">
+                        <ImageContainer className={"col-span-3 row-span-2"} />
+                        <ImageContainer className={"col-span-2 row-span-1"} />
+                        <ImageContainer className={"col-span-2 row-span-1"} />
+                    </div>
+                </div>
+                <ExploreLabel />
+                <div className="px-12 py-4 h-screen">
+                    <div className="grid h-full grid-cols-8 grid-rows-4 gap-8">
+                        <ImageContainer className={"col-span-4 row-span-2"} />
+                        <ImageContainer className={"col-span-4 row-span-2"} />
+                        <ImageContainer className={"col-span-3 row-span-2"} />
+                        <ImageContainer className={"col-span-3 row-span-2"} />
+                        <ImageContainer className={"col-span-2 row-span-2"} />
+                    </div>
+                </div>
+                <ExploreLabel />
+                <div className="px-12 py-4 h-screen">
+                    <div className="grid h-full grid-cols-6 grid-rows-6 gap-8">
+                        <ImageContainer className={"col-span-4 row-span-3"} />
+                        <ImageContainer className={"col-span-2 row-span-4"} />
+                        <ImageContainer className={"col-span-2 row-span-3"} />
+                        <ImageContainer className={"col-span-2 row-span-3"} />
+                        <ImageContainer className={"col-span-2 row-span-2"} />
+                    </div>
+                </div>
+            </div>
+            <div className="mt-12">
+                <ContactSection />
+            </div>
         </ClientLayout>
     );
 };

@@ -25,11 +25,11 @@ const ImageAccrodion = ({ images }) => {
                                         : " opacity-0 translate-y-4"
                                 }`}
                             >
-                                {CATEGORIES.map((category, i) => (
+                                {/* {CATEGORIES.map((category, i) => (
                                     <CategoryButton key={i}>
                                         {category}
                                     </CategoryButton>
-                                ))}
+                                ))} */}
                             </div>
                         </div>
                         <div className="space-y-4 z-[2]">
