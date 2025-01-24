@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useScroll, useTransform, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,7 @@ const ExploreZoomParallax = () => {
     const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
     const scale8 = useTransform(scrollYProgress, [0, 1], [1, 8]);
     const opacity = useTransform(scrollYProgress, [0.2, 1], [0, 1]);
+    const borderRadius = useTransform(scrollYProgress, [0.2, 1], [8, 0]);
 
     const pictures = [
         {
@@ -45,6 +46,7 @@ const ExploreZoomParallax = () => {
             scale: scale8,
         },
     ];
+
     return (
         <div ref={container} className="h-[300vh] relative">
             <div className="sticky top-0 h-screen flex justify-center items-center overflow-hidden p-4">
@@ -60,9 +62,10 @@ const ExploreZoomParallax = () => {
                             className="w-full h-full absolute top-0 flex items-center justify-center"
                             style={{ scale }}
                         >
-                            <div
+                            <motion.div
+                                style={{ borderRadius }}
                                 className={cn(
-                                    "h-[25vh] w-[25vw] rounded-lg overflow-hidden  relative",
+                                    "h-[25vh] w-[25vw] overflow-hidden relative",
                                     i == 1 &&
                                         "-top-[33vh] right-[5vw] h-[30vh] w-[35vw]",
                                     i == 2 &&
@@ -81,7 +84,7 @@ const ExploreZoomParallax = () => {
                                     alt="image"
                                     className="object-cover w-full h-full "
                                 />
-                            </div>
+                            </motion.div>
                         </motion.div>
                     );
                 })}
