@@ -15,19 +15,20 @@ const Favorites = () => {
     return (
         <ClientLayout>
             <div className="h-screen grid grid-cols-2 gap-2 px-12 pt-28 py-24">
-                <div className="h-full w-full space-y-8 sticky top-0">
-                    <SectionLabel
-                        label="Your Favorites"
-                        icon={
-                            <CircleCheck className="text-muted-foreground  w-5 h-5" />
-                        }
-                    />
-                    <p className="font-light text-5xl">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Placeat!
-                    </p>
+                <div className="col-span-1">
+                    <div className="h-full w-full space-y-8">
+                        <SectionLabel
+                            label="Your Favorites"
+                            icon={
+                                <CircleCheck className="text-muted-foreground  w-5 h-5" />
+                            }
+                        />
+                        <p className="font-light text-5xl">
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Placeat!
+                        </p>
+                    </div>
                 </div>
-                <div className="col-span-1"></div>
                 <div className="col-span-1 h-[80vh] select-none">
                     <div className="grid grid-rows-4 gap-4 w-full h-full ">
                         <div className="cursor-pointer relative overflow-hidden rounded-lg row-span-3">
