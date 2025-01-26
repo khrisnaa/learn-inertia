@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import SectionLabel from "../Components/SectionLabel";
 import { ArrowRight, Binoculars, CircleArrowUp } from "lucide-react";
 import { ScrollArea } from "@/Components/ui/scroll-area";
 import ParallaxCarousel from "./ParallaxCarousel";
 import categories from "@/data/categories";
+import packageTours from "@/data/package-tours.json";
+import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
 
 const RecomendedTourSection = () => {
+    const [activeSlide, setActiveSlide] = useState(0);
     return (
         <div className="bg-accent-primary">
             <div className="flex h-[50dvh]  p-12">
@@ -36,26 +40,47 @@ const RecomendedTourSection = () => {
             </div>
             <div className=" w-full justify-between flex py-12">
                 <div className="p-12 py-24 flex-[0.4] flex flex-col justify-end">
-                    <div className="flex flex-col cursor-pointer group">
-                        <p className="text-xl tracking-custom">
-                            Two Black Cocks Mountain
-                        </p>
-                        <div className="flex gap-4">
-                            <p className="text-muted-foreground">
-                                Bandung, Sout East Africa
-                            </p>
-                            <button
-                                className=" h-6 group-hover:ml-4  w-6 disabled:-rotate-180 transition-all duration-500 rounded-full bg-secondary text-primary flex items-center justify-center"
-                                type="button"
+                    {packageTours.map((tour, i) => {
+                        return (
+                            <motion.div
+                                className={`flex-col  cursor-pointer group transition-all duration-500 ease-in-out transform ${
+                                    activeSlide === i ? "flex" : "hidden"
+                                }`}
+                                initial={{ opacity: 0 }}
+                                animate={{
+                                    opacity: activeSlide === i ? 1 : 0,
+                                }}
+                                transition={{
+                                    duration: 0.6,
+                                    ease: [0.25, 0.8, 0.25, 1],
+                                }}
+                                key={i}
                             >
-                                <ArrowRight className="h-3 w-3" />
-                            </button>
-                        </div>
-                    </div>
+                                <p className={cn("text-xl tracking-custom")}>
+                                    {tour.package_name}
+                                </p>
+                                <div className={cn("flex gap-4")}>
+                                    <p className="text-gray-300">
+                                        {tour.location}
+                                    </p>
+                                    <button
+                                        className="h-6 group-hover:ml-4 w-6 disabled:-rotate-180 transition-all duration-500 rounded-full bg-secondary text-primary flex items-center justify-center"
+                                        type="button"
+                                    >
+                                        <ArrowRight className="h-3 w-3" />
+                                    </button>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </div>
 
                 <div className="flex-1">
-                    <ParallaxCarousel slides={IMAGES} options={OPTIONS} />
+                    <ParallaxCarousel
+                        setActiveSlide={setActiveSlide}
+                        slides={packageTours}
+                        options={OPTIONS}
+                    />
                 </div>
             </div>
         </div>
@@ -64,21 +89,4 @@ const RecomendedTourSection = () => {
 
 export default RecomendedTourSection;
 
-const CATEGORIES = [
-    "Wildlife",
-    "Adventure",
-    "Mountain",
-    "Fresh",
-    "Nature",
-    "Tree",
-    "Sky",
-];
-
 const OPTIONS = { loop: false };
-
-const IMAGES = [
-    "/assets/images/dummy_hero.jpg",
-    "/assets/images/image_2.jpeg",
-    "/assets/images/image_3.jpeg",
-    "/assets/images/image_5.jpeg",
-];

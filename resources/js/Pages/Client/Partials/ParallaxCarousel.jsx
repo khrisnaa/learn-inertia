@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import {
     NextButton,
@@ -10,7 +10,7 @@ import { ArrowBigRight, MoveRight } from "lucide-react";
 const TWEEN_FACTOR_BASE = 0.2;
 
 const ParallaxCarousel = (props) => {
-    const { slides, options } = props;
+    const { slides: tours, options, setActiveSlide } = props;
     const [emblaRef, emblaApi] = useEmblaCarousel(options);
     const tweenFactor = useRef(0);
     const tweenNodes = useRef([]);
@@ -76,6 +76,10 @@ const ParallaxCarousel = (props) => {
     useEffect(() => {
         if (!emblaApi) return;
 
+        const onSelect = () => {
+            setActiveSlide(emblaApi.selectedScrollSnap());
+        };
+
         setTweenNodes(emblaApi);
         setTweenFactor(emblaApi);
         tweenParallax(emblaApi);
@@ -85,14 +89,20 @@ const ParallaxCarousel = (props) => {
             .on("reInit", setTweenFactor)
             .on("reInit", tweenParallax)
             .on("scroll", tweenParallax)
-            .on("slideFocus", tweenParallax);
-    }, [emblaApi, tweenParallax]);
+            .on("slideFocus", tweenParallax)
+            .on("select", onSelect);
+
+        // Cleanup event listeners on unmount
+        return () => {
+            emblaApi.off("select", onSelect);
+        };
+    }, [emblaApi, setTweenNodes, setTweenFactor, tweenParallax]);
 
     return (
         <div className="relative w-full ">
             <div className="overflow-hidden rounded-lg" ref={emblaRef}>
                 <div className="-ml-4 flex">
-                    {slides.map((index) => (
+                    {tours.map((tour, index) => (
                         <div className=" flex-[0_0_80%] pl-4" key={index}>
                             <div className="h-full overflow-hidden rounded-lg">
                                 <div
@@ -101,7 +111,7 @@ const ParallaxCarousel = (props) => {
                                 >
                                     <img
                                         className="object-cover  "
-                                        src="/assets/images/dummy_hero.jpg"
+                                        src={tour.image}
                                         alt="Your alt text"
                                     />
                                 </div>
