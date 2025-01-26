@@ -8,7 +8,7 @@ import DetailCarousel from "../Partials/DetailCarousel";
 const Show = () => {
     return (
         <ClientLayout>
-            <div className="min-h-screen px-12 pt-24">
+            <div className="min-h-screen px-12 pt-28">
                 <ImageDetails />
                 <div className="pt-12">
                     <SectionLabel

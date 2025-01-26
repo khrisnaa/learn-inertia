@@ -3,6 +3,7 @@ import SectionLabel from "../Components/SectionLabel";
 import { ArrowRight, Binoculars, CircleArrowUp } from "lucide-react";
 import { ScrollArea } from "@/Components/ui/scroll-area";
 import ParallaxCarousel from "./ParallaxCarousel";
+import categories from "@/data/categories";
 
 const RecomendedTourSection = () => {
     return (
@@ -23,9 +24,9 @@ const RecomendedTourSection = () => {
                 <div className="flex-1 flex justify-end h-full ">
                     <ScrollArea className="w-96 relative">
                         <div className="flex flex-col z-[1] relative items-end gap-4 p-4 px-8">
-                            {CATEGORIES.map((category, i) => (
+                            {categories.map((category, i) => (
                                 <a href="#" className="text-3xl">
-                                    {category}
+                                    {category.name}
                                 </a>
                             ))}
                         </div>

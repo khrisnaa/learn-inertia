@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "Rainforest",
+        "description": "Experience the vibrant and diverse ecosystem of rainforests."
+    },
+    {
+        "id": 2,
+        "name": "Wildlife",
+        "description": "Observe and connect with wildlife in their natural habitats."
+    },
+    {
+        "id": 3,
+        "name": "Adventure",
+        "description": "Engage in thrilling and exciting outdoor activities."
+    },
+    {
+        "id": 4,
+        "name": "Camping",
+        "description": "Spend nights under the stars in beautiful natural locations."
+    },
+    {
+        "id": 5,
+        "name": "Savanna",
+        "description": "Explore vast grasslands and unique savanna ecosystems."
+    },
+    {
+        "id": 6,
+        "name": "Safari",
+        "description": "Embark on jeep safaris to discover diverse landscapes and wildlife."
+    },
+    {
+        "id": 7,
+        "name": "Nature",
+        "description": "Immerse yourself in the tranquility and beauty of nature."
+    },
+    {
+        "id": 8,
+        "name": "Marine",
+        "description": "Explore underwater worlds and vibrant marine life."
+    },
+    {
+        "id": 9,
+        "name": "Mangrove",
+        "description": "Discover the unique ecosystems of mangrove forests."
+    },
+    {
+        "id": 10,
+        "name": "Birdwatching",
+        "description": "Spot and observe a variety of bird species in their habitats."
+    },
+    {
+        "id": 11,
+        "name": "Diving",
+        "description": "Dive into crystal-clear waters to explore coral reefs and marine life."
+    },
+    {
+        "id": 12,
+        "name": "Desert",
+        "description": "Experience the beauty and vastness of desert landscapes."
+    },
+    {
+        "id": 13,
+        "name": "Sunrise",
+        "description": "Witness breathtaking sunrises in picturesque locations."
+    },
+    {
+        "id": 14,
+        "name": "Trekking",
+        "description": "Go on adventurous treks through challenging terrains."
+    },
+    {
+        "id": 15,
+        "name": "Jungle",
+        "description": "Venture into dense jungles full of mystery and wildlife."
+    },
+    {
+        "id": 16,
+        "name": "Photography",
+        "description": "Capture stunning landscapes, wildlife, and natural beauty."
+    }
+]

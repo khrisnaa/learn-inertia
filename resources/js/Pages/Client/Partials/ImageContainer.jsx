@@ -30,7 +30,7 @@ const ImageContainer = ({ className }) => {
                             <span className="text-2xl font-bold">
                                 Morning in hell with tony
                             </span>
-                            <button className="rounded-full bg-primary text-secondary group-hover:-rotate-45 transition-all duration-500 p-2">
+                            <button className="rounded-full bg-secondary text-primary group-hover:-rotate-45 transition-all duration-500 p-2">
                                 <ArrowRight className="h-4 w-4" />
                             </button>
                         </div>
