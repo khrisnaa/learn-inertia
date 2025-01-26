@@ -3,19 +3,22 @@ import { ChevronRight } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import CategoryButton from "./CategoryButton";
 
-const ImageAccrodion = ({ images }) => {
+const ImageAccrodion = ({ testimonials }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     return (
         <div className="flex gap-4">
-            {images.map((image, i) => (
+            {testimonials.map((testimonial, i) => (
                 <div
                     onClick={() => setSelectedIndex(i)}
                     className={`h-[60dvh] rounded-lg cursor-pointer transition-all overflow-hidden duration-500 relative ${
                         selectedIndex == i ? "w-full" : "w-[40vw]"
                     }`}
                 >
-                    <img src={image} className="object-cover w-full h-full" />
+                    <img
+                        src={testimonial.image}
+                        className="object-cover w-full h-full"
+                    />
                     <div className="absolute inset-0 p-8 flex flex-col justify-between">
                         <div className="flex justify-end">
                             <div
@@ -24,25 +27,18 @@ const ImageAccrodion = ({ images }) => {
                                         ? "opacity-100 translate-y-0"
                                         : " opacity-0 translate-y-4"
                                 }`}
-                            >
-                                {/* {CATEGORIES.map((category, i) => (
-                                    <CategoryButton key={i}>
-                                        {category}
-                                    </CategoryButton>
-                                ))} */}
-                            </div>
+                            ></div>
                         </div>
                         <div className="space-y-4 z-[2]">
                             <div className="space-y-2">
                                 <h4
-                                    className={`line-clamp-2  text-lg  font-medium transition-all duration-500 ${
+                                    className={`line-clamp-2 italic  text-lg  font-medium transition-all duration-500 ${
                                         selectedIndex === i
                                             ? "translate-y-0"
                                             : "translate-y-2 "
                                     } `}
                                 >
-                                    "This is the Greatest Being I have ever
-                                    seen"
+                                    "{testimonial.testimonial}"
                                 </h4>
                                 <div
                                     className={`text-sm font-extralight pb-2 line-clamp-2 transition-all duration-500 ease-in-out transform ${
@@ -52,9 +48,11 @@ const ImageAccrodion = ({ images }) => {
                                     }`}
                                 >
                                     <p className="text-secondary">
-                                        Cole Parmer{" "}
+                                        {testimonial.name}
                                     </p>
-                                    <span className="text-xs ">Farmer</span>
+                                    <span className="text-xs ">
+                                        {testimonial.location}
+                                    </span>
                                 </div>
                             </div>
 

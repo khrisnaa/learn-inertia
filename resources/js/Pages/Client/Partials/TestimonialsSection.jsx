@@ -10,8 +10,13 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/Components/ui/carousel";
+import testimonials from "@/data/testimonials";
 
 const TestimonialsSection = () => {
+    const chunkedTestimonials = Array.from(
+        { length: Math.ceil(testimonials.length / 4) },
+        (_, i) => testimonials.slice(i * 4, i * 4 + 4)
+    );
     return (
         <div className="min-h-screen p-12 space-y-12">
             <div className="flex h-[50vh]">
@@ -41,15 +46,14 @@ const TestimonialsSection = () => {
                     </div>
                 </div>
             </div>
-            <div className="">
+            <div>
                 <Carousel>
                     <CarouselContent>
-                        <CarouselItem>
-                            <ImageAccrodion images={IMAGES} />
-                        </CarouselItem>
-                        <CarouselItem>
-                            <ImageAccrodion images={IMAGES} />
-                        </CarouselItem>
+                        {chunkedTestimonials.map((chunk, i) => (
+                            <CarouselItem>
+                                <ImageAccrodion testimonials={chunk} />
+                            </CarouselItem>
+                        ))}
                     </CarouselContent>
                     <CarouselPrevious />
                     <CarouselNext />
@@ -60,10 +64,3 @@ const TestimonialsSection = () => {
 };
 
 export default TestimonialsSection;
-
-const IMAGES = [
-    "/assets/images/dummy_hero.jpg",
-    "/assets/images/dummy_hero.jpg",
-    "/assets/images/dummy_hero.jpg",
-    "/assets/images/dummy_hero.jpg",
-];

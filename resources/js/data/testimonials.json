@@ -1,0 +1,66 @@
+[
+    {
+        "name": "Sarah Thompson",
+        "location": "California, USA",
+        "testimonial": "The Tropical Rainforest Adventure in Gunung Leuser was an unforgettable experience. I loved seeing orangutans in the wild and the jungle trekking was both challenging and rewarding. The local guides were knowledgeable, and camping under the stars was magical.",
+        "rating": 5,
+        "image": "/assets/images/rainforest.jpg",
+        "package_name": "Tropical Rainforest Adventure - Gunung Leuser"
+    },
+    {
+        "name": "John Parker",
+        "location": "London, UK",
+        "testimonial": "The Savanna Safari in Baluran National Park was incredible. The jeep safari through the vast savanna was thrilling, and we saw so many animals. The sunrise at Bama Beach was a highlight. The experience felt like stepping into a different world.",
+        "rating": 4,
+        "image": "/assets/images/savana.jpg",
+        "package_name": "Savanna Safari - Baluran National Park"
+    },
+    {
+        "name": "Emily Zhang",
+        "location": "Sydney, Australia",
+        "testimonial": "The Marine & Mangrove Exploration in Raja Ampat was a dream come true. Diving in the pristine coral reefs was surreal, and the Bird of Paradise was breathtaking. The eco-resort stay was comfortable, and the local tours were immersive and educational.",
+        "rating": 5,
+        "image": "/assets/images/rajaampat.jpg",
+        "package_name": "Marine & Mangrove Exploration - Raja Ampat"
+    },
+    {
+        "name": "David Miller",
+        "location": "Berlin, Germany",
+        "testimonial": "I had a fantastic time on the Desert Adventure at Mount Bromo. Watching the sunrise at Penanjakan was a life-changing experience, and trekking to the crater was both challenging and rewarding. The jeep and horse ride added to the adventure.",
+        "rating": 4,
+        "image": "/assets/images/bromo.jpg",
+        "package_name": "Desert Adventure - Mount Bromo"
+    },
+    {
+        "name": "Olivia Martinez",
+        "location": "Madrid, Spain",
+        "testimonial": "The Birdwatching & Jungle Trek in Lorentz National Park was a highlight of my travels. The birdwatching experience was exceptional, especially seeing the Bird of Paradise. The jungle trekking and wildlife photography were equally amazing. Highly recommended!",
+        "rating": 5,
+        "image": "/assets/images/lake.jpg",
+        "package_name": "Birdwatching & Jungle Trek - Lorentz National Park"
+    },
+    {
+        "name": "Lucas Robinson",
+        "location": "New York, USA",
+        "testimonial": "The Savanna Safari was a true adventure! The jeep safari was such an exciting ride and we got to see so many animals up close. The landscape was so diverse and breathtaking. Definitely one of my favorite experiences in Indonesia.",
+        "rating": 5,
+        "image": "/assets/images/savana.jpg",
+        "package_name": "Savanna Safari - Baluran National Park"
+    },
+    {
+        "name": "Anna Brooks",
+        "location": "Toronto, Canada",
+        "testimonial": "The Marine & Mangrove Exploration was amazing! I never imagined such beautiful coral reefs existed. The underwater world was teeming with life, and I loved the cultural visits to the local villages. It was an unforgettable trip.",
+        "rating": 4,
+        "image": "/assets/images/rajaampat.jpg",
+        "package_name": "Marine & Mangrove Exploration - Raja Ampat"
+    },
+    {
+        "name": "Michael Johnson",
+        "location": "Paris, France",
+        "testimonial": "My trip to Mount Bromo was absolutely stunning. The desert landscape was surreal and the sunrise from Penanjakan was one of the most beautiful things I've ever witnessed. The trip was well-organized and I loved the adventurous jeep ride.",
+        "rating": 5,
+        "image": "/assets/images/bromo.jpg",
+        "package_name": "Desert Adventure - Mount Bromo"
+    }
+]
