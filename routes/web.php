@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
 Route::name('client.')->group(function () {
     Route::get('/home', [ClientHomeController::class, 'index'])->name('home');
     Route::get('/explore', [ClientTourController::class, 'index'])->name('tours.index');
-    Route::get('/tours/{tour}', [ClientTourController::class, 'show'])->name('tours.show');
+    Route::get('/explore/1', [ClientTourController::class, 'show'])->name('tours.show');
     Route::get('/wishlist', [ClientFavoriteController::class, 'index'])->name('favorites.index');
     // Route::post('/favorites/{tour}', [ClientFavoriteController::class, 'store'])->name('favorites.store');
     // Route::delete('/favorites/{tour}', [ClientFavoriteController::class, 'destroy'])->name('favorites.destroy');

@@ -1,11 +1,7 @@
 import ClientLayout from "@/Layouts/ClientLayout";
-import React, { useEffect, useRef } from "react";
-import { useScroll, motion, useTransform } from "motion/react";
-import { cn } from "@/lib/utils";
+import React from "react";
 import ExploreZoomParallax from "../Partials/ExploreZoomParallax";
-import { ArrowRight, CircleHelp } from "lucide-react";
 import ExploreHeadline from "../Partials/ExploreHeadline";
-import SectionLabel from "../Components/SectionLabel";
 import ContactSection from "../Partials/ContactSection";
 import ImageContainer from "../Partials/ImageContainer";
 import ExploreLabel from "../Partials/ExploreLabel";

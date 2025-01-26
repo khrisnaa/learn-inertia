@@ -1,6 +1,6 @@
 import * as React from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -174,7 +174,7 @@ const CarouselPrevious = React.forwardRef(
                     "absolute  h-8 w-8 rounded-full bg-transparent border-gray-300 border hover:bg-secondary hover:text-primary",
                     orientation === "horizontal"
                         ? "right-12 -bottom-12"
-                        : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+                        : " rotate-90",
                     className
                 )}
                 disabled={!canScrollPrev}
@@ -202,7 +202,7 @@ const CarouselNext = React.forwardRef(
                     "absolute  h-8 w-8 rounded-full bg-transparent border-gray-300 border hover:bg-secondary hover:text-primary",
                     orientation === "horizontal"
                         ? "right-0 -bottom-12"
-                        : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+                        : "  rotate-90",
                     className
                 )}
                 disabled={!canScrollNext}
