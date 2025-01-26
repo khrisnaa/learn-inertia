@@ -1,0 +1,118 @@
+[
+    {
+        "package_name": "Tropical Rainforest Adventure - Gunung Leuser",
+        "headline": "Vibrant rainforest adventure with orangutans and exotic wildlife",
+        "duration": "3 Days 2 Nights",
+        "location": "Gunung Leuser National Park, Sumatra",
+        "price": "$170/person",
+        "overview": "Explore the lush rainforest, spot orangutans, elephants, and exotic birds, and camp under the stars in this immersive wildlife experience.",
+        "includes": [
+            "Local guide",
+            "Meals and drinks",
+            "Camping gear",
+            "Entry fees"
+        ],
+        "highlights": [
+            "Jungle trekking",
+            "Wildlife observation",
+            "Nature conservation insights"
+        ],
+        "categories": ["Rainforest", "Wildlife", "Adventure", "Camping"],
+        "image": "/assets/images/rainforest.jpg"
+    },
+    {
+        "package_name": "Savanna Safari - Baluran National Park",
+        "headline": "Vast savanna and vibrant wildlife in East Java’s wildlands",
+        "duration": "2 Days 1 Night",
+        "location": "Baluran, East Java",
+        "price": "$120/person",
+        "overview": "Discover the 'Little Africa in Java,' with its vast savanna, mangrove forests, and diverse wildlife like deer, banteng, and peacocks.",
+        "includes": [
+            "Jeep safari",
+            "Simple accommodation",
+            "Meals",
+            "Entry fees"
+        ],
+        "highlights": [
+            "Jeep safari through the savanna",
+            "Mangrove trekking",
+            "Sunrise at Bama Beach"
+        ],
+        "categories": ["Savanna", "Wildlife", "Safari", "Nature"],
+        "image": "/assets/images/savana.jpg"
+    },
+    {
+        "package_name": "Marine & Mangrove Exploration - Raja Ampat",
+        "headline": "Diving in Raja Ampat's pristine coral reefs and mangroves",
+        "duration": "5 Days 4 Nights",
+        "location": "Raja Ampat, West Papua",
+        "price": "$670/person",
+        "overview": "Dive into Raja Ampat's vibrant coral reefs, explore mangrove forests, and spot exotic birds like the Bird of Paradise.",
+        "includes": [
+            "Eco-resort stay",
+            "Snorkeling/diving gear",
+            "Local transport",
+            "Guided tours"
+        ],
+        "highlights": [
+            "Snorkeling/diving",
+            "Birdwatching",
+            "Local cultural visits"
+        ],
+        "categories": [
+            "Marine",
+            "Mangrove",
+            "Birdwatching",
+            "Diving",
+            "Adventure"
+        ],
+        "image": "/assets/images/rajaampat.jpg"
+    },
+    {
+        "package_name": "Desert Adventure - Mount Bromo",
+        "headline": "Explore the mystical desert landscape of Mount Bromo",
+        "duration": "2 Days 1 Night",
+        "location": "Mount Bromo, East Java",
+        "price": "$100/person",
+        "overview": "Experience the dramatic desert landscape of Bromo, sunrise views, and a trek to the crater.",
+        "includes": [
+            "Jeep and horse transport",
+            "Local accommodation",
+            "Meals"
+        ],
+        "highlights": [
+            "Sunrise at Penanjakan",
+            "Crater trekking",
+            "Sand dune exploration"
+        ],
+        "categories": ["Desert", "Adventure", "Sunrise", "Trekking"],
+        "image": "/assets/images/bromo.jpg"
+    },
+    {
+        "package_name": "Birdwatching & Jungle Trek - Lorentz National Park",
+        "headline": "Journey through untouched jungles and rare birdwatching",
+        "duration": "4 Days 3 Nights",
+        "location": "Lorentz, Papua",
+        "price": "$530/person",
+        "overview": "Immerse yourself in pristine wilderness, with rare bird sightings and lush jungle trails in Southeast Asia's largest national park.",
+        "includes": [
+            "Licensed guide",
+            "Basic accommodation",
+            "Meals and drinks",
+            "Entry fees"
+        ],
+        "highlights": [
+            "Birdwatching (Bird of Paradise)",
+            "Jungle trekking",
+            "Wildlife photography"
+        ],
+        "categories": [
+            "Birdwatching",
+            "Jungle",
+            "Wildlife",
+            "Adventure",
+            "Photography"
+        ],
+        "image": "/assets/images/lake.jpg"
+    }
+]

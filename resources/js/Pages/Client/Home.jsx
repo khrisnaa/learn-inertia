@@ -7,6 +7,7 @@ import ParallaxCarousel from "./Partials/ParallaxCarousel";
 import TestimonialsSection from "./Partials/TestimonialsSection";
 import FaqSection from "./Partials/FaqSection";
 import ContactSection from "./Partials/ContactSection";
+import packageTours from "@/data/package-tours.json";
 
 const OPTIONS = { loop: true };
 const OPTIONS2 = { loop: false };
@@ -20,7 +21,7 @@ const IMAGES = [
 const Home = () => {
     return (
         <ClientLayout>
-            <Carousel slides={IMAGES} options={OPTIONS} />
+            <Carousel slides={packageTours} options={OPTIONS} />
             <AboutSection />
             <RecomendedTourSection />
             <TestimonialsSection />
