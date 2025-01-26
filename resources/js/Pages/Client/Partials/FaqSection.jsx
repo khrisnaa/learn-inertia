@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import SectionLabel from "../Components/SectionLabel";
 import { CircleHelp } from "lucide-react";
 import FaqCard from "../Components/FaqCard";
-
+import faqs from "@/data/faqs";
+import { Accordion, AccordionItem } from "@/Components/ui/accordion";
 const FaqSection = () => {
+    const [selectedIndex, setSelectedIndex] = useState(0);
     return (
         <div className="p-12 min-h-screen space-y-12">
             <div className="flex">
@@ -24,12 +26,17 @@ const FaqSection = () => {
             </div>
             <div className="flex gap-12">
                 <div className="flex-1 flex flex-col">
-                    <FaqCard />
-                    <FaqCard />
-                    <FaqCard />
-                    <FaqCard />
+                    <Accordion type="single" collapsible className="w-full">
+                        {faqs.map((faq, i) => (
+                            <FaqCard
+                                key={i}
+                                answer={faq.answer}
+                                question={faq.question}
+                            />
+                        ))}
+                    </Accordion>
                 </div>
-                <div className="flex-[0.7] space-y-4">
+                <div className="flex-[0.7] space-y-4 overflow-hidden ">
                     <div className="h-64 rounded-lg group overflow-hidden ">
                         <img
                             src="/assets/images/dummy_hero.jpg"
