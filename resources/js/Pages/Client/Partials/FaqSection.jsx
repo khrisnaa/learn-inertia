@@ -19,8 +19,8 @@ const FaqSection = () => {
                 </div>
                 <div className="flex-1">
                     <p className="font-light text-5xl">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Placeat!
+                        Have you ever wondered how wildlife thrives in its
+                        natural habitats? Explore with us!
                     </p>
                 </div>
             </div>
@@ -44,12 +44,12 @@ const FaqSection = () => {
                         />
                     </div>
                     <div className="space-y-1">
-                        <h4>Lorem ipsum dolor sit amet.</h4>
+                        <h4>Discover the Wonders of Wildlife</h4>
                         <p className="text-muted-foreground">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Dolorem qui necessitatibus sunt nostrum
-                            voluptas neque excepturi officia non rerum
-                            consequuntur!
+                            Immerse yourself in the beauty of nature, where
+                            breathtaking landscapes meet diverse wildlife.
+                            Explore the untouched corners of our planet and
+                            experience its true essence!
                         </p>
                     </div>
                 </div>

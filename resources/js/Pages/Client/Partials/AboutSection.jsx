@@ -12,33 +12,30 @@ const AboutSection = () => {
                     label="About Us"
                     icon={<Info className="text-muted-foreground w-5 h-5" />}
                 />
-                <div className="text-sm text-muted-foreground">
+                <div className="text-sm text-muted-foreground pb-24">
                     <p className="max-w-96">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quis vitae, ut suscipit impedit dignissimos tempore
-                        magnam accusantium unde eaque vero praesentium
-                        recusandae sed repudiandae nulla officiis? Officiis
-                        consequuntur consectetur quasi ipsa sequi est dolorem
-                        vitae, ducimus enim beatae labore magnam?
+                        Join us on unforgettable wildlife adventures, from lush
+                        rainforests to vibrant savannas. Our guided tours
+                        celebrate nature, promote conservation, and immerse you
+                        in breathtaking destinations.
                     </p>
                 </div>
             </div>
             <div className="flex-1 space-y-12">
                 <p className="text-5xl text-muted-foreground">
                     <span className="font-medium text-secondary">
-                        Photography
+                        Wildlife tours
                     </span>{" "}
-                    is driven by a deep passion for{" "}
+                    offer a profound connection to{" "}
                     <span className="font-medium text-secondary">
-                        capturing life's
+                        nature's beauty
                     </span>{" "}
-                    most{" "}
+                    and{" "}
                     <span className="font-medium text-secondary">
-                        precious moments
+                        incredible creatures
                     </span>{" "}
-                    with artistry and a touch of magic
+                    with wonder and a sense of adventure
                 </p>
-
                 <ExploreButton />
             </div>
         </div>

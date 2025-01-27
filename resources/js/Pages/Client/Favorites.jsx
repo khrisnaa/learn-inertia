@@ -14,7 +14,7 @@ const Favorites = () => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     return (
         <ClientLayout>
-            <div className="h-screen grid grid-cols-2 gap-2 px-12 pt-28 py-24">
+            <div className="min-h-screen grid grid-cols-2 gap-2 px-12 pt-28  py-24">
                 <div className="col-span-1">
                     <div className="h-full w-full space-y-8">
                         <SectionLabel

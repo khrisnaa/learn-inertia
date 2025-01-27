@@ -5,14 +5,14 @@ const ExploreHeadline = () => {
     return (
         <div className="h-[60vh]  px-12 py-24 flex items-center justify-between">
             <p className="text-5xl text-muted-foreground max-w-2xl">
-                <span className="font-medium text-secondary">Penis</span> is
+                <span className="font-medium text-secondary">Wildlife</span> is
                 driven by a deep passion for{" "}
                 <span className="font-medium text-secondary">
-                    capturing life's
+                    capturing nature's
                 </span>{" "}
                 most{" "}
                 <span className="font-medium text-secondary">
-                    precious moments
+                    stunning moments
                 </span>{" "}
                 with artistry and a touch of magic
             </p>

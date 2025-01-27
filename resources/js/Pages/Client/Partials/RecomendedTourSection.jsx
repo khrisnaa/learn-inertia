@@ -7,6 +7,7 @@ import categories from "@/data/categories";
 import packageTours from "@/data/package-tours.json";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
+import CategoryScroll from "./CategoryScroll";
 
 const RecomendedTourSection = () => {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -21,12 +22,12 @@ const RecomendedTourSection = () => {
                         }
                     />
                     <p className="font-light text-5xl">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Placeat!
+                        Discover unforgettable wildlife adventures crafted just
+                        for you. Explore now!
                     </p>
                 </div>
                 <div className="flex-1 flex justify-end h-full ">
-                    <ScrollArea className="w-96 relative">
+                    {/* <ScrollArea className="w-96 relative">
                         <div className="flex flex-col z-[1] relative items-end gap-4 p-4 px-8">
                             {categories.map((category, i) => (
                                 <a href="#" className="text-3xl">
@@ -35,7 +36,8 @@ const RecomendedTourSection = () => {
                             ))}
                         </div>
                         <div className="bg-gradient-to-t z-[2] from-accent-primary/80 via-accent-primary/60 to-transparent w-96 h-2/3 absolute bottom-0 right-0" />
-                    </ScrollArea>
+                    </ScrollArea> */}
+                    <CategoryScroll />
                 </div>
             </div>
             <div className=" w-full justify-between flex py-12">

@@ -91,28 +91,28 @@ export default {
     					height: '0'
     				}
     			},
-    			'accordion-down': {
+    			marquee: {
     				from: {
-    					height: '0'
+    					transform: 'translateX(0)'
     				},
     				to: {
-    					height: 'var(--radix-accordion-content-height)'
+    					transform: 'translateX(calc(-100% - var(--gap)))'
     				}
     			},
-    			'accordion-up': {
+    			'marquee-vertical': {
     				from: {
-    					height: 'var(--radix-accordion-content-height)'
+    					transform: 'translateY(0)'
     				},
     				to: {
-    					height: '0'
+    					transform: 'translateY(calc(-100% - var(--gap)))'
     				}
     			}
     		},
     		animation: {
     			'accordion-down': 'accordion-down 0.2s ease-out',
     			'accordion-up': 'accordion-up 0.2s ease-out',
-    			'accordion-down': 'accordion-down 0.2s ease-out',
-    			'accordion-up': 'accordion-up 0.2s ease-out'
+    			marquee: 'marquee var(--duration) infinite linear',
+    			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite'
     		}
     	}
     },

@@ -28,17 +28,17 @@ const TestimonialsSection = () => {
                         }
                     />
                     <p className="font-light text-5xl">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Placeat!
+                        Hear what our explorers say about their unforgettable
+                        wildlife journeys. Amazing!
                     </p>
                 </div>
                 <div className="flex-1 flex justify-end ">
                     <div className="justify-end max-w-md flex flex-col gap-8">
                         <p className="text-muted-foreground">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Praesentium pariatur amet distinctio porro
-                            modi assumenda inventore aliquid autem? Numquam,
-                            magni.
+                            Our guests rave about the incredible experiences,
+                            from trekking through jungles to watching rare
+                            species in their natural habitat. Truly
+                            unforgettable!
                         </p>
                         <span className="w-fit">
                             <ExploreButton />

@@ -13,7 +13,12 @@ const Index = () => {
             <ExploreZoomParallax />
             <div className="h-[50vh]" />
             <div>
-                <ExploreLabel />
+                <ExploreLabel
+                    title={"Wildlife Ranforest"}
+                    description={
+                        "Discover the beauty of rainforests and wildlife in an unforgettable adventure."
+                    }
+                />
                 <div className="px-12 py-4 h-screen">
                     <div className="grid h-full grid-cols-5 grid-rows-2 gap-8">
                         <ImageContainer className={"col-span-3 row-span-2"} />
@@ -21,24 +26,34 @@ const Index = () => {
                         <ImageContainer className={"col-span-2 row-span-1"} />
                     </div>
                 </div>
-                <ExploreLabel />
+                <ExploreLabel
+                    title={"Savanna & Dessert"}
+                    description={
+                        " Explore vast deserts and savannas, home to unique wildlife and stunning landscapes."
+                    }
+                />
                 <div className="px-12 py-4 h-screen">
-                    <div className="grid h-full grid-cols-8 grid-rows-4 gap-8">
+                    <div className="grid h-full grid-cols-12 grid-rows-4 gap-8">
+                        <ImageContainer className={"col-span-6 row-span-2"} />
+                        <ImageContainer className={"col-span-6 row-span-2"} />
                         <ImageContainer className={"col-span-4 row-span-2"} />
                         <ImageContainer className={"col-span-4 row-span-2"} />
-                        <ImageContainer className={"col-span-3 row-span-2"} />
-                        <ImageContainer className={"col-span-3 row-span-2"} />
-                        <ImageContainer className={"col-span-2 row-span-2"} />
+                        <ImageContainer className={"col-span-4 row-span-2"} />
                     </div>
                 </div>
-                <ExploreLabel />
+                <ExploreLabel
+                    title={"Beach & Island"}
+                    description={
+                        "Relax on pristine beaches and islands, perfect for unwinding and adventure alike."
+                    }
+                />
                 <div className="px-12 py-4 h-screen">
                     <div className="grid h-full grid-cols-6 grid-rows-6 gap-8">
                         <ImageContainer className={"col-span-4 row-span-3"} />
-                        <ImageContainer className={"col-span-2 row-span-4"} />
                         <ImageContainer className={"col-span-2 row-span-3"} />
                         <ImageContainer className={"col-span-2 row-span-3"} />
-                        <ImageContainer className={"col-span-2 row-span-2"} />
+                        <ImageContainer className={"col-span-2 row-span-3"} />
+                        <ImageContainer className={"col-span-2 row-span-3"} />
                     </div>
                 </div>
             </div>

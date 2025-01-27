@@ -52,9 +52,9 @@ const ExploreZoomParallax = () => {
             <div className="sticky top-0 h-screen flex justify-center items-center overflow-hidden p-4">
                 <motion.p
                     style={{ opacity }}
-                    className="z-10 text-6xl font-semibold"
+                    className="z-10 text-5xl font-semibold"
                 >
-                    Lorem, ipsum dolor.
+                    Keep scrolling for more adventures!
                 </motion.p>
                 {pictures.map(({ src, scale }, i) => {
                     return (
