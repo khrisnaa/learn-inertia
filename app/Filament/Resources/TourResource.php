@@ -15,9 +15,11 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use App\Filament\Resources\TourResource\Pages;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Columns\ImageColumn;
+use Illuminate\Database\Eloquent\Model;
 
 class TourResource extends Resource
 {
@@ -60,7 +62,17 @@ class TourResource extends Resource
                     ->columnSpanFull(),
                 FileUpload::make('thumbnail')
                     ->required()
-                    ->directory('tour-thumbnails')
+                    ->directory('tour-thumbnails'),
+                Repeater::make('images')
+                    ->relationship('images') // Relasi hasMany
+                    ->schema([
+                        FileUpload::make('image_url')
+                            ->directory('tour-images')
+                            ->image()
+                            ->required(),
+                    ])
+                    ->columnSpanFull()
+                    ->grid(2)
             ]);
     }
 
@@ -118,5 +130,24 @@ class TourResource extends Resource
             'create' => Pages\CreateTour::route('/create'),
             'edit' => Pages\EditTour::route('/{record}/edit'),
         ];
+    }
+
+    public static function afterCreate(Model $record, array $data): void
+    {
+        self::saveImages($record, $data['images']);
+    }
+
+    public static function afterUpdate(Model $record, array $data): void
+    {
+        self::saveImages($record, $data['images']);
+    }
+
+    protected static function saveImages(Tour $tour, array $images): void
+    {
+        foreach ($images as $image) {
+            $tour->images()->create([
+                'image_url' => $image, // Save the file path to the TourImage model
+            ]);
+        }
     }
 }

@@ -25,4 +25,8 @@ class Tour extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    public function images()
+    {
+        return $this->hasMany(TourImage::class);
+    }
 }
