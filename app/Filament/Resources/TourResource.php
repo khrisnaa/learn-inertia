@@ -1,0 +1,109 @@
+<?php
+
+namespace App\Filament\Resources;
+
+use App\Models\Tour;
+use Filament\Tables;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
+use App\Filament\Resources\TourResource\Pages;
+use Filament\Tables\Columns\ImageColumn;
+
+class TourResource extends Resource
+{
+    protected static ?string $model = Tour::class;
+
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                TextInput::make('headline')
+                    ->required()
+                    ->maxLength(255),
+                TextInput::make('duration')
+                    ->required()
+                    ->maxLength(255),
+                TextInput::make('location')
+                    ->required()
+                    ->maxLength(255),
+                TextInput::make('price')
+                    ->required()
+                    ->numeric()
+                    ->prefix('$'),
+                RichEditor::make('overview')
+                    ->required()
+                    ->columnSpanFull(),
+                FileUpload::make('thumbnail')
+                    ->required()
+                    ->directory('tour-thumbnails')
+            ]);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+                ImageColumn::make('thumbnail'),
+                TextColumn::make('duration')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('location')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('price')
+                    ->money()
+                    ->sortable(),
+                TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->sortable(),
+                TextColumn::make('created_at')
+                    ->dateTime()
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->sortable()
+            ])
+            ->filters([
+                //
+            ])
+            ->actions([
+                EditAction::make(),
+            ])
+            ->bulkActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListTours::route('/'),
+            'create' => Pages\CreateTour::route('/create'),
+            'edit' => Pages\EditTour::route('/{record}/edit'),
+        ];
+    }
+}
