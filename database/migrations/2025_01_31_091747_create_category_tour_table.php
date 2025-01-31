@@ -11,8 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tour_category', function (Blueprint $table) {
-            $table->uuid('id')->primary()->unique();
+        Schema::create('category_tour', function (Blueprint $table) {
             $table->foreignUuid('tour_id')->constrained()->onDelete('cascade');
             $table->foreignUuid('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tour_category');
+        Schema::dropIfExists('category_tour');
     }
 };

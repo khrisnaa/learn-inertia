@@ -19,4 +19,10 @@ class Tour extends Model
         'overview',
         'thumbnail'
     ];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
 }

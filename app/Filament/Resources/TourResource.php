@@ -15,6 +15,8 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use App\Filament\Resources\TourResource\Pages;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Columns\ImageColumn;
 
 class TourResource extends Resource
@@ -27,22 +29,32 @@ class TourResource extends Resource
     {
         return $form
             ->schema([
+
                 TextInput::make('name')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->autocomplete(false),
                 TextInput::make('headline')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->autocomplete(false),
                 TextInput::make('duration')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->autocomplete(false),
                 TextInput::make('location')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->autocomplete(false),
                 TextInput::make('price')
                     ->required()
                     ->numeric()
                     ->prefix('$'),
+                Select::make('categories')
+                    ->relationship('categories', 'name')
+                    ->multiple()
+                    ->preload()
+                    ->searchable(),
                 RichEditor::make('overview')
                     ->required()
                     ->columnSpanFull(),
@@ -83,6 +95,7 @@ class TourResource extends Resource
             ])
             ->actions([
                 EditAction::make(),
+                DeleteAction::make()
             ])
             ->bulkActions([
                 BulkActionGroup::make([
