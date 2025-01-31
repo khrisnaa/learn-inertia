@@ -29,4 +29,14 @@ class Tour extends Model
     {
         return $this->hasMany(TourImage::class);
     }
+
+    public function includes()
+    {
+        return $this->hasMany(TourInclude::class);
+    }
+
+    public function highlights()
+    {
+        return $this->hasMany(TourHighlight::class);
+    }
 }

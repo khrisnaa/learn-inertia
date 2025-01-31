@@ -72,7 +72,23 @@ class TourResource extends Resource
                             ->required(),
                     ])
                     ->columnSpanFull()
-                    ->grid(2)
+                    ->grid(2),
+                Repeater::make('includes')
+                    ->relationship('includes')
+                    ->schema([
+                        TextInput::make('include_item')
+                            ->required()
+                            ->maxLength(255)
+                            ->autocomplete(false)
+                    ]),
+                Repeater::make('highlights')
+                    ->relationship('highlights')
+                    ->schema([
+                        TextInput::make('highlight_item')
+                            ->required()
+                            ->maxLength(255)
+                            ->autocomplete(false)
+                    ])
             ]);
     }
 
