@@ -5,8 +5,11 @@ import ExploreHeadline from "../Partials/ExploreHeadline";
 import ContactSection from "../Partials/ContactSection";
 import ImageContainer from "../Partials/ImageContainer";
 import ExploreLabel from "../Partials/ExploreLabel";
+import { cn } from "@/lib/utils";
+import { Button } from "@/Components/ui/button";
 
-const Index = () => {
+const Index = ({ firstTours, secondTours, thirdTours }) => {
+    console.log(thirdTours);
     return (
         <ClientLayout>
             <ExploreHeadline />
@@ -21,24 +24,38 @@ const Index = () => {
                 />
                 <div className="px-12 py-4 h-screen">
                     <div className="grid h-full grid-cols-5 grid-rows-2 gap-8">
-                        <ImageContainer className={"col-span-3 row-span-2"} />
-                        <ImageContainer className={"col-span-2 row-span-1"} />
-                        <ImageContainer className={"col-span-2 row-span-1"} />
+                        {firstTours.map((tour, i) => (
+                            <ImageContainer
+                                key={i}
+                                tour={tour}
+                                className={cn(
+                                    i == 0
+                                        ? "col-span-3 row-span-2"
+                                        : "col-span-2 row-span-1"
+                                )}
+                            />
+                        ))}
                     </div>
                 </div>
                 <ExploreLabel
-                    title={"Savanna & Dessert"}
+                    title={"Savanna & Desert"}
                     description={
                         " Explore vast deserts and savannas, home to unique wildlife and stunning landscapes."
                     }
                 />
                 <div className="px-12 py-4 h-screen">
                     <div className="grid h-full grid-cols-12 grid-rows-4 gap-8">
-                        <ImageContainer className={"col-span-6 row-span-2"} />
-                        <ImageContainer className={"col-span-6 row-span-2"} />
-                        <ImageContainer className={"col-span-4 row-span-2"} />
-                        <ImageContainer className={"col-span-4 row-span-2"} />
-                        <ImageContainer className={"col-span-4 row-span-2"} />
+                        {secondTours.map((tour, i) => (
+                            <ImageContainer
+                                key={i}
+                                tour={tour}
+                                className={cn(
+                                    i == 0 || i == 1
+                                        ? "col-span-6 row-span-2"
+                                        : "col-span-4 row-span-2"
+                                )}
+                            />
+                        ))}
                     </div>
                 </div>
                 <ExploreLabel
@@ -49,11 +66,17 @@ const Index = () => {
                 />
                 <div className="px-12 py-4 h-screen">
                     <div className="grid h-full grid-cols-6 grid-rows-6 gap-8">
-                        <ImageContainer className={"col-span-4 row-span-3"} />
-                        <ImageContainer className={"col-span-2 row-span-3"} />
-                        <ImageContainer className={"col-span-2 row-span-3"} />
-                        <ImageContainer className={"col-span-2 row-span-3"} />
-                        <ImageContainer className={"col-span-2 row-span-3"} />
+                        {thirdTours.map((tour, i) => (
+                            <ImageContainer
+                                key={i}
+                                tour={tour}
+                                className={cn(
+                                    i == 0
+                                        ? "col-span-4 row-span-3"
+                                        : "col-span-2 row-span-3"
+                                )}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>

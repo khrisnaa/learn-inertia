@@ -12,7 +12,7 @@ const ReviewImageCarousel = () => {
         <Carousel className="pb-12">
             <CarouselContent>
                 {Array.from({ length: 5 }).map((_, i) => (
-                    <CarouselItem>
+                    <CarouselItem key={i}>
                         <div className="relative overflow-hidden rounded-lg max-h-64">
                             <img
                                 src="/assets/images/dummy_hero.jpg"

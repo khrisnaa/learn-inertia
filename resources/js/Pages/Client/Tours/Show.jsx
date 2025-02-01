@@ -5,11 +5,12 @@ import SectionLabel from "../Components/SectionLabel";
 import { CircleCheck } from "lucide-react";
 import DetailCarousel from "../Partials/DetailCarousel";
 
-const Show = () => {
+const Show = ({ tour }) => {
+    console.log(tour);
     return (
         <ClientLayout>
             <div className="min-h-screen px-12 pt-28">
-                <ImageDetails />
+                <ImageDetails tour={tour} />
                 <div className="pt-12">
                     <SectionLabel
                         label="Read This"
@@ -17,7 +18,7 @@ const Show = () => {
                             <CircleCheck className="text-muted-foreground  w-5 h-5" />
                         }
                     />
-                    <DetailCarousel />
+                    <DetailCarousel tour={tour} />
                 </div>
             </div>
         </ClientLayout>

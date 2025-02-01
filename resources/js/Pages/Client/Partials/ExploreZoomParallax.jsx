@@ -59,6 +59,7 @@ const ExploreZoomParallax = () => {
                 {pictures.map(({ src, scale }, i) => {
                     return (
                         <motion.div
+                            key={i}
                             className="w-full h-full absolute top-0 flex items-center justify-center"
                             style={{ scale }}
                         >

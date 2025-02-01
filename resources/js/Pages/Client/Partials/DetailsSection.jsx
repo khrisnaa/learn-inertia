@@ -4,14 +4,12 @@ import { Separator } from "@/Components/ui/separator";
 import { ArrowDownToDot, MoveRight, Plus } from "lucide-react";
 import React from "react";
 
-const DetailsSection = () => {
+const DetailsSection = ({ tour }) => {
     return (
         <div className="grid grid-cols-2 py-12 gap-12 max-h-screen">
             <div className="col-span-1 space-y-4">
                 <div className="space-y-2">
-                    <h4 className="font-light text-3xl">
-                        Tropical Rainforest Adventure - Gunung Leuser
-                    </h4>
+                    <h4 className="font-light text-3xl">{tour.name}</h4>
                     <a
                         target="blank"
                         href="https://maps.app.goo.gl/N98KAjyyuwpCed427"
@@ -19,7 +17,7 @@ const DetailsSection = () => {
                     >
                         <ArrowDownToDot className="h-4 w-4 group-hover:-rotate-90 transition-all duration-500" />
                         <span className="group-hover:translate-x-2 transition-all duration-500">
-                            Gunung Leuser National Park, Sumatra
+                            {tour.location}
                         </span>
                     </a>
                 </div>
@@ -27,11 +25,11 @@ const DetailsSection = () => {
                 <div className="text-sm space-y-2">
                     <p className="flex items-center gap-2">
                         <span className="text-sm text-gray-300">Duration:</span>
-                        3 Days 2 Nights
+                        {tour.duration}
                     </p>
                     <p className="flex items-center gap-2">
-                        <span className="text-sm text-gray-300">Price:</span>
-                        $170/person
+                        <span className="text-sm text-gray-300">Price:</span>$
+                        {tour.price}/person
                     </p>
                 </div>
                 <Separator />
@@ -39,53 +37,27 @@ const DetailsSection = () => {
                     <div className=" col-span-1 space-y-2">
                         <h5 className="font-medium text-lg">Includes</h5>
                         <ul>
-                            <li className="flex group items-center cursor-default gap-2">
-                                <Plus className="group-hover:rotate-90 transition-all duration-500 h-4 w-4" />
-                                <span className="group-hover:translate-x-4 transition-all duration-500">
-                                    Local guide
-                                </span>
-                            </li>
-                            <li className="flex group items-center cursor-default gap-2">
-                                <Plus className="group-hover:rotate-90 transition-all duration-500 h-4 w-4" />
-                                <span className="group-hover:translate-x-4 transition-all duration-500">
-                                    Meals and drinks
-                                </span>
-                            </li>
-                            <li className="flex group items-center cursor-default gap-2">
-                                <Plus className="group-hover:rotate-90 transition-all duration-500 h-4 w-4" />
-                                <span className="group-hover:translate-x-4 transition-all duration-500">
-                                    Camping gear
-                                </span>
-                            </li>
-                            <li className="flex group items-center cursor-default gap-2">
-                                <Plus className="group-hover:rotate-90 transition-all duration-500 h-4 w-4" />
-                                <span className="group-hover:translate-x-4 transition-all duration-500">
-                                    Entry fees
-                                </span>
-                            </li>
+                            {tour.includes.map((include, i) => (
+                                <li className="flex group items-center cursor-default gap-2">
+                                    <Plus className="group-hover:rotate-90 transition-all duration-500 h-4 w-4" />
+                                    <span className="group-hover:translate-x-4 transition-all duration-500">
+                                        {include.include_item}
+                                    </span>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div className=" col-span-1 space-y-2">
                         <h5 className="font-medium text-lg">Highlights</h5>
                         <ul>
-                            <li className="flex group items-center cursor-default gap-2">
-                                <Plus className="group-hover:rotate-90 transition-all duration-500 h-4 w-4" />
-                                <span className="group-hover:translate-x-4 transition-all duration-500">
-                                    Jungle trekking
-                                </span>
-                            </li>
-                            <li className="flex group items-center cursor-default gap-2">
-                                <Plus className="group-hover:rotate-90 transition-all duration-500 h-4 w-4" />
-                                <span className="group-hover:translate-x-4 transition-all duration-500">
-                                    Wildlife observation
-                                </span>
-                            </li>
-                            <li className="flex group items-center cursor-default gap-2">
-                                <Plus className="group-hover:rotate-90 transition-all duration-500 h-4 w-4" />
-                                <span className="group-hover:translate-x-4 transition-all duration-500">
-                                    Nature conservation insights
-                                </span>
-                            </li>
+                            {tour.highlights.map((highlight, i) => (
+                                <li className="flex group items-center cursor-default gap-2">
+                                    <Plus className="group-hover:rotate-90 transition-all duration-500 h-4 w-4" />
+                                    <span className="group-hover:translate-x-4 transition-all duration-500">
+                                        {highlight.highlight_item}
+                                    </span>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
@@ -103,19 +75,7 @@ const DetailsSection = () => {
                 <div className=" space-y-2">
                     <h5 className="font-medium text-lg">Overview</h5>
                     <ScrollArea className="h-64">
-                        <p>
-                            Explore the lush rainforest, spot orangutans,
-                            elephants, and exotic birds, and camp under the
-                            stars in this immersive wildlife experience. Lorem
-                            ipsum dolor sit, amet consectetur adipisicing elit.
-                            Dolores necessitatibus sit, veritatis nihil, tenetur
-                            molestiae quia, expedita a iure enim libero.
-                            Voluptatum quia deleniti dolores quos blanditiis
-                            veniam quisquam cumque ad, ducimus, ipsam harum enim
-                            reprehenderit? Ut, tempore quod molestiae dolorum
-                            vitae adipisci neque quae perspiciatis, quia optio
-                            dignissimos iusto.
-                        </p>
+                        <p>{tour.overview}</p>
                     </ScrollArea>
                     {/* <div className="flex justify-end">
                         <button className="text-sm pl-1 group flex items-center gap-4 mr-8 w-fit">

@@ -9,7 +9,7 @@ import {
 import DetailsSection from "./DetailsSection";
 import ReviewList from "./ReviewList";
 
-const DetailCarousel = () => {
+const DetailCarousel = ({ tour }) => {
     const options = {};
     const [emblaRef, emblaApi] = useEmblaCarousel(options, [AutoHeight()]);
 
@@ -26,7 +26,7 @@ const DetailCarousel = () => {
                 <section className="-ml-4 flex">
                     <div className="flex-[0_0_100%] pl-4 h-fit">
                         <div className="h-full">
-                            <DetailsSection />
+                            <DetailsSection tour={tour} />
                         </div>
                     </div>
                     <div className="flex-[0_0_100%] pl-4 min-h-screen h-full ">
