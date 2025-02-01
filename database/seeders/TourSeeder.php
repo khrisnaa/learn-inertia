@@ -17,7 +17,7 @@ class TourSeeder extends Seeder
         // Categories
         $categories = [
             'Rainforest', 'Wildlife', 'Adventure', 'Camping', 'Savanna', 'Safari', 'Nature',
-            'Marine', 'Mangrove', 'Birdwatching', 'Diving', 'Desert', 'Sunrise', 'Trekking', 'Photography', 'Jungle', 'Mountain', 'Culture', 'Temple', 'Coral', 'Caves', 'Whale Watching'
+            'Marine', 'Mangrove', 'Birdwatching', 'Diving', 'Desert', 'Sunrise', 'Trekking', 'Photography', 'Jungle', 'Mountain', 'Culture', 'Temple', 'Coral', 'Caves', 'Whale Watching', 'Island', 'Beach', 'Luxury', 'Snorkeling'
         ];
 
         $categoryIds = [];
@@ -29,44 +29,64 @@ class TourSeeder extends Seeder
 
         // Tours
         $tours = [
+            // Rainforest & Wildlife (3 Tours)
             [
                 'name' => 'Tropical Rainforest Adventure - Gunung Leuser',
                 'headline' => 'Vibrant rainforest adventure with orangutans and exotic wildlife',
                 'duration' => '3 Days 2 Nights',
                 'location' => 'Gunung Leuser National Park, Sumatra',
                 'price' => 170.00,
-                'overview' => 'Explore the lush rainforest, spot orangutans, elephants, and exotic birds, and camp under the stars in this immersive wildlife experience.',
+                'overview' => 'Explore the lush rainforest, spot orangutans, elephants, and exotic birds, and camp under the stars.',
                 'thumbnail' => '/assets/images/rainforest.jpg',
-                'categories' => ['Rainforest', 'Wildlife', 'Adventure', 'Camping'],
-                'includes' => ['Local guide', 'Meals and drinks', 'Camping gear', 'Entry fees'],
-                'highlights' => ['Jungle trekking', 'Wildlife observation', 'Nature conservation insights'],
+                'is_recommended' => false,
+                'categories' => ['Rainforest', 'Wildlife', 'Adventure'],
+                'includes' => ['Local guide', 'Meals', 'Camping gear', 'Entry fees'],
+                'highlights' => ['Jungle trekking', 'Wildlife observation'],
                 'images' => ['/assets/images/rainforest1.jpg', '/assets/images/rainforest2.jpg']
             ],
+            [
+                'name' => 'Rainforest Trekking - Borneo',
+                'headline' => 'Experience Borneo’s deep rainforest and its diverse wildlife',
+                'duration' => '4 Days 3 Nights',
+                'location' => 'Kalimantan, Borneo',
+                'price' => 250.00,
+                'overview' => 'Trek through untouched rainforest, observe orangutans, and immerse yourself in nature.',
+                'thumbnail' => '/assets/images/borneo.jpg',
+                'is_recommended' => false,
+                'categories' => ['Rainforest', 'Wildlife', 'Trekking'],
+                'includes' => ['Jungle guide', 'Meals', 'Accommodation'],
+                'highlights' => ['Wildlife photography', 'River safari'],
+                'images' => ['/assets/images/borneo1.jpg', '/assets/images/borneo2.jpg']
+            ],
+            [
+                'name' => 'Wildlife Safari - Way Kambas',
+                'headline' => 'Explore the hidden wildlife gems of Sumatra’s Way Kambas National Park',
+                'duration' => '2 Days 1 Night',
+                'location' => 'Way Kambas, Sumatra',
+                'price' => 150.00,
+                'overview' => 'Spot Sumatran elephants, tigers, and rhinos in their natural habitat.',
+                'thumbnail' => '/assets/images/waykambas.jpg',
+                'is_recommended' => false,
+                'categories' => ['Wildlife', 'Rainforest', 'Safari'],
+                'includes' => ['Wildlife guide', 'Meals', 'Safari transport'],
+                'highlights' => ['Jeep safari', 'Birdwatching'],
+                'images' => ['/assets/images/waykambas1.jpg', '/assets/images/waykambas2.jpg']
+            ],
+
+            // Savanna & Desert (5 Tours)
             [
                 'name' => 'Savanna Safari - Baluran National Park',
                 'headline' => 'Vast savanna and vibrant wildlife in East Java’s wildlands',
                 'duration' => '2 Days 1 Night',
                 'location' => 'Baluran, East Java',
                 'price' => 120.00,
-                'overview' => 'Discover the "Little Africa in Java," with its vast savanna, mangrove forests, and diverse wildlife like deer, banteng, and peacocks.',
+                'overview' => 'Discover the "Little Africa in Java" with its diverse wildlife.',
                 'thumbnail' => '/assets/images/savana.jpg',
-                'categories' => ['Savanna', 'Wildlife', 'Safari', 'Nature'],
-                'includes' => ['Jeep safari', 'Simple accommodation', 'Meals', 'Entry fees'],
-                'highlights' => ['Jeep safari through the savanna', 'Mangrove trekking', 'Sunrise at Bama Beach'],
+                'is_recommended' => false,
+                'categories' => ['Savanna', 'Wildlife', 'Safari'],
+                'includes' => ['Jeep safari', 'Meals'],
+                'highlights' => ['Jeep safari', 'Sunrise at Bama Beach'],
                 'images' => ['/assets/images/savana1.jpg', '/assets/images/savana2.jpg']
-            ],
-            [
-                'name' => 'Marine & Mangrove Exploration - Raja Ampat',
-                'headline' => 'Diving in Raja Ampat\'s pristine coral reefs and mangroves',
-                'duration' => '5 Days 4 Nights',
-                'location' => 'Raja Ampat, West Papua',
-                'price' => 670.00,
-                'overview' => 'Dive into Raja Ampat\'s vibrant coral reefs, explore mangrove forests, and spot exotic birds like the Bird of Paradise.',
-                'thumbnail' => '/assets/images/rajaampat.jpg',
-                'categories' => ['Marine', 'Mangrove', 'Birdwatching', 'Diving', 'Adventure'],
-                'includes' => ['Eco-resort stay', 'Snorkeling/diving gear', 'Local transport', 'Guided tours'],
-                'highlights' => ['Snorkeling/diving', 'Birdwatching', 'Local cultural visits'],
-                'images' => ['/assets/images/rajaampat1.jpg', '/assets/images/rajaampat2.jpg']
             ],
             [
                 'name' => 'Desert Adventure - Mount Bromo',
@@ -76,103 +96,132 @@ class TourSeeder extends Seeder
                 'price' => 100.00,
                 'overview' => 'Experience the dramatic desert landscape of Bromo, sunrise views, and a trek to the crater.',
                 'thumbnail' => '/assets/images/bromo.jpg',
-                'categories' => ['Desert', 'Adventure', 'Sunrise', 'Trekking'],
-                'includes' => ['Jeep and horse transport', 'Local accommodation', 'Meals'],
-                'highlights' => ['Sunrise at Penanjakan', 'Crater trekking', 'Sand dune exploration'],
+                'is_recommended' => false,
+                'categories' => ['Desert', 'Adventure', 'Trekking'],
+                'includes' => ['Jeep transport', 'Accommodation'],
+                'highlights' => ['Sunrise at Penanjakan', 'Crater trekking'],
                 'images' => ['/assets/images/bromo1.jpg', '/assets/images/bromo2.jpg']
             ],
             [
-                'name' => 'Birdwatching & Jungle Trek - Lorentz National Park',
-                'headline' => 'Journey through untouched jungles and rare birdwatching',
-                'duration' => '4 Days 3 Nights',
-                'location' => 'Lorentz, Papua',
-                'price' => 530.00,
-                'overview' => 'Immerse yourself in pristine wilderness, with rare bird sightings and lush jungle trails in Southeast Asia\'s largest national park.',
-                'thumbnail' => '/assets/images/lake.jpg',
-                'categories' => ['Birdwatching', 'Jungle', 'Wildlife', 'Adventure', 'Photography'],
-                'includes' => ['Licensed guide', 'Basic accommodation', 'Meals and drinks', 'Entry fees'],
-                'highlights' => ['Birdwatching (Bird of Paradise)', 'Jungle trekking', 'Wildlife photography'],
-                'images' => ['/assets/images/lake1.jpg', '/assets/images/lake2.jpg']
-            ],
-            [
-                'name' => 'Mountain Escape - Mount Rinjani',
-                'headline' => 'Challenging trek through volcanic landscapes in Lombok',
-                'duration' => '4 Days 3 Nights',
-                'location' => 'Mount Rinjani, Lombok',
-                'price' => 380.00,
-                'overview' => 'Conquer the majestic Mount Rinjani, camp at its crater lake, and enjoy panoramic views from the summit.',
-                'thumbnail' => '/assets/images/rinjani.jpg',
-                'categories' => ['Mountain', 'Trekking', 'Adventure', 'Nature'],
-                'includes' => ['Experienced guide', 'Camping equipment', 'Meals', 'Entry fees'],
-                'highlights' => ['Trekking to the summit', 'Crater lake camping', 'Stunning mountain views'],
-                'images' => ['/assets/images/rinjani1.jpg', '/assets/images/rinjani2.jpg']
-            ],
-            [
-                'name' => 'Cultural Exploration - Bali Highlands',
-                'headline' => 'A cultural journey through Bali’s hidden villages and temples',
+                'name' => 'Savanna Sunset - Sumba Island',
+                'headline' => 'Witness breathtaking sunsets over Sumba’s golden savannas',
                 'duration' => '3 Days 2 Nights',
-                'location' => 'Bali, Indonesia',
-                'price' => 250.00,
-                'overview' => 'Delve into Bali’s culture by visiting ancient temples, sacred waterfalls, and picturesque rice terraces.',
-                'thumbnail' => '/assets/images/bali-highlands.jpg',
-                'categories' => ['Culture', 'Adventure', 'Nature', 'Temple'],
-                'includes' => ['Cultural guide', 'Meals', 'Local transportation', 'Entry fees'],
-                'highlights' => ['Visit to Tirta Empul temple', 'Waterfall exploration', 'Rice terrace trekking'],
-                'images' => ['/assets/images/bali-highlands1.jpg', '/assets/images/bali-highlands2.jpg']
+                'location' => 'Sumba Island, Indonesia',
+                'price' => 200.00,
+                'overview' => 'Explore Sumba’s rolling hills, interact with local tribes, and enjoy scenic savannas.',
+                'thumbnail' => '/assets/images/sumba.jpg',
+                'is_recommended' => false,
+                'categories' => ['Savanna', 'Culture', 'Adventure'],
+                'includes' => ['Cultural guide', 'Meals'],
+                'highlights' => ['Tribal village visit', 'Horse riding'],
+                'images' => ['/assets/images/sumba1.jpg', '/assets/images/sumba2.jpg']
             ],
             [
-                'name' => 'Coral Reef Expedition - Komodo Island',
-                'headline' => 'Snorkel and dive in the crystal-clear waters of Komodo’s reefs',
+                'name' => 'Desert Dunes - Merapi Sand Hills',
+                'headline' => 'Explore volcanic desert dunes on Merapi’s foothills',
+                'duration' => '1 Day',
+                'location' => 'Yogyakarta, Indonesia',
+                'price' => 80.00,
+                'overview' => 'Ride off-road jeeps across volcanic sand dunes and witness stunning landscapes.',
+                'thumbnail' => '/assets/images/merapi.jpg',
+                'is_recommended' => false,
+                'categories' => ['Desert', 'Adventure'],
+                'includes' => ['Jeep tour', 'Guide'],
+                'highlights' => ['Sand dune adventure', 'Off-road driving'],
+                'images' => ['/assets/images/merapi1.jpg', '/assets/images/merapi2.jpg']
+            ],
+            [
+                'name' => 'Nomadic Desert Experience - Rote Island',
+                'headline' => 'Experience the dry savanna and sand dunes of Rote Island',
                 'duration' => '3 Days 2 Nights',
-                'location' => 'Komodo Island, Flores',
-                'price' => 400.00,
-                'overview' => 'Explore the underwater wonders of Komodo National Park, home to vibrant coral reefs, manta rays, and sea turtles.',
+                'location' => 'Rote Island, East Nusa Tenggara',
+                'price' => 230.00,
+                'overview' => 'Discover the untouched beauty of Rote Island’s sand dunes and grasslands.',
+                'thumbnail' => '/assets/images/rote.jpg',
+                'is_recommended' => false,
+                'categories' => ['Desert', 'Savanna', 'Adventure'],
+                'includes' => ['Camping gear', 'Local guide'],
+                'highlights' => ['Camping under the stars', 'Traditional weaving'],
+                'images' => ['/assets/images/rote1.jpg', '/assets/images/rote2.jpg']
+            ],
+
+            // Beach & Island (5 Tours)
+            [
+                'name' => 'Island Paradise - Gili Islands',
+                'headline' => 'Relax and snorkel in the pristine waters of the Gili Islands',
+                'duration' => '4 Days 3 Nights',
+                'location' => 'Gili Islands, Lombok',
+                'price' => 300.00,
+                'overview' => 'Enjoy tropical island life with crystal-clear waters and vibrant coral reefs.',
+                'thumbnail' => '/assets/images/gili.jpg',
+                'is_recommended' => false,
+                'categories' => ['Island', 'Beach', 'Diving'],
+                'includes' => ['Boat transport', 'Snorkeling gear'],
+                'highlights' => ['Turtle snorkeling', 'Sunset beach'],
+                'images' => ['/assets/images/gili1.jpg', '/assets/images/gili2.jpg']
+            ],
+            [
+                'name' => 'Komodo Island Exploration',
+                'headline' => 'Visit the legendary Komodo dragons and stunning beaches',
+                'duration' => '3 Days 2 Nights',
+                'location' => 'Komodo National Park',
+                'price' => 450.00,
+                'overview' => 'Encounter the prehistoric Komodo dragons and snorkel in vibrant coral reefs.',
                 'thumbnail' => '/assets/images/komodo.jpg',
-                'categories' => ['Marine', 'Coral', 'Diving', 'Adventure'],
-                'includes' => ['Snorkeling gear', 'Eco-lodge accommodation', 'Meals', 'Park entry fees'],
-                'highlights' => ['Snorkeling with manta rays', 'Coral reef exploration', 'Wildlife spotting'],
+                'is_recommended' => false,
+                'categories' => ['Island', 'Wildlife', 'Beach'],
+                'includes' => ['Park entry fees', 'Boat transport'],
+                'highlights' => ['Komodo dragon encounter', 'Pink beach'],
                 'images' => ['/assets/images/komodo1.jpg', '/assets/images/komodo2.jpg']
             ],
             [
-                'name' => 'Cave Exploration - Gunung Kidul',
-                'headline' => 'Explore the mystical caves and waterfalls of Gunung Kidul',
-                'duration' => '2 Days 1 Night',
-                'location' => 'Gunung Kidul, Yogyakarta',
-                'price' => 90.00,
-                'overview' => 'Venture into the depths of Gunung Kidul’s caves, discover underground rivers, and marvel at the limestone formations.',
-                'thumbnail' => '/assets/images/gunung-kidul.jpg',
-                'categories' => ['Caves', 'Adventure', 'Nature'],
-                'includes' => ['Cave exploration guide', 'Meals', 'Transport'],
-                'highlights' => ['Cave trekking', 'Waterfall exploration', 'Underground river'],
-                'images' => ['/assets/images/gunung-kidul1.jpg', '/assets/images/gunung-kidul2.jpg']
+                'name' => 'Raja Ampat Diving Expedition',
+                'headline' => 'Discover the world’s most breathtaking underwater paradise',
+                'duration' => '5 Days 4 Nights',
+                'location' => 'Raja Ampat, West Papua',
+                'price' => 750.00,
+                'overview' => 'Explore pristine coral reefs, encounter manta rays, and immerse yourself in the untouched beauty of Raja Ampat.',
+                'thumbnail' => '/assets/images/rajaampat.jpg',
+                'is_recommended' => false,
+                'categories' => ['Island', 'Beach', 'Diving'],
+                'includes' => ['Diving gear', 'Boat transport', 'Accommodation'],
+                'highlights' => ['Scuba diving', 'Snorkeling with manta rays'],
+                'images' => ['/assets/images/rajaampat1.jpg', '/assets/images/rajaampat2.jpg']
             ],
+
             [
-                'name' => 'Whale Watching - Aceh',
-                'headline' => 'Whale watching expedition off the coast of Aceh',
-                'duration' => '2 Days 1 Night',
-                'location' => 'Aceh, Sumatra',
-                'price' => 210.00,
-                'overview' => 'Join an unforgettable journey to spot the majestic whales that migrate through the coast of Aceh.',
-                'thumbnail' => '/assets/images/whale-watching.jpg',
-                'categories' => ['Whale Watching', 'Marine', 'Wildlife', 'Adventure'],
-                'includes' => ['Boat transport', 'Meals', 'Wildlife guide'],
-                'highlights' => ['Whale spotting', 'Coastal sightseeing', 'Marine life observation'],
-                'images' => ['/assets/images/whale-watching1.jpg', '/assets/images/whale-watching2.jpg']
-            ],
-            [
-                'name' => 'Sunrise Trek - Mount Rinjani',
-                'headline' => 'Witness the breathtaking sunrise from the summit of Mount Rinjani',
+                'name' => 'Bali Hidden Beach Retreat',
+                'headline' => 'Escape to Bali’s most secluded and serene beaches',
                 'duration' => '3 Days 2 Nights',
-                'location' => 'Mount Rinjani, Lombok',
-                'price' => 250.00,
-                'overview' => 'Climb Indonesia’s second highest volcano, Mount Rinjani, and experience a stunning sunrise from the summit.',
-                'thumbnail' => '/assets/images/rinjani.jpg',
-                'categories' => ['Trekking', 'Sunrise', 'Adventure'],
-                'includes' => ['Trekking guide', 'Meals', 'Camping gear'],
-                'highlights' => ['Sunrise from the summit', 'Crater lake exploration', 'Wildlife spotting'],
-                'images' => ['/assets/images/rinjani1.jpg', '/assets/images/rinjani2.jpg']
-            ]
+                'location' => 'Uluwatu, Bali',
+                'price' => 280.00,
+                'overview' => 'Relax on hidden white-sand beaches, explore sea caves, and enjoy the stunning sunset views of Uluwatu.',
+                'thumbnail' => '/assets/images/bali_beach.jpg',
+                'is_recommended' => false,
+                'categories' => ['Beach', 'Island', 'Luxury'],
+                'includes' => ['Beachfront villa', 'Private transport'],
+                'highlights' => ['Hidden beaches', 'Luxury villa stay'],
+                'images' => ['/assets/images/bali_beach1.jpg', '/assets/images/bali_beach2.jpg']
+            ],
+
+            [
+                'name' => 'Weh Island Snorkeling Getaway',
+                'headline' => 'Snorkel in the untouched reefs of Weh Island',
+                'duration' => '4 Days 3 Nights',
+                'location' => 'Weh Island, Aceh',
+                'price' => 320.00,
+                'overview' => 'Experience vibrant marine life, crystal-clear waters, and a peaceful island escape in Weh Island.',
+                'thumbnail' => '/assets/images/weh_island.jpg',
+                'is_recommended' => false,
+                'categories' => ['Island', 'Beach', 'Snorkeling'],
+                'includes' => ['Snorkeling tour', 'Local guide', 'Meals'],
+                'highlights' => ['Snorkeling adventure', 'Sunset at Iboih Beach'],
+                'images' => ['/assets/images/weh_island1.jpg', '/assets/images/weh_island2.jpg']
+            ],
+
         ];
+
+
 
 
         foreach ($tours as $tour) {

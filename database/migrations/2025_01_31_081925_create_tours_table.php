@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->text('overview');
             $table->string('thumbnail');
+            $table->boolean('is_recommended')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

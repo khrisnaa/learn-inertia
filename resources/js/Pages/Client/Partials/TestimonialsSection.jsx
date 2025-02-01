@@ -50,7 +50,7 @@ const TestimonialsSection = () => {
                 <Carousel>
                     <CarouselContent>
                         {chunkedTestimonials.map((chunk, i) => (
-                            <CarouselItem>
+                            <CarouselItem key={i}>
                                 <ImageAccrodion testimonials={chunk} />
                             </CarouselItem>
                         ))}

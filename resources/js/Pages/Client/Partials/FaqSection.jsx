@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import SectionLabel from "../Components/SectionLabel";
 import { CircleHelp } from "lucide-react";
 import FaqCard from "../Components/FaqCard";
-import faqs from "@/data/faqs";
-import { Accordion, AccordionItem } from "@/Components/ui/accordion";
-const FaqSection = () => {
+import { Accordion } from "@/Components/ui/accordion";
+
+const FaqSection = ({ faqs }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     return (
         <div className="p-12 min-h-screen space-y-12">
@@ -30,6 +30,7 @@ const FaqSection = () => {
                         {faqs.map((faq, i) => (
                             <FaqCard
                                 key={i}
+                                index={i}
                                 answer={faq.answer}
                                 question={faq.question}
                             />

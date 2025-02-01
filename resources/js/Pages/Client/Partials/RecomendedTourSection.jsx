@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import SectionLabel from "../Components/SectionLabel";
-import { ArrowRight, Binoculars, CircleArrowUp } from "lucide-react";
-import { ScrollArea } from "@/Components/ui/scroll-area";
+import { ArrowRight, CircleArrowUp } from "lucide-react";
 import ParallaxCarousel from "./ParallaxCarousel";
-import categories from "@/data/categories";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import CategoryScroll from "./CategoryScroll";
 
 const RecomendedTourSection = (props) => {
-    const { recommendedTours: tours } = props;
+    const { recommendedTours: tours, categories } = props;
     const [activeSlide, setActiveSlide] = useState(0);
     return (
         <div className="bg-accent-primary">
@@ -27,7 +25,7 @@ const RecomendedTourSection = (props) => {
                     </p>
                 </div>
                 <div className="flex-1 flex justify-end h-full ">
-                    <CategoryScroll />
+                    <CategoryScroll categories={categories} />
                 </div>
             </div>
             <div className=" w-full justify-between flex py-12">

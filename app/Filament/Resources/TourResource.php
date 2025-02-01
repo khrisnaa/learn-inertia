@@ -17,8 +17,10 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use App\Filament\Resources\TourResource\Pages;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Model;
 
 class TourResource extends Resource
@@ -57,6 +59,7 @@ class TourResource extends Resource
                     ->multiple()
                     ->preload()
                     ->searchable(),
+                Toggle::make('is_recommended')->default(false),
                 RichEditor::make('overview')
                     ->required()
                     ->columnSpanFull(),
@@ -99,16 +102,11 @@ class TourResource extends Resource
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
-                ImageColumn::make('thumbnail'),
-                TextColumn::make('duration')
-                    ->searchable()
-                    ->sortable(),
-                TextColumn::make('location')
-                    ->searchable()
-                    ->sortable(),
-                TextColumn::make('price')
-                    ->money()
-                    ->sortable(),
+                ImageColumn::make('thumbnail')
+                    ->height(50)
+                    ->width(100),
+                ToggleColumn::make('is_recommended')
+                    ->label('Recommended'),
                 TextColumn::make('updated_at')
                     ->dateTime()
                     ->toggleable(isToggledHiddenByDefault: true)

@@ -10,6 +10,7 @@ const ImageAccrodion = ({ testimonials }) => {
         <div className="flex gap-4">
             {testimonials.map((testimonial, i) => (
                 <div
+                    key={i}
                     onClick={() => setSelectedIndex(i)}
                     className={`h-[60dvh] rounded-lg cursor-pointer transition-all overflow-hidden duration-500 relative ${
                         selectedIndex == i ? "w-full" : "w-[40vw]"

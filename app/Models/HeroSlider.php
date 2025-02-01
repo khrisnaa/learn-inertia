@@ -15,7 +15,7 @@ class HeroSlider extends Model
         'is_active'
     ];
 
-    public function tours()
+    public function tour()
     {
         return $this->belongsTo(Tour::class);
     }

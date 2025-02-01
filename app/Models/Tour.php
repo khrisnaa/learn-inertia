@@ -17,7 +17,8 @@ class Tour extends Model
         'location',
         'price',
         'overview',
-        'thumbnail'
+        'thumbnail',
+        'is_recommended'
     ];
 
     public function categories()
