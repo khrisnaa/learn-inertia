@@ -18,12 +18,13 @@ const IMAGES = [
     "/assets/images/image_5.jpeg",
 ];
 
-const Home = () => {
+const Home = ({ highlightTours, recommendedTours }) => {
+    console.log(recommendedTours);
     return (
         <ClientLayout>
-            <Carousel slides={packageTours} options={OPTIONS} />
+            <Carousel slides={highlightTours} options={OPTIONS} />
             <AboutSection />
-            <RecomendedTourSection />
+            <RecomendedTourSection recommendedTours={recommendedTours} />
             <TestimonialsSection />
             <FaqSection />
             <ContactSection />

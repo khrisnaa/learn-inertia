@@ -54,4 +54,9 @@ class Tour extends Model
     {
         return $this->hasMany(Booking::class);
     }
+
+    public function sliders()
+    {
+        return $this->hasMany(HeroSlider::class);
+    }
 }

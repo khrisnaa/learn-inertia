@@ -111,7 +111,7 @@ const ParallaxCarousel = (props) => {
                                 >
                                     <img
                                         className="object-cover  "
-                                        src={tour.image}
+                                        src={`/storage/${tour.thumbnail}`}
                                         alt="Your alt text"
                                     />
                                 </div>

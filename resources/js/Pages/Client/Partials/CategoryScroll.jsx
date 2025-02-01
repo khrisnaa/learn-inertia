@@ -5,7 +5,7 @@ import { Marquee } from "@/Components/ui/marquee";
 import { motion } from "motion/react";
 const CategoryScroll = () => {
     return (
-        <div className="h-80 overflow-hidden relative">
+        <div className="h-full overflow-hidden relative">
             <div className="flex flex-col z-[1] relative items-end gap-4 p-4 px-8">
                 <Marquee vertical className="[--duration:20s]">
                     {categories.map((category, i) => (

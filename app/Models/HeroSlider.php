@@ -6,26 +6,18 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Review extends Model
+class HeroSlider extends Model
 {
     use HasUuids, SoftDeletes;
 
     protected $fillable = [
-        'user_id',
         'tour_id',
-        'rating',
-        'comment',
-        'image',
-        'is_visible'
+        'is_active'
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function tour()
+    public function tours()
     {
         return $this->belongsTo(Tour::class);
     }
+
 }
