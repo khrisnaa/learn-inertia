@@ -4,12 +4,13 @@ import ImageDetails from "../Partials/ImageDetails";
 import SectionLabel from "../Components/SectionLabel";
 import { CircleCheck } from "lucide-react";
 import DetailCarousel from "../Partials/DetailCarousel";
+import { Button } from "@/Components/ui/button";
 
 const Show = ({ tour }) => {
     console.log(tour);
     return (
         <ClientLayout>
-            <div className="min-h-screen px-12 pt-28">
+            <div className="min-h-screen  px-12 pt-28">
                 <ImageDetails tour={tour} />
                 <div className="pt-12">
                     <SectionLabel

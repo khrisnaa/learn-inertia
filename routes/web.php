@@ -36,6 +36,7 @@ Route::name('client.')->group(function () {
     Route::get('/explore', [ClientTourController::class, 'index'])->name('tours.index');
     Route::get('/explore/{id}', [ClientTourController::class, 'show'])->name('tours.show');
     Route::get('/wishlist', [ClientFavoriteController::class, 'index'])->name('favorites.index');
+    Route::post('/wishlist', [ClientFavoriteController::class, 'store'])->name('favorites.store');
     // Route::post('/favorites/{tour}', [ClientFavoriteController::class, 'store'])->name('favorites.store');
     // Route::delete('/favorites/{tour}', [ClientFavoriteController::class, 'destroy'])->name('favorites.destroy');
     Route::get('/contact-us', [ClientContactController::class, 'index'])->name('contact.index');

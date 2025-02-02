@@ -9,9 +9,12 @@ import {
 } from "@/Components/ui/carousel";
 import Contact from "./Contact";
 import ContactSection from "./Partials/ContactSection";
+import { Link } from "@inertiajs/react";
 
-const Favorites = () => {
+const Favorites = ({ tours: wishlists }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
+
+    const tours = wishlists.map((wishlist) => wishlist.tour);
     return (
         <ClientLayout>
             <div className="min-h-screen grid grid-cols-2 gap-2 px-12 pt-28  py-24">
@@ -31,37 +34,30 @@ const Favorites = () => {
                 </div>
                 <div className="col-span-1 h-[80vh] select-none">
                     <div className="grid grid-rows-4 gap-4 w-full h-full ">
-                        <div className="cursor-pointer relative overflow-hidden rounded-lg row-span-3">
+                        <Link
+                            href={`/explore/${tours[selectedIndex].id}`}
+                            className="cursor-pointer relative overflow-hidden rounded-lg row-span-3"
+                        >
                             <img
-                                src="/assets/images/dummy_hero.jpg"
+                                src={`/storage/${tours[selectedIndex].thumbnail}`}
                                 className="object-cover w-full h-full"
                             />
-                            <span className="absolute text-3xl font-bold inset-0 flex justify-center items-center">
-                                {(selectedIndex + 1)
-                                    .toString()
-                                    .padStart(2, "0")}
-                            </span>
-                        </div>
+                        </Link>
                         <div className=" row-span-1 rounded-lg ">
                             <Carousel>
-                                <CarouselContent className="h-full bg-black">
-                                    {Array.from({ length: 5 }).map((_, i) => (
+                                <CarouselContent className="h-full">
+                                    {tours.map((tour, i) => (
                                         <CarouselItem className="basis-1/3 h-full">
                                             <div
                                                 onClick={() =>
                                                     setSelectedIndex(i)
                                                 }
-                                                className="cursor-pointer relative overflow-hidden rounded-lg "
+                                                className="cursor-pointer  h-36 w-full relative overflow-hidden rounded-lg "
                                             >
                                                 <img
-                                                    src="/assets/images/dummy_hero.jpg"
+                                                    src={`/storage/${tour.thumbnail}`}
                                                     className="object-cover w-full h-full"
                                                 />
-                                                <span className="absolute text-xl font-bold inset-0 flex justify-center items-center">
-                                                    {(i + 1)
-                                                        .toString()
-                                                        .padStart(2, "0")}
-                                                </span>
                                             </div>
                                         </CarouselItem>
                                     ))}

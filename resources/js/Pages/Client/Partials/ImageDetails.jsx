@@ -1,3 +1,4 @@
+import { Button } from "@/Components/ui/button";
 import {
     Carousel,
     CarouselContent,
@@ -5,9 +6,14 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/Components/ui/carousel";
+import { router } from "@inertiajs/react";
+import { Plus } from "lucide-react";
 import React from "react";
 
 const ImageDetails = ({ tour }) => {
+    const handleClick = () => {
+        router.post("/wishlist", { id: tour.id });
+    };
     return (
         <div className="grid grid-cols-5 gap-4">
             <div className="col-span-3 h-[80vh] relative overflow-hidden rounded-lg">
@@ -15,6 +21,13 @@ const ImageDetails = ({ tour }) => {
                     src={`/storage/${tour.thumbnail}`}
                     className="object-cover w-full h-full"
                 />
+                <Button
+                    onClick={handleClick}
+                    variant="secondary"
+                    className="absolute rounded-full left-0 bottom-0 m-4"
+                >
+                    Wishlist <Plus />
+                </Button>
             </div>
             <div className="col-span-2 relative">
                 <Carousel orientation="vertical" className="relative">
