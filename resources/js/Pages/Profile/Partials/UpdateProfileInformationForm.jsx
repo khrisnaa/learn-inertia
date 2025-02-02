@@ -1,14 +1,14 @@
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import { Transition } from '@headlessui/react';
-import { Link, useForm, usePage } from '@inertiajs/react';
+import InputError from "@/Components/InputError";
+import InputLabel from "@/Components/InputLabel";
+import PrimaryButton from "@/Components/PrimaryButton";
+import TextInput from "@/Components/TextInput";
+import { Transition } from "@headlessui/react";
+import { Link, useForm, usePage } from "@inertiajs/react";
 
 export default function UpdateProfileInformation({
     mustVerifyEmail,
     status,
-    className = '',
+    className = "",
 }) {
     const user = usePage().props.auth.user;
 
@@ -16,12 +16,17 @@ export default function UpdateProfileInformation({
         useForm({
             name: user.name,
             email: user.email,
+            phone: user.phone,
+            avatar: user.avatar,
+            country: user.country,
+            city: user.city,
+            avatar: user.avatar,
         });
 
     const submit = (e) => {
         e.preventDefault();
 
-        patch(route('profile.update'));
+        patch(route("profile.update"));
     };
 
     return (
@@ -36,7 +41,11 @@ export default function UpdateProfileInformation({
                 </p>
             </header>
 
-            <form onSubmit={submit} className="mt-6 space-y-6">
+            <form
+                onSubmit={submit}
+                className="mt-6 space-y-6"
+                encType="multipart/form-data"
+            >
                 <div>
                     <InputLabel htmlFor="name" value="Name" />
 
@@ -44,7 +53,7 @@ export default function UpdateProfileInformation({
                         id="name"
                         className="mt-1 block w-full"
                         value={data.name}
-                        onChange={(e) => setData('name', e.target.value)}
+                        onChange={(e) => setData("name", e.target.value)}
                         required
                         isFocused
                         autoComplete="name"
@@ -61,7 +70,7 @@ export default function UpdateProfileInformation({
                         type="email"
                         className="mt-1 block w-full"
                         value={data.email}
-                        onChange={(e) => setData('email', e.target.value)}
+                        onChange={(e) => setData("email", e.target.value)}
                         required
                         autoComplete="username"
                     />
@@ -69,12 +78,82 @@ export default function UpdateProfileInformation({
                     <InputError className="mt-2" message={errors.email} />
                 </div>
 
+                <div>
+                    <InputLabel htmlFor="phone" value="Phone" />
+
+                    <TextInput
+                        id="phone"
+                        className="mt-1 block w-full"
+                        value={data.phone}
+                        onChange={(e) => setData("phone", e.target.value)}
+                        required
+                        isFocused
+                        autoComplete="off"
+                    />
+
+                    <InputError className="mt-2" message={errors.phone} />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="country" value="Country" />
+
+                    <TextInput
+                        id="country"
+                        className="mt-1 block w-full"
+                        value={data.country}
+                        onChange={(e) => setData("country", e.target.value)}
+                        required
+                        isFocused
+                        autoComplete="off"
+                    />
+
+                    <InputError className="mt-2" message={errors.country} />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="city" value="City" />
+
+                    <TextInput
+                        id="city"
+                        className="mt-1 block w-full"
+                        value={data.city}
+                        onChange={(e) => setData("city", e.target.value)}
+                        required
+                        isFocused
+                        autoComplete="off"
+                    />
+
+                    <InputError className="mt-2" message={errors.city} />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="avatar" value="Avatar" />
+
+                    <input
+                        type="file"
+                        id="avatar"
+                        accept="image/*"
+                        className="mt-1 block w-full"
+                        onChange={(e) => setData("avatar", e.target.files[0])}
+                    />
+
+                    {data.avatar && (
+                        <img
+                            src={URL.createObjectURL(data.avatar)}
+                            alt="Preview"
+                            className="mt-2 h-20 w-20 rounded-full object-cover"
+                        />
+                    )}
+
+                    <InputError className="mt-2" message={errors.avatar} />
+                </div>
+
                 {mustVerifyEmail && user.email_verified_at === null && (
                     <div>
                         <p className="mt-2 text-sm text-gray-800">
                             Your email address is unverified.
                             <Link
-                                href={route('verification.send')}
+                                href={route("verification.send")}
                                 method="post"
                                 as="button"
                                 className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -83,7 +162,7 @@ export default function UpdateProfileInformation({
                             </Link>
                         </p>
 
-                        {status === 'verification-link-sent' && (
+                        {status === "verification-link-sent" && (
                             <div className="mt-2 text-sm font-medium text-green-600">
                                 A new verification link has been sent to your
                                 email address.
@@ -102,9 +181,7 @@ export default function UpdateProfileInformation({
                         leave="transition ease-in-out"
                         leaveTo="opacity-0"
                     >
-                        <p className="text-sm text-gray-600">
-                            Saved.
-                        </p>
+                        <p className="text-sm text-gray-600">Saved.</p>
                     </Transition>
                 </div>
             </form>
