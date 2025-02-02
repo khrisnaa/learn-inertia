@@ -1,12 +1,22 @@
+import Dropdown from "@/Components/Dropdown";
 import { Avatar, AvatarFallback, AvatarImage } from "@/Components/ui/avatar";
 import { Button } from "@/Components/ui/button";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/Components/ui/dropdown-menu";
 import { Separator } from "@/Components/ui/separator";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import React from "react";
 
 const Navbar = () => {
+    const { auth } = usePage().props;
     return (
-        <div className="flex justify-between items-center  h-14 ">
+        <div className="flex justify-between items-center  h-14">
             <div className="flex items-center gap-2">
                 <div className="relative size-12 overflow-hidden rounded-lg">
                     <img
@@ -26,13 +36,41 @@ const Navbar = () => {
                 <Link href="/contact-us">Contact Us</Link>
             </nav>
             <div className="flex gap-3 items-center">
-                <Button variant="secondary" className="px-6 h-12 rounded-3xl">
+                <Button
+                    variant="secondary"
+                    className="px-6 h-12 text-sm rounded-3xl"
+                >
                     Book A Call
                 </Button>
-                <Avatar>
-                    <AvatarImage src="https://github.com/khrisnaa.png" />
-                    <AvatarFallback>CN</AvatarFallback>
-                </Avatar>
+                {auth.user ? (
+                    <Dropdown>
+                        <Dropdown.Trigger>
+                            <Avatar className="cursor-pointer">
+                                <AvatarImage src="https://github.com/khrisnaa.png" />
+                                <AvatarFallback>CN</AvatarFallback>
+                            </Avatar>
+                        </Dropdown.Trigger>
+                        <Dropdown.Content>
+                            <Dropdown.Link href={route("profile.edit")}>
+                                Profile
+                            </Dropdown.Link>
+                            <Dropdown.Link
+                                href={route("logout")}
+                                method="post"
+                                as="button"
+                            >
+                                Log Out
+                            </Dropdown.Link>
+                        </Dropdown.Content>
+                    </Dropdown>
+                ) : (
+                    <Link
+                        className="text-sm px-4 hover:text-primary hover:scale-105 transition-all duration-300"
+                        href={route("login")}
+                    >
+                        Log in
+                    </Link>
+                )}
             </div>
         </div>
     );

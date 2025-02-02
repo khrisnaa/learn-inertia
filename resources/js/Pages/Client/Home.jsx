@@ -9,7 +9,7 @@ import ContactSection from "./Partials/ContactSection";
 
 const OPTIONS = { loop: true };
 
-const Home = ({ highlightTours, recommendedTours, faqs, categories }) => {
+const Home = ({ highlightTours, recommendedTours, faqs, categories, auth }) => {
     const tours = highlightTours.map((highlightTour) => highlightTour.tour);
     // console.log(tours);
     return (
