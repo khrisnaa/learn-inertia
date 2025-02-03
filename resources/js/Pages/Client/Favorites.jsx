@@ -18,16 +18,16 @@ const Favorites = ({ tours: wishlists }) => {
     const tours = wishlists.map((wishlist) => wishlist.tour);
     return (
         <ClientLayout>
-            <div className="min-h-screen grid grid-cols-2 gap-2 px-12 pt-28  py-24">
+            <div className="min-h-screen sm:flex flex-col md:grid grid-cols-2 gap-2 px-6 pt12 sm:px-12 pt-28  sm:py-24">
                 <div className="col-span-1">
-                    <div className="h-full w-full space-y-8">
+                    <div className="h-full w-full space-y-8 mb-4">
                         <SectionLabel
                             label="Your Favorites"
                             icon={
                                 <CircleCheck className="text-muted-foreground  w-5 h-5" />
                             }
                         />
-                        <p className="font-light text-5xl pr-4">
+                        <p className="font-light text-3xl sm:text-5xl pr-4">
                             Save and organize your wildlife adventures! From
                             safaris to jungle retreats!
                         </p>
