@@ -11,10 +11,9 @@ const OPTIONS = { loop: true };
 
 const Home = ({ highlightTours, recommendedTours, faqs, categories, auth }) => {
     const tours = highlightTours.map((highlightTour) => highlightTour.tour);
-    // console.log(tours);
     return (
         <ClientLayout>
-            <Carousel slides={tours} options={OPTIONS} />
+            {/* <Carousel slides={tours} options={OPTIONS} />
             <AboutSection />
             <RecomendedTourSection
                 categories={categories}
@@ -22,7 +21,7 @@ const Home = ({ highlightTours, recommendedTours, faqs, categories, auth }) => {
             />
             <TestimonialsSection />
             <FaqSection faqs={faqs} />
-            <ContactSection />
+            <ContactSection /> */}
         </ClientLayout>
     );
 };
