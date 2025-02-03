@@ -103,14 +103,14 @@ const ParallaxCarousel = (props) => {
             <div className="overflow-hidden rounded-lg" ref={emblaRef}>
                 <div className="-ml-4 flex">
                     {tours.map((tour, index) => (
-                        <div className=" flex-[0_0_80%] pl-4" key={index}>
+                        <div className="flex-[0_0_80%] pl-4" key={index}>
                             <div className="h-full overflow-hidden rounded-lg">
                                 <div
                                     id="parallax-layer"
-                                    className="relative h-[60dvh] w-full"
+                                    className="relative h-[40dvh] sm:h-[60dvh] w-full"
                                 >
                                     <img
-                                        className="object-cover  "
+                                        className="object-cover  h-full w-full "
                                         src={`/storage/${tour.thumbnail}`}
                                         alt="Your alt text"
                                     />

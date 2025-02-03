@@ -15,11 +15,11 @@ const Home = ({ highlightTours, recommendedTours, faqs, categories, auth }) => {
         <ClientLayout>
             <Carousel slides={tours} options={OPTIONS} />
             <AboutSection />
-            {/* <RecomendedTourSection
+            <RecomendedTourSection
                 categories={categories}
                 recommendedTours={recommendedTours}
             />
-            <TestimonialsSection />
+            {/* <TestimonialsSection />
             <FaqSection faqs={faqs} />
             <ContactSection /> */}
         </ClientLayout>

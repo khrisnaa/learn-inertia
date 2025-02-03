@@ -11,7 +11,7 @@ const RecomendedTourSection = (props) => {
     const [activeSlide, setActiveSlide] = useState(0);
     return (
         <div className="bg-accent-primary">
-            <div className="flex h-[50dvh]  p-12">
+            <div className="flex h-[50dvh] p-12">
                 <div className="flex-1 space-y-8">
                     <SectionLabel
                         label="For You"
@@ -19,17 +19,17 @@ const RecomendedTourSection = (props) => {
                             <CircleArrowUp className="text-muted-foreground rotate-90 w-5 h-5" />
                         }
                     />
-                    <p className="font-light text-5xl">
+                    <p className="font-light text-3xl sm:text-4xl md:text-5xl">
                         Discover unforgettable wildlife adventures crafted just
                         for you. Explore now!
                     </p>
                 </div>
-                <div className="flex-1 flex justify-end h-full ">
+                <div className="flex-1 hidden sm:flex justify-end h-full ">
                     <CategoryScroll categories={categories} />
                 </div>
             </div>
-            <div className=" w-full justify-between flex py-12">
-                <div className="p-12 py-24 flex-[0.4] flex flex-col justify-end">
+            <div className="w-full justify-between flex flex-col sm:flex-row  sm:py-12">
+                <div className="p-12 sm:py-24 flex-[0.4] flex flex-col justify-end">
                     {tours.map((tour, i) => {
                         return (
                             <motion.div
