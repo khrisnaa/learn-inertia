@@ -7,7 +7,7 @@ import { Button } from "@/Components/ui/button";
 const ContactSection = () => {
     return (
         <div className=" w-full bg-accent-primary p-12">
-            <div className="flex ">
+            <div className="flex flex-col sm:flex-row">
                 <div className="flex-1 space-y-8">
                     <SectionLabel
                         label="Contact Us"
@@ -15,9 +15,9 @@ const ContactSection = () => {
                             <CircleParking className="text-muted-foreground  w-5 h-5" />
                         }
                     />
-                    <p className="font-light text-5xl">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Placeat!
+                    <p className="font-light text-3xl sm:text-5xl">
+                        Got questions? Reach out to us, and we'll be happy to
+                        help. Placeat!
                     </p>
                     <Button
                         variant="secondary"

@@ -21,7 +21,7 @@ const Home = ({ highlightTours, recommendedTours, faqs, categories, auth }) => {
             />
             <TestimonialsSection />
             <FaqSection faqs={faqs} />
-            {/* <ContactSection /> */}
+            <ContactSection />
         </ClientLayout>
     );
 };
