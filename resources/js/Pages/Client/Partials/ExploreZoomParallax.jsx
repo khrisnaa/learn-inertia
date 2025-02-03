@@ -48,7 +48,7 @@ const ExploreZoomParallax = () => {
     ];
 
     return (
-        <div ref={container} className="h-[300vh] relative">
+        <div ref={container} className="h-[300vh] hidden md:block relative">
             <div className="sticky top-0 h-screen flex justify-center items-center overflow-hidden p-4">
                 <motion.p
                     style={{ opacity }}
