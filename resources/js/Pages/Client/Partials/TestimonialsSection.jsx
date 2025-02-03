@@ -30,7 +30,7 @@ const TestimonialsSection = () => {
     );
 
     return (
-        <div className="min-h-screen p-12 sm:space-y-12">
+        <div className="min-h-screen px-6 py-12 sm:p-12 sm:space-y-12">
             <div className="flex-col flex sm:flex-row h-[50vh]">
                 <div className="flex-1 space-y-8">
                     <SectionLabel

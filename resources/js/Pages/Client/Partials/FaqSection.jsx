@@ -7,7 +7,7 @@ import { Accordion } from "@/Components/ui/accordion";
 const FaqSection = ({ faqs }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     return (
-        <div className="p-12 min-h-screen space-y-12">
+        <div className="px-6 py-12 sm:p-12 min-h-screen space-y-12">
             <div className="flex  flex-col sm:flex-row">
                 <div className="flex-1">
                     <SectionLabel

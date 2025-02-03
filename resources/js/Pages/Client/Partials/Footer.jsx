@@ -2,9 +2,9 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <div className="p-4 border-t relative text-xs flex  items-center justify-between border-gray-400">
+        <div className="p-4 border-t pb-32 md:pb-0 relative text-xs flex  items-center justify-between border-gray-400">
             <div>DREDGE</div>
-            <div className="flex gap-8 absolute left-1/2 -translate-x-1/2 items-center">
+            <div className="sm:flex gap-8 absolute hidden  left-1/2 -translate-x-1/2 items-center">
                 <a href="#" className="relative">
                     Home
                 </a>

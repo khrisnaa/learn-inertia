@@ -28,9 +28,9 @@ const ClientLayout = ({ children }) => {
             </div>
             <MobileNav />
             {children}
-            {/* <div className="px-12 bg-accent-primary">
+            <div className="sm:px-12 bg-accent-primary">
                 <Footer />
-            </div> */}
+            </div>
         </main>
     );
 };

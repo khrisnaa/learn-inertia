@@ -6,7 +6,7 @@ import { Button } from "@/Components/ui/button";
 
 const ContactSection = () => {
     return (
-        <div className=" w-full bg-accent-primary p-12">
+        <div className=" w-full bg-accent-primary px-6 py-12 sm:p-12">
             <div className="flex flex-col sm:flex-row">
                 <div className="flex-1 space-y-8">
                     <SectionLabel

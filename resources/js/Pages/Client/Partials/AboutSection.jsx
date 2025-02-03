@@ -6,7 +6,7 @@ import SectionLabel from "../Components/SectionLabel";
 
 const AboutSection = () => {
     return (
-        <div className="w-full lg:flex space-y-24 sm:space-y-0 px-12 py-24   ">
+        <div className="w-full lg:flex space-y-24 sm:space-y-0 px-6 sm:px-12 py-24   ">
             <div className="flex-1 gap-8 flex flex-col justify-between ">
                 <SectionLabel
                     label="About Us"
