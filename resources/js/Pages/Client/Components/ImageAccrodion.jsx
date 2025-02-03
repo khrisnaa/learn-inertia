@@ -12,7 +12,7 @@ const ImageAccrodion = ({ testimonials }) => {
                 <div
                     key={i}
                     onClick={() => setSelectedIndex(i)}
-                    className={`h-[60dvh] rounded-lg cursor-pointer transition-all overflow-hidden duration-500 relative ${
+                    className={`h-[30dvh] sm:h-[60dvh] rounded-lg cursor-pointer transition-all overflow-hidden duration-500 relative ${
                         selectedIndex == i ? "w-full" : "w-[40vw]"
                     }`}
                 >
@@ -20,7 +20,7 @@ const ImageAccrodion = ({ testimonials }) => {
                         src={testimonial.image}
                         className="object-cover w-full h-full"
                     />
-                    <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                    <div className="absolute inset-0 p-2 sm:p-8 flex flex-col justify-between">
                         <div className="flex justify-end">
                             <div
                                 className={`w-64 flex flex-wrap justify-end transition-all duration-700 gap-2 ${
@@ -33,7 +33,7 @@ const ImageAccrodion = ({ testimonials }) => {
                         <div className="space-y-4 z-[2]">
                             <div className="space-y-2">
                                 <h4
-                                    className={`line-clamp-2 italic  text-lg  font-medium transition-all duration-500 ${
+                                    className={`line-clamp-2 italic text-sm  sm:text-lg  font-medium transition-all duration-500 ${
                                         selectedIndex === i
                                             ? "translate-y-0"
                                             : "translate-y-2 "
@@ -62,7 +62,7 @@ const ImageAccrodion = ({ testimonials }) => {
                                 className={`rounded-full   text-sm w-full flex justify-between ${
                                     selectedIndex == i
                                         ? ""
-                                        : "bg-transparent border border-secondary text-secondary"
+                                        : "bg-transparent invisible border border-secondary text-secondary"
                                 }`}
                             >
                                 <span>More Details</span>

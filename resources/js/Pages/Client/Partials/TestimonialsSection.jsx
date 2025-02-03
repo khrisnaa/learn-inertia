@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SectionLabel from "../Components/SectionLabel";
 import { CircleArrowUp, CircleCheck } from "lucide-react";
 import ExploreButton from "../Components/ExploreButton";
@@ -13,35 +13,47 @@ import {
 import testimonials from "@/data/testimonials";
 
 const TestimonialsSection = () => {
+    const [chunkSize, setChunkSize] = useState(window.innerWidth < 768 ? 2 : 4);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setChunkSize(window.innerWidth < 768 ? 2 : 4);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     const chunkedTestimonials = Array.from(
-        { length: Math.ceil(testimonials.length / 4) },
-        (_, i) => testimonials.slice(i * 4, i * 4 + 4)
+        { length: Math.ceil(testimonials.length / chunkSize) },
+        (_, i) => testimonials.slice(i * chunkSize, i * chunkSize + chunkSize)
     );
+
     return (
-        <div className="min-h-screen p-12 space-y-12">
-            <div className="flex h-[50vh]">
+        <div className="min-h-screen p-12 sm:space-y-12">
+            <div className="flex-col flex sm:flex-row h-[50vh]">
                 <div className="flex-1 space-y-8">
                     <SectionLabel
                         label="The Opinions"
                         icon={
-                            <CircleCheck className="text-muted-foreground  w-5 h-5" />
+                            <CircleCheck className="text-muted-foreground w-5 h-5" />
                         }
                     />
-                    <p className="font-light text-5xl">
+                    <p className="font-light text-3xl sm:text-5xl">
                         Hear what our explorers say about their unforgettable
                         wildlife journeys. Amazing!
                     </p>
                 </div>
-                <div className="flex-1 flex justify-end ">
-                    <div className="justify-end max-w-md flex flex-col gap-8">
-                        <p className="text-muted-foreground">
+                <div className="flex-1 flex sm:justify-end ">
+                    <div className="justify-end h-fit max-w-md flex flex-col gap-8">
+                        <p className="text-muted-foreground hidden sm:block">
                             Our guests rave about the incredible experiences,
                             from trekking through jungles to watching rare
                             species in their natural habitat. Truly
                             unforgettable!
                         </p>
-                        <span className="w-fit">
-                            <ExploreButton />
+                        <span className="w-fit mt-4 sm:mt-0">
+                            <ExploreButton href={"/explore"} />
                         </span>
                     </div>
                 </div>

@@ -19,8 +19,8 @@ const Home = ({ highlightTours, recommendedTours, faqs, categories, auth }) => {
                 categories={categories}
                 recommendedTours={recommendedTours}
             />
-            {/* <TestimonialsSection />
-            <FaqSection faqs={faqs} />
+            <TestimonialsSection />
+            {/* <FaqSection faqs={faqs} />
             <ContactSection /> */}
         </ClientLayout>
     );
