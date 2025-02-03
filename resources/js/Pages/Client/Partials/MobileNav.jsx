@@ -8,7 +8,7 @@ const MobileNav = () => {
     const { url } = usePage();
     const isActive = (path) => url === path;
     return (
-        <div className="md:hidden  fixed bottom-0 left-0 w-ful px-4 py-2 w-full">
+        <div className="sm:hidden z-50 fixed bottom-0 left-0 w-ful px-4 py-4 w-full">
             <nav className="flex bg-white py-2 px-4 sm:px-12 rounded-full justify-between">
                 <Link
                     href="/home"
@@ -17,7 +17,7 @@ const MobileNav = () => {
                         isActive("/home") ? "bg-primary" : "text-primary"
                     )}
                 >
-                    <Home />
+                    <Home className="size-5 sm:size-6" />
                 </Link>
                 <Separator orientation="vertical" />
                 <Link
@@ -27,7 +27,7 @@ const MobileNav = () => {
                         isActive("/explore") ? "bg-primary" : "text-primary"
                     )}
                 >
-                    <Map />
+                    <Map className="size-5 sm:size-6" />
                 </Link>
                 <Separator orientation="vertical" />
                 <Link
@@ -37,17 +37,17 @@ const MobileNav = () => {
                         isActive("/wishlist") ? "bg-primary" : "text-primary"
                     )}
                 >
-                    <Heart />
+                    <Heart className="size-5 sm:size-6" />
                 </Link>
                 <Separator orientation="vertical" />
                 <Link
                     href="/contact-us"
                     className={cn(
-                        "p-2 rounded-full ",
+                        "p-2 rounded-full",
                         isActive("/contact-us") ? "bg-primary" : "text-primary"
                     )}
                 >
-                    <Phone />
+                    <Phone className="size-5 sm:size-6" />
                 </Link>
             </nav>
         </div>

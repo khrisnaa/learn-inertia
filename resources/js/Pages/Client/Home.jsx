@@ -13,8 +13,8 @@ const Home = ({ highlightTours, recommendedTours, faqs, categories, auth }) => {
     const tours = highlightTours.map((highlightTour) => highlightTour.tour);
     return (
         <ClientLayout>
-            {/* <Carousel slides={tours} options={OPTIONS} />
-            <AboutSection />
+            <Carousel slides={tours} options={OPTIONS} />
+            {/* <AboutSection />
             <RecomendedTourSection
                 categories={categories}
                 recommendedTours={recommendedTours}

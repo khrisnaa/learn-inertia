@@ -16,8 +16,8 @@ export const Thumb = (props) => {
             </div>
 
             <div
-                className={`bg-white/30 backdrop-blur-md rounded-xl transition-all duration-500 h-36 ${
-                    selected ? "w-96" : "w-16"
+                className={`bg-white/30 backdrop-blur-md rounded-xl transition-all duration-500 h-32 md:h-36 ${
+                    selected ? "w-32 md:w-96" : "w-16 md:w-16 "
                 }`}
             >
                 <div className="inline-flex h-full gap-4 p-3 w-full">
@@ -29,7 +29,7 @@ export const Thumb = (props) => {
                     </div>
                     <div
                         className={`flex-1 flex-col justify-between ${
-                            selected ? "flex" : "hidden  "
+                            selected ? "hidden md:flex" : "hidden  "
                         }`}
                     >
                         <h3 className="text-xl tracking-custom line-clamp-2 custom-spacing">

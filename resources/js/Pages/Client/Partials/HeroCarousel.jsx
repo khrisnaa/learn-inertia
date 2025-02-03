@@ -35,7 +35,7 @@ const HeroCarousel = (props) => {
     }, [emblaMainApi, onSelect]);
 
     return (
-        <section className="m-auto relative ">
+        <section className="m-auto relative">
             <div className="overflow-hidden" ref={emblaMainRef}>
                 <div className="-ml-4 flex">
                     {tours.map((tour, i) => (
@@ -53,14 +53,14 @@ const HeroCarousel = (props) => {
                                             : "left-64 opacity-0"
                                     )}
                                 >
-                                    <div className="pl-12 max-w-[50vw] ">
-                                        <p className="text-7xl tracking-custom leading-tight">
+                                    <div className="px-4 md:pl-12 lg:max-w-[80vw] xl:max-w-[50vw] ">
+                                        <p className="text-4xl md:text-5xl lg:text-7xl tracking-custom leading-tight">
                                             {tour.headline}
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                            <div className=" absolute left-0 pb-12 pl-12 bottom-0 ">
+                            <div className="absolute pt-24 pl-8 md:pt-32 lg:pt-0 left-0 md:pb-12 md:pl-16 bottom-auto top-0 lg:top-auto lg:bottom-0 ">
                                 <div className="max-w-72 flex flex-wrap gap-2">
                                     {tour.categories.map((category, i) => (
                                         <div key={i}>
@@ -75,7 +75,7 @@ const HeroCarousel = (props) => {
                     ))}
                 </div>
             </div>
-            <div className="absolute bottom-0 pb-12 pr-12 right-0">
+            <div className="absolute bottom-0 md:pb-12 pb-24 md:pr-12 right-0">
                 <div className="overflow-x-hidden" ref={emblaThumbsRef}>
                     <div className="flex gap-1">
                         {tours.map((tour, i) => (
