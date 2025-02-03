@@ -8,7 +8,7 @@ const FaqSection = ({ faqs }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     return (
         <div className="p-12 min-h-screen space-y-12">
-            <div className="flex">
+            <div className="flex  flex-col sm:flex-row">
                 <div className="flex-1">
                     <SectionLabel
                         label="What is love"
@@ -18,13 +18,13 @@ const FaqSection = ({ faqs }) => {
                     />
                 </div>
                 <div className="flex-1">
-                    <p className="font-light text-5xl">
+                    <p className="font-light text-3xl sm:text-5xl">
                         Have you ever wondered how wildlife thrives in its
                         natural habitats? Explore with us!
                     </p>
                 </div>
             </div>
-            <div className="flex gap-12">
+            <div className="flex flex-col md:flex-row gap-12">
                 <div className="flex-1 flex flex-col">
                     <Accordion type="single" collapsible className="w-full">
                         {faqs.map((faq, i) => (
