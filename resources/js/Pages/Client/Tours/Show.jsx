@@ -10,7 +10,7 @@ const Show = ({ tour }) => {
     console.log(tour);
     return (
         <ClientLayout>
-            <div className="min-h-screen  px-12 pt-28">
+            <div className="min-h-screen px-6 py-12  sm:px-12 pt-28">
                 <ImageDetails tour={tour} />
                 <div className="pt-12">
                     <SectionLabel

@@ -31,7 +31,7 @@ const Index = ({ firstTours, secondTours, thirdTours }) => {
                                 className={cn(
                                     i == 0
                                         ? "col-span-4 row-span-2 sm:col-span-3 sm:row-span-2"
-                                        : "col-span-2 row-span-3  sm:col-span-2 sm:row-span-1"
+                                        : "col-span-4 row-span-3  sm:col-span-2 sm:row-span-1"
                                 )}
                             />
                         ))}

@@ -7,7 +7,7 @@ import React from "react";
 
 const DetailsSection = ({ tour }) => {
     return (
-        <div className="grid grid-cols-2 py-12 gap-12 max-h-screen">
+        <div className="md:grid flex flex-col grid-cols-2 py-12 gap-12 max-h-screen">
             <div className="col-span-1 space-y-4">
                 <div className="space-y-2">
                     <h4 className="font-light text-3xl">{tour.name}</h4>

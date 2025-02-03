@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SectionLabel from "../Components/SectionLabel";
 import { CircleHelp } from "lucide-react";
 import FaqCard from "../Components/FaqCard";
 import { Accordion } from "@/Components/ui/accordion";
 
 const FaqSection = ({ faqs }) => {
-    const [selectedIndex, setSelectedIndex] = useState(0);
     return (
         <div className="px-6 py-12 sm:p-12 min-h-screen space-y-12">
             <div className="flex  flex-col sm:flex-row">
