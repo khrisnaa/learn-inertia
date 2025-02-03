@@ -8,8 +8,8 @@ import { Button } from "@/Components/ui/button";
 
 const ContactForm = () => {
     return (
-        <div className="p-12 pt-24 min-h-screen space-y-12">
-            <div className="flex">
+        <div className="p-6 sm:p-12 pt-24 min-h-screen space-y-12">
+            <div className="flex sm:flex-row flex-col">
                 <div className="flex-1">
                     <SectionLabel
                         label="Missing Us"
@@ -19,13 +19,12 @@ const ContactForm = () => {
                     />
                 </div>
                 <div className="flex-1">
-                    <p className="font-light text-5xl">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Placeat!
+                    <p className="font-light text-3xl sm:text-5xl">
+                        Have questions? We're here to help – get in touch!
                     </p>
                 </div>
             </div>
-            <div className="flex gap-12">
+            <div className="flex sm:flex-row flex-col gap-12">
                 <div className="flex-[0.7] space-y-8">
                     <h4 className="text-3xl ">Get in Touch</h4>
                     <div className="space-y-6">
