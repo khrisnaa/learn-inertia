@@ -4,6 +4,7 @@ use App\Http\Controllers\Client\HomeController as ClientHomeController;
 use App\Http\Controllers\Client\FavoriteController as ClientFavoriteController;
 use App\Http\Controllers\Client\TourController as ClientTourController;
 use App\Http\Controllers\Client\ContactController as ClientContactController;
+use App\Http\Controllers\Client\BookingController as ClientBookingController;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -41,6 +42,8 @@ Route::name('client.')->group(function () {
     // Route::delete('/favorites/{tour}', [ClientFavoriteController::class, 'destroy'])->name('favorites.destroy');
     Route::get('/contact-us', [ClientContactController::class, 'index'])->name('contact.index');
     // Route::post('/contact-us', [ClientContactController::class, 'store'])->name('contact.store');
+    Route::get('/booking/{id}', [ClientBookingController::class, 'create'])->name('booking.create');
+    Route::post('/booking', [ClientBookingController::class, 'store'])->name('booking.store');
 });
 
 

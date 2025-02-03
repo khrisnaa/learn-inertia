@@ -1,6 +1,7 @@
 import { Button } from "@/Components/ui/button";
 import { ScrollArea } from "@/Components/ui/scroll-area";
 import { Separator } from "@/Components/ui/separator";
+import { Link } from "@inertiajs/react";
 import { ArrowDownToDot, MoveRight, Plus } from "lucide-react";
 import React from "react";
 
@@ -63,12 +64,14 @@ const DetailsSection = ({ tour }) => {
                 </div>
                 <Separator />
                 <div>
-                    <Button
-                        variant="secondary"
-                        className="rounded-full w-full py-6"
-                    >
-                        Book Now
-                    </Button>
+                    <Link href={`/booking/${tour.id}`}>
+                        <Button
+                            variant="secondary"
+                            className="rounded-full w-full py-6"
+                        >
+                            Book Now
+                        </Button>
+                    </Link>
                 </div>
             </div>
             <div className="col-span-1 flex flex-col">

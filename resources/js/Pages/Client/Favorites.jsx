@@ -10,6 +10,7 @@ import {
 import Contact from "./Contact";
 import ContactSection from "./Partials/ContactSection";
 import { Link } from "@inertiajs/react";
+import ImageContainer from "./Partials/ImageContainer";
 
 const Favorites = ({ tours: wishlists }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -26,9 +27,9 @@ const Favorites = ({ tours: wishlists }) => {
                                 <CircleCheck className="text-muted-foreground  w-5 h-5" />
                             }
                         />
-                        <p className="font-light text-5xl">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Placeat!
+                        <p className="font-light text-5xl pr-4">
+                            Save and organize your wildlife adventures! From
+                            safaris to jungle retreats!
                         </p>
                     </div>
                 </div>
@@ -38,10 +39,15 @@ const Favorites = ({ tours: wishlists }) => {
                             href={`/explore/${tours[selectedIndex].id}`}
                             className="cursor-pointer relative overflow-hidden rounded-lg row-span-3"
                         >
-                            <img
-                                src={`/storage/${tours[selectedIndex].thumbnail}`}
-                                className="object-cover w-full h-full"
+                            <ImageContainer
+                                className={"bg-red-400"}
+                                tour={tours[selectedIndex]}
                             />
+                            {/* <img
+                                src={`/storage/${tours[selectedIndex].thumbnail}`}
+                                className="object-cover w-full h-full-hover:scale-100 scale-110 transition-all duration-500"
+                            />
+                            */}
                         </Link>
                         <div className=" row-span-1 rounded-lg ">
                             <Carousel>

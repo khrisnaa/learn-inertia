@@ -17,7 +17,7 @@ class FavoriteController extends Controller
 
         $userId = Auth::id();
 
-        $tours = Favorite::where('user_id', $userId)->with('tour')->get();
+        $tours = Favorite::where('user_id', $userId)->with('tour.categories')->get();
 
         return inertia('Client/Favorites', compact('tours'));
     }
