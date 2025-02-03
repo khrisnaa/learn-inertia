@@ -14,8 +14,8 @@ const Home = ({ highlightTours, recommendedTours, faqs, categories, auth }) => {
     return (
         <ClientLayout>
             <Carousel slides={tours} options={OPTIONS} />
-            {/* <AboutSection />
-            <RecomendedTourSection
+            <AboutSection />
+            {/* <RecomendedTourSection
                 categories={categories}
                 recommendedTours={recommendedTours}
             />
