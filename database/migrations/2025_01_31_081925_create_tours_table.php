@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('overview');
             $table->string('thumbnail');
             $table->boolean('is_recommended')->default(false);
+            $table->boolean('is_highlighted')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

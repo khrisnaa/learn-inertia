@@ -33,7 +33,7 @@ export default function Login({ status, canResetPassword }) {
                 </div>
             )}
 
-            <form onSubmit={submit} className="space-y-6">
+            <form onSubmit={submit} className="space-y-6 text-secondary">
                 <h4 className="font-light text-3xl uppercase text-secondary">
                     Log in
                 </h4>

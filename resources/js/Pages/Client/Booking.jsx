@@ -11,8 +11,7 @@ import React, { useEffect, useState } from "react";
 const Booking = ({ tour, auth }) => {
     const { data, setData, post, errors, processing } = useForm({
         tour_id: tour.id,
-        name: auth?.user?.name || "",
-        email: auth?.user?.email || "",
+        user_id: auth?.user?.id,
         quantity: "1",
         note: "",
     });
@@ -27,7 +26,13 @@ const Booking = ({ tour, auth }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post("/booking");
+        post("/booking", {
+            onSuccess: (response) => {
+                if (response.props.whatsapp_url) {
+                    window.location.href = response.props.whatsapp_url;
+                }
+            },
+        });
     };
 
     return (
@@ -83,7 +88,7 @@ const Booking = ({ tour, auth }) => {
                             <Label>Name</Label>
                             <Input
                                 type="text"
-                                value={data.name}
+                                value={auth?.user?.email}
                                 disabled
                                 className="w-full border  rounded p-2"
                             />
@@ -93,7 +98,7 @@ const Booking = ({ tour, auth }) => {
                             <Label>Email</Label>
                             <Input
                                 type="email"
-                                value={data.email}
+                                value={auth?.user?.email}
                                 disabled
                                 className="w-full border  rounded p-2"
                             />
@@ -104,16 +109,30 @@ const Booking = ({ tour, auth }) => {
                             <div className="flex items-center gap-4">
                                 <Input
                                     type="number"
-                                    value={quantity}
+                                    value={quantity === 0 ? "" : quantity} // Allow empty input for backspacing
                                     onChange={(e) => {
-                                        const newQuantity = Math.max(
-                                            1,
-                                            parseInt(e.target.value) || 1
-                                        );
-                                        setQuantity(newQuantity);
+                                        const inputValue = e.target.value;
+
+                                        // Allow empty string for clearing input
+                                        if (inputValue === "") {
+                                            setQuantity(0);
+                                            return;
+                                        }
+
+                                        // Prevent leading zeros and non-numeric values
+                                        if (!/^\d+$/.test(inputValue)) return;
+
+                                        setQuantity(Number(inputValue));
+                                    }}
+                                    onBlur={() => {
+                                        // Reset to 1 if empty when losing focus
+                                        if (quantity === 0) {
+                                            setQuantity(1);
+                                        }
                                     }}
                                     className="w-full border rounded p-2"
                                 />
+
                                 <Button
                                     onClick={() =>
                                         setQuantity((prev) =>

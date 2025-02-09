@@ -34,7 +34,7 @@ export default function Register() {
             <form
                 onSubmit={submit}
                 encType="multipart/form-data"
-                className="space-y-6"
+                className="space-y-6 text-secondary"
             >
                 <h4 className="font-light text-3xl uppercase text-secondary">
                     Sign up

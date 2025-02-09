@@ -18,7 +18,8 @@ class Tour extends Model
         'price',
         'overview',
         'thumbnail',
-        'is_recommended'
+        'is_recommended',
+        'is_highlighted'
     ];
 
     public function categories()
@@ -59,10 +60,5 @@ class Tour extends Model
     public function sliders()
     {
         return $this->hasMany(HeroSlider::class);
-    }
-
-    public function homeHighlights()
-    {
-        return $this->hasMany(Highlight::class);
     }
 }
