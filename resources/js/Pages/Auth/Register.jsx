@@ -1,23 +1,29 @@
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import GuestLayout from '@/Layouts/GuestLayout';
-import { Head, Link, useForm } from '@inertiajs/react';
+import AvatarInput from "@/Components/AvatarInput";
+import InputError from "@/Components/InputError";
+import InputLabel from "@/Components/InputLabel";
+import PrimaryButton from "@/Components/PrimaryButton";
+import TextInput from "@/Components/TextInput";
+import { Button } from "@/Components/ui/button";
+import { Separator } from "@/Components/ui/separator";
+import GuestLayout from "@/Layouts/GuestLayout";
+import { Head, Link, useForm } from "@inertiajs/react";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
+        name: "",
+        email: "",
+        password: "",
+        password_confirmation: "",
+        avatar: "",
+        country: "",
+        city: "",
     });
 
     const submit = (e) => {
         e.preventDefault();
 
-        post(route('register'), {
-            onFinish: () => reset('password', 'password_confirmation'),
+        post(route("register"), {
+            onFinish: () => reset("password", "password_confirmation"),
         });
     };
 
@@ -25,41 +31,107 @@ export default function Register() {
         <GuestLayout>
             <Head title="Register" />
 
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel htmlFor="name" value="Name" />
+            <form
+                onSubmit={submit}
+                encType="multipart/form-data"
+                className="space-y-6"
+            >
+                <h4 className="font-light text-3xl uppercase text-secondary">
+                    Sign up
+                </h4>
+                <Separator />
+                <div className="flex gap-4 items-end">
+                    <div>
+                        <AvatarInput
+                            id="avatar"
+                            name="avatar"
+                            className="mt-1 block w-full"
+                            onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                setData("avatar", file || null);
+                            }}
+                        />
+                    </div>
+                    <div className="w-full">
+                        <div>
+                            <InputLabel htmlFor="name" value="Name" />
 
-                    <TextInput
-                        id="name"
-                        name="name"
-                        value={data.name}
-                        className="mt-1 block w-full"
-                        autoComplete="name"
-                        isFocused={true}
-                        onChange={(e) => setData('name', e.target.value)}
-                        required
-                    />
+                            <TextInput
+                                id="name"
+                                name="name"
+                                value={data.name}
+                                className="mt-1 block w-full"
+                                autoComplete="off"
+                                isFocused={true}
+                                onChange={(e) =>
+                                    setData("name", e.target.value)
+                                }
+                                required
+                            />
 
-                    <InputError message={errors.name} className="mt-2" />
+                            <InputError
+                                message={errors.name}
+                                className="mt-2"
+                            />
+                        </div>
+
+                        <div className="mt-4">
+                            <InputLabel htmlFor="email" value="Email" />
+
+                            <TextInput
+                                id="email"
+                                type="email"
+                                name="email"
+                                value={data.email}
+                                className="mt-1 block w-full"
+                                autoComplete="off"
+                                onChange={(e) =>
+                                    setData("email", e.target.value)
+                                }
+                                required
+                            />
+
+                            <InputError
+                                message={errors.email}
+                                className="mt-2"
+                            />
+                        </div>
+                    </div>
                 </div>
+                <div className="mt-4 flex gap-4">
+                    <div className="mt-4 w-full">
+                        <InputLabel htmlFor="city" value="City" />
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Email" />
+                        <TextInput
+                            id="city"
+                            type="text"
+                            name="city"
+                            value={data.city}
+                            className="mt-1 block w-full"
+                            autoComplete="off"
+                            onChange={(e) => setData("city", e.target.value)}
+                            required
+                        />
 
-                    <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        onChange={(e) => setData('email', e.target.value)}
-                        required
-                    />
+                        <InputError message={errors.city} className="mt-2" />
+                    </div>
+                    <div className="mt-4 w-full">
+                        <InputLabel htmlFor="country" value="Country" />
 
-                    <InputError message={errors.email} className="mt-2" />
+                        <TextInput
+                            id="country"
+                            type="text"
+                            name="country"
+                            value={data.country}
+                            className="mt-1 block w-full"
+                            autoComplete="off"
+                            onChange={(e) => setData("country", e.target.value)}
+                            required
+                        />
+
+                        <InputError message={errors.country} className="mt-2" />
+                    </div>
                 </div>
-
                 <div className="mt-4">
                     <InputLabel htmlFor="password" value="Password" />
 
@@ -69,8 +141,8 @@ export default function Register() {
                         name="password"
                         value={data.password}
                         className="mt-1 block w-full"
-                        autoComplete="new-password"
-                        onChange={(e) => setData('password', e.target.value)}
+                        autoComplete="off"
+                        onChange={(e) => setData("password", e.target.value)}
                         required
                     />
 
@@ -89,9 +161,9 @@ export default function Register() {
                         name="password_confirmation"
                         value={data.password_confirmation}
                         className="mt-1 block w-full"
-                        autoComplete="new-password"
+                        autoComplete="off"
                         onChange={(e) =>
-                            setData('password_confirmation', e.target.value)
+                            setData("password_confirmation", e.target.value)
                         }
                         required
                     />
@@ -104,15 +176,19 @@ export default function Register() {
 
                 <div className="mt-4 flex items-center justify-end">
                     <Link
-                        href={route('login')}
-                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        href={route("login")}
+                        className="rounded-md text-sm text-secondary underline hover:text-secondary focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     >
                         Already registered?
                     </Link>
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
+                    <Button
+                        variant="secondary"
+                        className="ms-4"
+                        disabled={processing}
+                    >
                         Register
-                    </PrimaryButton>
+                    </Button>
                 </div>
             </form>
         </GuestLayout>

@@ -3,6 +3,8 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
+import { Button } from "@/Components/ui/button";
+import { Separator } from "@/Components/ui/separator";
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
 
@@ -31,7 +33,11 @@ export default function Login({ status, canResetPassword }) {
                 </div>
             )}
 
-            <form onSubmit={submit}>
+            <form onSubmit={submit} className="space-y-6">
+                <h4 className="font-light text-3xl uppercase text-secondary">
+                    Log in
+                </h4>
+                <Separator />
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
 
@@ -41,7 +47,7 @@ export default function Login({ status, canResetPassword }) {
                         name="email"
                         value={data.email}
                         className="mt-1 block w-full"
-                        autoComplete="username"
+                        autoComplete="off"
                         isFocused={true}
                         onChange={(e) => setData("email", e.target.value)}
                     />
@@ -74,7 +80,7 @@ export default function Login({ status, canResetPassword }) {
                                 setData("remember", e.target.checked)
                             }
                         />
-                        <span className="ms-2 text-sm text-gray-600">
+                        <span className="ms-2 text-sm text-secondary">
                             Remember me
                         </span>
                     </label>
@@ -84,21 +90,26 @@ export default function Login({ status, canResetPassword }) {
                     {canResetPassword && (
                         <Link
                             href={route("password.request")}
-                            className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="rounded-md text-sm text-secondary underline hover:text-secondary focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         >
                             Forgot your password?
                         </Link>
                     )}
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
+                    <Button
+                        variant="secondary"
+                        className="ms-4"
+                        disabled={processing}
+                    >
                         Log in
-                    </PrimaryButton>
+                    </Button>
                 </div>
-                <div className="flex items-center justify-center text-sm mt-8 w-full">
+                <Separator />
+                <div className="flex items-center justify-center text-secondary text-sm mt-8 w-full">
                     <p>Create new account?</p>
                     <Link
                         href={route("register")}
-                        className="rounded-md px-3 py-2 font-bold text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                        className="rounded-md px-3 py-2 font-bold text-secondary ring-1 ring-transparent transition hover:text-secondary/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                     >
                         Register here
                     </Link>

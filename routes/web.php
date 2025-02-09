@@ -11,14 +11,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -33,7 +25,7 @@ Route::middleware('auth')->group(function () {
 
 // Client Routes
 Route::name('client.')->group(function () {
-    Route::get('/home', [ClientHomeController::class, 'index'])->name('home');
+    Route::get('/', [ClientHomeController::class, 'index'])->name('home');
     Route::get('/explore', [ClientTourController::class, 'index'])->name('tours.index');
     Route::get('/explore/{id}', [ClientTourController::class, 'show'])->name('tours.show');
     Route::get('/wishlist', [ClientFavoriteController::class, 'index'])->name('favorites.index');
@@ -47,4 +39,4 @@ Route::name('client.')->group(function () {
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

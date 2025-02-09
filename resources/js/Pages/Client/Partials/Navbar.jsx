@@ -29,7 +29,7 @@ const Navbar = () => {
                 </span>
             </div>
             <nav className="hidden sm:flex bg-black/20 py-2 backdrop-blur-lg h-12 px-6 rounded-3xl items-center space-x-4 text-xs lg:text-sm">
-                <Link href="/home">Home</Link>
+                <Link href="/">Home</Link>
                 <Separator orientation="vertical" />
                 <Link href="/explore">Explore</Link>
                 <Separator orientation="vertical" />
@@ -67,7 +67,7 @@ const Navbar = () => {
                     </Dropdown>
                 ) : (
                     <Link
-                        className="text-sm px-4 hover:text-primary hover:scale-105 transition-all duration-300"
+                        className="text-base px-4 hover:text-primary hover:scale-105 transition-all duration-300"
                         href={route("login")}
                     >
                         Log in

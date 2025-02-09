@@ -11,10 +11,10 @@ const MobileNav = () => {
         <div className="sm:hidden z-50 fixed bottom-0 left-0 w-ful px-4 py-4 w-full">
             <nav className="flex bg-white max-w-96 mx-auto py-2 px-4 sm:px-12 rounded-full justify-between">
                 <Link
-                    href="/home"
+                    href="/"
                     className={cn(
                         "p-2 rounded-full ",
-                        isActive("/home") ? "bg-primary" : "text-primary"
+                        isActive("/") ? "bg-primary" : "text-primary"
                     )}
                 >
                     <Home className="size-5 sm:size-6" />
