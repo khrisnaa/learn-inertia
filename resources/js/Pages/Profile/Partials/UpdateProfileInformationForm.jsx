@@ -1,9 +1,10 @@
+import AvatarInput from "@/Components/AvatarInput";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { Transition } from "@headlessui/react";
-import { Link, useForm, usePage } from "@inertiajs/react";
+import { Link, router, useForm, usePage } from "@inertiajs/react";
 
 export default function UpdateProfileInformation({
     mustVerifyEmail,
@@ -16,17 +17,18 @@ export default function UpdateProfileInformation({
         useForm({
             name: user.name,
             email: user.email,
-            phone: user.phone,
-            avatar: user.avatar,
+            avatar: null,
             country: user.country,
             city: user.city,
-            avatar: user.avatar,
         });
 
     const submit = (e) => {
         e.preventDefault();
 
-        patch(route("profile.update"));
+        router.post(route("profile.update"), {
+            _method: "patch",
+            ...data,
+        });
     };
 
     return (
@@ -43,109 +45,112 @@ export default function UpdateProfileInformation({
 
             <form
                 onSubmit={submit}
-                className="mt-6 space-y-6"
+                className="mt-6 space-y-6 text-primary"
                 encType="multipart/form-data"
             >
-                <div>
-                    <InputLabel htmlFor="name" value="Name" />
-
-                    <TextInput
-                        id="name"
-                        className="mt-1 block w-full"
-                        value={data.name}
-                        onChange={(e) => setData("name", e.target.value)}
-                        required
-                        isFocused
-                        autoComplete="name"
-                    />
-
-                    <InputError className="mt-2" message={errors.name} />
-                </div>
-
-                <div>
-                    <InputLabel htmlFor="email" value="Email" />
-
-                    <TextInput
-                        id="email"
-                        type="email"
-                        className="mt-1 block w-full"
-                        value={data.email}
-                        onChange={(e) => setData("email", e.target.value)}
-                        required
-                        autoComplete="username"
-                    />
-
-                    <InputError className="mt-2" message={errors.email} />
-                </div>
-
-                <div>
-                    <InputLabel htmlFor="phone" value="Phone" />
-
-                    <TextInput
-                        id="phone"
-                        className="mt-1 block w-full"
-                        value={data.phone}
-                        onChange={(e) => setData("phone", e.target.value)}
-                        required
-                        isFocused
-                        autoComplete="off"
-                    />
-
-                    <InputError className="mt-2" message={errors.phone} />
-                </div>
-
-                <div>
-                    <InputLabel htmlFor="country" value="Country" />
-
-                    <TextInput
-                        id="country"
-                        className="mt-1 block w-full"
-                        value={data.country}
-                        onChange={(e) => setData("country", e.target.value)}
-                        required
-                        isFocused
-                        autoComplete="off"
-                    />
-
-                    <InputError className="mt-2" message={errors.country} />
-                </div>
-
-                <div>
-                    <InputLabel htmlFor="city" value="City" />
-
-                    <TextInput
-                        id="city"
-                        className="mt-1 block w-full"
-                        value={data.city}
-                        onChange={(e) => setData("city", e.target.value)}
-                        required
-                        isFocused
-                        autoComplete="off"
-                    />
-
-                    <InputError className="mt-2" message={errors.city} />
-                </div>
-
-                <div>
-                    <InputLabel htmlFor="avatar" value="Avatar" />
-
-                    <input
-                        type="file"
+                <div className="flex items-start">
+                    <AvatarInput
                         id="avatar"
-                        accept="image/*"
+                        name="avatar"
                         className="mt-1 block w-full"
-                        onChange={(e) => setData("avatar", e.target.files[0])}
+                        defaultValue={user.avatar}
+                        onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            setData("avatar", file || null);
+                        }}
                     />
-
-                    {data.avatar && (
-                        <img
-                            src={URL.createObjectURL(data.avatar)}
-                            alt="Preview"
-                            className="mt-2 h-20 w-20 rounded-full object-cover"
-                        />
-                    )}
 
                     <InputError className="mt-2" message={errors.avatar} />
+                </div>
+
+                <div className="flex gap-8">
+                    <div className="w-full space-y-4">
+                        <div>
+                            <InputLabel htmlFor="name" value="Name" />
+
+                            <TextInput
+                                id="name"
+                                className="mt-1 block w-full"
+                                value={data.name}
+                                onChange={(e) =>
+                                    setData("name", e.target.value)
+                                }
+                                required
+                                isFocused
+                                autoComplete="name"
+                            />
+
+                            <InputError
+                                className="mt-2"
+                                message={errors.name}
+                            />
+                        </div>
+
+                        <div>
+                            <InputLabel htmlFor="email" value="Email" />
+
+                            <TextInput
+                                id="email"
+                                type="email"
+                                className="mt-1 block w-full"
+                                value={data.email}
+                                onChange={(e) =>
+                                    setData("email", e.target.value)
+                                }
+                                required
+                                autoComplete="username"
+                            />
+
+                            <InputError
+                                className="mt-2"
+                                message={errors.email}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="w-full space-y-4">
+                        <div>
+                            <InputLabel htmlFor="country" value="Country" />
+
+                            <TextInput
+                                id="country"
+                                className="mt-1 block w-full"
+                                value={data.country}
+                                onChange={(e) =>
+                                    setData("country", e.target.value)
+                                }
+                                required
+                                isFocused
+                                autoComplete="off"
+                            />
+
+                            <InputError
+                                className="mt-2"
+                                message={errors.country}
+                            />
+                        </div>
+
+                        <div>
+                            <InputLabel htmlFor="city" value="City" />
+
+                            <TextInput
+                                id="city"
+                                className="mt-1 block w-full"
+                                value={data.city}
+                                onChange={(e) =>
+                                    setData("city", e.target.value)
+                                }
+                                required
+                                isFocused
+                                autoComplete="off"
+                            />
+
+                            <InputError
+                                className="mt-2"
+                                message={errors.city}
+                            />
+                        </div>
+                    </div>
                 </div>
 
                 {mustVerifyEmail && user.email_verified_at === null && (

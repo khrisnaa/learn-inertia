@@ -32,27 +32,30 @@ class ProfileController extends Controller
     {
 
         $user = $request->user();
-        $user->fill($request->validated());
+
+        $data = $request->validated();
+
+        if ($request->avatar === null) {
+            unset($data['avatar']);
+        }
+
+        $user->fill($data);
 
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
 
         if ($request->hasFile('avatar')) {
-            // Hapus avatar lama jika ada
             if ($user->avatar) {
                 Storage::disk('public')->delete($user->avatar);
             }
 
-            // Simpan avatar baru di `storage/app/public/avatars`
-            $path = $request->file('avatar')->store('avatars/'.date('Y/m/d'), 'public');
-            $user->avatar = $path;
+            $user->avatar = $request->file('avatar')->store('user-avatars', 'public');
         }
 
         $user->save();
 
-        return Redirect::route('profile.edit');
-        ;
+        return Redirect::route('profile.edit');;
     }
 
     /**
