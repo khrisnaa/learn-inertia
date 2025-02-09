@@ -1,34 +1,29 @@
 import { Button } from "@/Components/ui/button";
+import { Input } from "@/Components/ui/input";
+import { Label } from "@/Components/ui/label";
+import { Separator } from "@/Components/ui/separator";
+import { Textarea } from "@/Components/ui/textarea";
 import ClientLayout from "@/Layouts/ClientLayout";
 import { useForm } from "@inertiajs/react";
+import { ArrowDownToDot, Minus, Plus } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
-const Booking = ({ tour }) => {
-    const { data, setData, post, processing, errors } = useForm({
-        tour_id: "",
+const Booking = ({ tour, auth }) => {
+    const { data, setData, post, errors, processing } = useForm({
+        tour_id: tour.id,
+        name: auth?.user?.name || "",
+        email: auth?.user?.email || "",
         quantity: "1",
-        total_price: "",
-        status: "Pending",
         note: "",
-        transfer_proof: null,
     });
 
-    const [preview, setPreview] = useState(null);
+    const [quantity, setQuantity] = useState(1);
+    const [total, setTotal] = useState(tour.price);
 
     useEffect(() => {
-        if (data.quantity) {
-            const totalPrice = data.quantity * tour.price;
-            setData("total_price", totalPrice.toFixed(2)); // Set total price with 2 decimal points
-        } else {
-            setData("total_price", 0); // Reset to 0 if no quantity
-        }
-    }, [data.quantity, tour.price, setData]);
-
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        setData("transfer_proof", file);
-        setPreview(URL.createObjectURL(file));
-    };
+        setData("quantity", quantity);
+        setTotal(tour.price * quantity);
+    }, [quantity, total, setData]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -45,72 +40,130 @@ const Booking = ({ tour }) => {
                             className="object-cover"
                         />
                     </div>
-                    <div className="space-y-1 py-4">
-                        <h4>{tour.name}</h4>
-                        <p className="text-sm">{tour.location}</p>
-                        <p className="text-muted-foreground">{tour.overview}</p>
+                    <div className="space-y-4 py-2">
+                        <Separator />
+                        <div className="space-y-2">
+                            <h4 className="font-light text-3xl">{tour.name}</h4>
+                            <a
+                                target="blank"
+                                href="https://maps.app.goo.gl/N98KAjyyuwpCed427"
+                                className="text-sm flex items-center gap-2 group w-fit"
+                            >
+                                <ArrowDownToDot className="h-4 w-4 group-hover:-rotate-90 transition-all duration-500" />
+                                <span className="group-hover:translate-x-2 transition-all duration-500">
+                                    {tour.location}
+                                </span>
+                            </a>
+                        </div>
+
+                        <div className="text-sm space-y-2">
+                            <p className="flex items-center gap-2">
+                                <span className="text-sm text-secondary">
+                                    Duration:
+                                </span>
+                                {tour.duration}
+                            </p>
+                            <p className="flex items-center gap-2">
+                                <span className="text-sm text-secondary">
+                                    Price:
+                                </span>
+                                $ {tour.price}/person
+                            </p>
+                        </div>
+                        <Separator />
+                        <div className="text-sm text-secondary/50">
+                            {tour.overview}
+                        </div>
                     </div>
                 </div>
+
                 <div className="col-span-1 p-12">
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium">
-                                Quantity
-                            </label>
-                            <input
-                                type="number"
-                                value={data.quantity}
-                                onChange={(e) =>
-                                    setData("quantity", e.target.value)
-                                }
-                                className="w-full border bg-primary rounded  p-2"
+                            <Label>Name</Label>
+                            <Input
+                                type="text"
+                                value={data.name}
+                                disabled
+                                className="w-full border  rounded p-2"
                             />
+                        </div>
+
+                        <div>
+                            <Label>Email</Label>
+                            <Input
+                                type="email"
+                                value={data.email}
+                                disabled
+                                className="w-full border  rounded p-2"
+                            />
+                        </div>
+
+                        <div>
+                            <Label>Quantity</Label>
+                            <div className="flex items-center gap-4">
+                                <Input
+                                    type="number"
+                                    value={quantity}
+                                    onChange={(e) => {
+                                        const newQuantity = Math.max(
+                                            1,
+                                            parseInt(e.target.value) || 1
+                                        );
+                                        setQuantity(newQuantity);
+                                    }}
+                                    className="w-full border rounded p-2"
+                                />
+                                <Button
+                                    onClick={() =>
+                                        setQuantity((prev) =>
+                                            Math.max(1, prev - 1)
+                                        )
+                                    }
+                                    type="button"
+                                    variant="secondary"
+                                    className="size-8"
+                                >
+                                    <Minus />
+                                </Button>
+                                <Button
+                                    onClick={() =>
+                                        setQuantity((prev) => prev + 1)
+                                    }
+                                    type="button"
+                                    variant="secondary"
+                                    className="size-8"
+                                >
+                                    <Plus />
+                                </Button>
+                            </div>
                             {errors.quantity && (
                                 <p className="text-red-500 text-sm">
                                     {errors.quantity}
                                 </p>
                             )}
                         </div>
+                        <div className="flex flex-col items-start gap-1">
+                            <Label className="text-secondary">
+                                Total Price
+                            </Label>
+                            <span className="text-lg font-semibold text-secondary/90">
+                                ${total.toLocaleString()}
+                            </span>
+                        </div>
 
                         <div>
-                            <label className="block text-sm font-medium">
-                                Note
-                            </label>
-                            <textarea
+                            <Label>Note (Optional)</Label>
+                            <Textarea
                                 value={data.note}
                                 onChange={(e) =>
                                     setData("note", e.target.value)
                                 }
-                                className="w-full bg-primary  border rounded p-2"
+                                className="w-full border rounded p-2"
                             />
                             {errors.note && (
                                 <p className="text-red-500 text-sm">
                                     {errors.note}
-                                </p>
-                            )}
-                        </div>
-                        <div className="flex gap-4 justify-end">
-                            Total price :<span>{data.total_price}</span>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium">
-                                Transfer Proof
-                            </label>
-                            <input
-                                type="file"
-                                onChange={handleFileChange}
-                                className="w-full text-primary border rounded p-2"
-                            />
-                            {preview && (
-                                <img
-                                    src={preview}
-                                    alt="Preview"
-                                    className="mt-2 w-40 h-40 object-cover rounded"
-                                />
-                            )}
-                            {errors.transfer_proof && (
-                                <p className="text-red-500 text-sm">
-                                    {errors.transfer_proof}
                                 </p>
                             )}
                         </div>
@@ -121,7 +174,7 @@ const Booking = ({ tour }) => {
                             disabled={processing}
                             className="w-full mt-4"
                         >
-                            {processing ? "Submitting..." : "Submit"}
+                            {processing ? "Sending..." : "Send Order"}
                         </Button>
                     </form>
                 </div>
