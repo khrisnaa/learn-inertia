@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('total_price', 10, 2);
             $table->enum('status', ['Pending', 'Confirmed', 'Canceled', 'Completed'])->default('Pending');
             $table->text('note')->nullable();
-            $table->timestamp('booking_date')->useCurrent();
+            $table->timestamp('booking_date')->nullable();
             $table->string('transfer_proof')->nullable();
             $table->softDeletes();
             $table->timestamps();

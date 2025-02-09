@@ -60,4 +60,9 @@ class Tour extends Model
     {
         return $this->hasMany(HeroSlider::class);
     }
+
+    public function homeHighlights()
+    {
+        return $this->hasMany(Highlight::class);
+    }
 }

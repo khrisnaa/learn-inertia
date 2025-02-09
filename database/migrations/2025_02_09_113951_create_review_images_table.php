@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('review_images', function (Blueprint $table) {
             $table->uuid('id')->primary()->unique();
-            $table->foreignUuid('user_id')->constrained()->onDelete('cascade');
-            $table->foreignUuid('tour_id')->constrained()->onDelete('cascade');
-            $table->integer('rating')->default(5);
-            $table->text('comment');
-            $table->boolean('is_active')->default(true);
-            $table->boolean('is_highlight')->default(true);
+            $table->foreignUuid('review_id')->constrained()->onDelete('cascade');
+            $table->string('image_url');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('review_images');
     }
 };
