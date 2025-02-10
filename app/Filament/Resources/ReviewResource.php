@@ -20,6 +20,8 @@ class ReviewResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-star';
 
+    protected static ?string $navigationGroup = 'Transactions';
+
     public static function form(Form $form): Form
     {
         return $form
