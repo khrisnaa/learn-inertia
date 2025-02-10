@@ -11,7 +11,8 @@ class Category extends Model
     use HasUuids, SoftDeletes;
 
     protected $fillable = [
-        "name"
+        "name",
+        "is_active"
     ];
 
     public function tours()

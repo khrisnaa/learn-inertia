@@ -7,6 +7,9 @@ use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Carbon\Carbon;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -20,14 +23,27 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
+    protected static ?string $navigationGroup = 'Tour Packages';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->autocomplete(false),
+                Section::make()
+                    ->schema([
+                        TextInput::make('name')
+                            ->label('Tour Name')
+                            ->required()
+                            ->autocomplete(false)
+                            ->placeholder('Wildlife')
+                            ->helperText('Enter the name of the category'),
+                        Toggle::make('is_active')
+                            ->label('Category Status')
+                            ->default(true)
+                            ->helperText('Toggle to activate or deactivate this category status. When active, it will be visible and accessible.')
+                            ->onIcon('heroicon-m-check-circle')
+                            ->offIcon('heroicon-m-x-circle'),
+                    ])
             ]);
     }
 
@@ -37,15 +53,19 @@ class CategoryResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->toggleable(isToggledHiddenByDefault: true)
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->toggleable(isToggledHiddenByDefault: true)
                     ->sortable()
+                    ->limit(30),
+                Tables\Columns\TextColumn::make('tours_count')
+                    ->label('Tours Count')
+                    ->counts('tours')
+                    ->sortable()
+                    ->alignCenter(),
+                Tables\Columns\TextColumn::make('is_active')
+                    ->badge()
+                    ->label('Status')
+                    ->color(fn(bool $state): string => $state ? 'success' : 'danger')
+                    ->formatStateUsing(fn(bool $state): string => $state ? 'Active' : 'Inactive')
+                    ->alignCenter(),
             ])
             ->filters([
                 //

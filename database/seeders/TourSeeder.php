@@ -47,7 +47,14 @@ class TourSeeder extends Seeder
         $categoryIds = [];
         foreach ($categories as $category) {
             $id = Str::uuid();
-            DB::table('categories')->insert(['id' => $id, 'name' => $category]);
+            DB::table('categories')->insert([
+                'id' => $id,
+                'name' => $category,
+                'is_active' => true, // Set default active status
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
             $categoryIds[$category] = $id;
         }
 
