@@ -1,20 +1,22 @@
 <?php
 
-use App\Http\Controllers\Client\HomeController as ClientHomeController;
-use App\Http\Controllers\Client\FavoriteController as ClientFavoriteController;
-use App\Http\Controllers\Client\TourController as ClientTourController;
-use App\Http\Controllers\Client\ContactController as ClientContactController;
-use App\Http\Controllers\Client\BookingController as ClientBookingController;
-
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Client\ContactController;
+
+use App\Http\Controllers\Client\HomeController as ClientHomeController;
+use App\Http\Controllers\Client\TourController as ClientTourController;
+use App\Http\Controllers\Client\BookingController as ClientBookingController;
+use App\Http\Controllers\Client\ContactController as ClientContactController;
+use App\Http\Controllers\Client\FavoriteController as ClientFavoriteController;
 
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,5 +40,7 @@ Route::name('client.')->group(function () {
     });
 });
 
+
+Route::post('/send-email', [ContactController::class, 'send'])->name('contact.send');
 
 require __DIR__ . '/auth.php';
