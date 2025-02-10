@@ -54,6 +54,9 @@ class RegisteredUserController extends Controller
             'country' => $request->country
         ]);
 
+
+        $user->assignRole('member');
+
         event(new Registered($user));
 
         Auth::login($user);
