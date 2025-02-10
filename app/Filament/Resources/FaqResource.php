@@ -6,7 +6,8 @@ use App\Filament\Resources\FaqResource\Pages;
 use App\Filament\Resources\FaqResource\RelationManagers;
 use App\Models\Faq;
 use Filament\Forms;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\TextArea;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -21,18 +22,27 @@ class FaqResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-question-mark-circle';
 
+    protected static ?string $navigationGroup = 'Web';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('question')
-                    ->required()
-                    ->maxLength(255)
-                    ->autocomplete(false),
-                TextInput::make('answer')
-                    ->required()
-                    ->maxLength(255)
-                    ->autocomplete(false)
+                Section::make()
+                    ->schema([
+                        TextArea::make('question')
+                            ->label('Question')
+                            ->required()
+                            ->autocomplete(false)
+                            ->placeholder('Does the tour include transportation, and what type is used?')
+                            ->helperText('Enter the qustion of the faqs.'),
+                        TextArea::make('answer')
+                            ->label('Answer')
+                            ->required()
+                            ->autocomplete(false)
+                            ->placeholder('Yes, transportation is provided, including jeep safaris and local transport, depending on the tour.')
+                            ->helperText('Enter the answer of the faqs.'),
+                    ])
             ]);
     }
 
@@ -42,10 +52,12 @@ class FaqResource extends Resource
             ->columns([
                 TextColumn::make('question')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->limit(50),
                 TextColumn::make('answer')
                     ->searchable()
                     ->sortable()
+                    ->limit(50)
             ])
             ->filters([
                 //

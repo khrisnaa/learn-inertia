@@ -6,6 +6,7 @@ use App\Filament\Resources\HeroSliderResource\Pages;
 use App\Filament\Resources\HeroSliderResource\RelationManagers;
 use App\Models\HeroSlider;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -23,15 +24,25 @@ class HeroSliderResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Web';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Select::make('tour_id')
-                    ->label('Tour')
-                    ->relationship('tour', 'name')
-                    ->required(),
-                Toggle::make('is_active')->default(true),
+                Section::make()
+                    ->schema([
+                        Select::make('tour_id')
+                            ->label('Selected Tour')
+                            ->relationship('tour', 'name')
+                            ->required(),
+                        Toggle::make('is_active')
+                            ->label('Slider Status')
+                            ->default(true)
+                            ->helperText('Toggle to activate or deactivate this hero slider status. When active, it will be visible and accessible.')
+                            ->onIcon('heroicon-m-check-circle')
+                            ->offIcon('heroicon-m-x-circle'),
+                    ])
             ]);
     }
 
@@ -40,7 +51,12 @@ class HeroSliderResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('tour.name')->label('Tour Name')->sortable()->searchable(),
-                ToggleColumn::make('is_active')->label('Active'),
+                Tables\Columns\TextColumn::make('is_active')
+                    ->badge()
+                    ->label('Status')
+                    ->color(fn(bool $state): string => $state ? 'success' : 'danger')
+                    ->formatStateUsing(fn(bool $state): string => $state ? 'Active' : 'Inactive')
+                    ->alignCenter(),
             ])
             ->filters([
                 //
