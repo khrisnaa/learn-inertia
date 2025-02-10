@@ -15,7 +15,17 @@ import ImageContainer from "./Partials/ImageContainer";
 const Favorites = ({ tours: wishlists }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
+    if (!wishlists) {
+        return (
+            <ClientLayout>
+                <div className="h-screen flex items-center justify-center">
+                    <p>No Items Found</p>
+                </div>
+            </ClientLayout>
+        );
+    }
     const tours = wishlists.map((wishlist) => wishlist.tour);
+
     return (
         <ClientLayout>
             <div className="min-h-screen sm:flex flex-col md:grid grid-cols-2 gap-2 px-6 pt12 sm:px-12 pt-28  sm:py-24">

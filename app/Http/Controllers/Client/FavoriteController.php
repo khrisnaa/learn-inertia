@@ -19,6 +19,10 @@ class FavoriteController extends Controller
 
         $tours = Favorite::where('user_id', $userId)->with('tour.categories')->get();
 
+        if ($tours->isEmpty()) {
+            $tours = null;
+        }
+
         return inertia('Client/Favorites', compact('tours'));
     }
 
