@@ -2,7 +2,7 @@ import { ScrollArea } from "@/Components/ui/scroll-area";
 import React from "react";
 import OrderCard from "../Components/OrderCard";
 
-const OrderHistory = () => {
+const OrderHistory = ({ bookings }) => {
     return (
         <div className="bg-secondary w-full p-4 sm:p-8 rounded-lg space-y-8">
             <header>
@@ -15,10 +15,9 @@ const OrderHistory = () => {
                 </p>
             </header>
             <div className="flex flex-col gap-4">
-                <OrderCard />
-                <OrderCard />
-                <OrderCard />
-                <OrderCard />
+                {bookings.map((booking, i) => (
+                    <OrderCard booking={booking} key={i} />
+                ))}
             </div>
         </div>
     );

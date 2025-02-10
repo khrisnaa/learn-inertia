@@ -6,7 +6,7 @@ import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationFor
 import ClientLayout from "@/Layouts/ClientLayout";
 import OrderHistory from "./Partials/OrderHistory";
 
-export default function Edit({ mustVerifyEmail, status }) {
+export default function Edit({ mustVerifyEmail, status, bookings }) {
     return (
         <ClientLayout>
             <Head title="Profile" />
@@ -19,7 +19,7 @@ export default function Edit({ mustVerifyEmail, status }) {
                             className="w-full"
                         />
                     </div>
-                    <OrderHistory />
+                    <OrderHistory bookings={bookings} />
                 </div>
             </div>
         </ClientLayout>

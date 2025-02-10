@@ -2,30 +2,45 @@ import { Separator } from "@/Components/ui/separator";
 import { ArrowDownToDot, ArrowRight } from "lucide-react";
 import React from "react";
 import ReviewModal from "../Partials/ReviewModal";
+import { cn } from "@/lib/utils";
 
-const OrderCard = () => {
+const OrderCard = ({ booking }) => {
     return (
         <div className="text-primary flex gap-4">
-            <div className="w-[26rem] relative h-64 overflow-hidden bg-red-400 rounded-md">
-                <img src="/assets/images/rainforest.jpg" />
-                <div className="absolute font-medium bottom-0 bg-green-100 text-green-700 text-sm border p-2 bg-secondary w-full">
-                    Comfirmed
+            <div className="w-[26rem] relative h-64 overflow-hidden rounded-md">
+                <img src={`/storage/${booking.tour.thumbnail}`} />
+                <div
+                    className={cn(
+                        "absolute font-medium bottom-0 text-sm border p-2 w-full rounded-md text-start",
+                        {
+                            "bg-yellow-100 text-yellow-700 border-yellow-500":
+                                booking.status === "Pending",
+                            "bg-blue-100 text-blue-700 border-blue-500":
+                                booking.status === "Confirmed",
+                            "bg-red-100 text-red-700 border-red-500":
+                                booking.status === "Canceled",
+                            "bg-green-100 text-green-700 border-green-500":
+                                booking.status === "Completed",
+                        }
+                    )}
+                >
+                    {booking.status}
                 </div>
             </div>
             <div className="space-y-8">
                 <div className="space-y-4">
                     <div className="space-y-2">
                         <h4 className="font-light text-3xl">
-                            Tropical Rainforest Adventure - Gunung Leuser
+                            {booking.tour.name}
                         </h4>
                         <a
                             target="blank"
-                            href="https://maps.app.goo.gl/N98KAjyyuwpCed427"
+                            href="#"
                             className="text-sm flex items-center gap-2 group w-fit"
                         >
                             <ArrowDownToDot className="h-4 w-4 group-hover:-rotate-90 transition-all duration-500" />
                             <span className="group-hover:translate-x-2 transition-all duration-500">
-                                Gunung Leusser National Park, Sumatra
+                                {booking.tour.location}
                             </span>
                         </a>
                     </div>
@@ -35,13 +50,13 @@ const OrderCard = () => {
                             <span className="text-sm text-gray-800">
                                 Duration:
                             </span>
-                            3 Days 2 Nights
+                            {booking.tour.duration}
                         </p>
                         <p className="flex items-center gap-2">
                             <span className="text-sm text-gray-800">
                                 Price:
                             </span>
-                            $ 170/person
+                            $ {booking.tour.price}/person
                         </p>
                     </div>
                     <Separator />
@@ -49,8 +64,10 @@ const OrderCard = () => {
                 <div className="flex justify-between">
                     <div>
                         <span className="font-semibold">Total: </span>
-                        <span>$ 240 </span>
-                        <span className="text-xs">(4 person)</span>
+                        <span>$ {booking.total_price} </span>
+                        <span className="text-xs">
+                            (${booking.quantity} pax)
+                        </span>
                     </div>
 
                     <ReviewModal />

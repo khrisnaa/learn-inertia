@@ -218,10 +218,7 @@ class TourResource extends Resource
                     ->width(100),
                 TextColumn::make('price')
                     ->label('Price')
-                    ->getStateUsing(function ($record) {
-                        $price = $record->first()->price ?? 0;
-                        return '$ ' . number_format($price, 0, ',', '.');
-                    })
+                    ->getStateUsing(fn($record) => '$ ' . number_format($record->price ?? 0, 0, ',', '.'))
                     ->sortable(),
                 TextColumn::make('duration')
                     ->searchable()
