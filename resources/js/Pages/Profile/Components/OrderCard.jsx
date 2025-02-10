@@ -69,8 +69,10 @@ const OrderCard = ({ booking }) => {
                             (${booking.quantity} pax)
                         </span>
                     </div>
-
-                    <ReviewModal />
+                    {booking.reviews == [] &&
+                        booking.status === "Completed" && (
+                            <ReviewModal bookingId={booking.id} />
+                        )}
                 </div>
             </div>
         </div>

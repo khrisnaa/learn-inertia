@@ -39,8 +39,7 @@ class TourController extends Controller
 
     public function show($id)
     {
-        $tour = Tour::with(['categories', 'images', 'includes', 'highlights'])->findOrFail($id);
+        $tour = Tour::with(['categories', 'images', 'includes', 'highlights', 'reviews.user', 'reviews.images'])->findOrFail($id);
         return inertia('Client/Tours/Show', compact('tour'));
     }
-
 }

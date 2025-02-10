@@ -30,7 +30,7 @@ const DetailCarousel = ({ tour }) => {
                         </div>
                     </div>
                     <div className="flex-[0_0_100%] pl-4 min-h-screen h-full ">
-                        <div className="h-full">
+                        <div className="h-screen relative">
                             <ReviewList />
                         </div>
                     </div>

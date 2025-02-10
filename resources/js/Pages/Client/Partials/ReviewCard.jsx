@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import ReviewImageCarousel from "../Components/ReviewImageCarousel";
 import { Button } from "@/Components/ui/button";
 
-const ReviewCard = () => {
+const ReviewCard = ({ review }) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div className="w-full rounded-lg border border-secondary  space-y-8 px-8 py-4">
@@ -17,23 +17,18 @@ const ReviewCard = () => {
                     />
                 </Avatar>
                 <div>
-                    <h4 className="font-medium text-lg ">John Doe</h4>
-                    <p className="text-sm text-gray-300">Travel Enthusiast</p>
+                    <h4 className="font-medium text-lg ">{review.user.name}</h4>
+                    <p className="text-sm text-gray-300">
+                        {review.user.city}, {review.user.country}
+                    </p>
                 </div>
             </div>
             <div className="flex flex-col gap-4">
-                <p className="text-sm">
-                    "The wildlife tour was an unforgettable experience! The
-                    guides were knowledgeable, and the sights were breathtaking.
-                    Highly recommended for anyone seeking adventure and a deep
-                    connection with nature."
-                </p>
+                <p className="text-sm">"{review.comment}"</p>
                 <div className="flex items-center">
-                    <Star className="h-4 w-4" />
-                    <Star className="h-4 w-4" />
-                    <Star className="h-4 w-4" />
-                    <Star className="h-4 w-4" />
-                    <StarHalf className="h-4 w-4" />
+                    {Array.from({ length: review.rating }).map((_, i) => (
+                        <Star key={i} className="h-4 w-4" />
+                    ))}
                 </div>
             </div>
             <div className="flex flex-col  items-end ">
@@ -57,7 +52,7 @@ const ReviewCard = () => {
                         isOpen ? "max-h-80 mt-8" : "max-h-0"
                     )}
                 >
-                    <ReviewImageCarousel />
+                    <ReviewImageCarousel images={review.images} />
                 </div>
             </div>
         </div>

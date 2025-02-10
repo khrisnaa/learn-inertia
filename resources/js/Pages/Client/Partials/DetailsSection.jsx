@@ -39,7 +39,10 @@ const DetailsSection = ({ tour }) => {
                         <h5 className="font-medium text-lg">Includes</h5>
                         <ul>
                             {tour.includes.map((include, i) => (
-                                <li className="flex group items-center cursor-default gap-2">
+                                <li
+                                    key={i}
+                                    className="flex group items-center cursor-default gap-2"
+                                >
                                     <Plus className="group-hover:rotate-90 transition-all duration-500 h-4 w-4" />
                                     <span className="group-hover:translate-x-4 transition-all duration-500">
                                         {include.include_item}
@@ -52,7 +55,10 @@ const DetailsSection = ({ tour }) => {
                         <h5 className="font-medium text-lg">Highlights</h5>
                         <ul>
                             {tour.highlights.map((highlight, i) => (
-                                <li className="flex group items-center cursor-default gap-2">
+                                <li
+                                    key={i}
+                                    className="flex group items-center cursor-default gap-2"
+                                >
                                     <Plus className="group-hover:rotate-90 transition-all duration-500 h-4 w-4" />
                                     <span className="group-hover:translate-x-4 transition-all duration-500">
                                         {highlight.highlight_item}

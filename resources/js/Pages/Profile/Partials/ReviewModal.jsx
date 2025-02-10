@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useForm } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
 import {
     Dialog,
     DialogContent,
@@ -14,7 +14,10 @@ import { Input } from "@/Components/ui/input";
 import { ArrowRight, Star } from "lucide-react";
 
 const ReviewModal = ({ bookingId }) => {
-    const { data, setData, post, errors, processing } = useForm({
+    const { auth } = usePage().props;
+    const { data, setData, post, errors, processing, reset } = useForm({
+        user_id: auth.user.id,
+        booking_id: bookingId,
         comment: "",
         rating: 0,
         images: [],
@@ -30,14 +33,21 @@ const ReviewModal = ({ bookingId }) => {
         setPreviewImages(previews);
     };
 
+    const [open, setOpen] = useState(false);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("reviews.store", { booking: bookingId }));
+
+        post(route("review.store"), {
+            onFinish: () => {
+                reset(), setOpen(false);
+            },
+        });
     };
 
     return (
-        <Dialog>
-            <DialogTrigger>
+        <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger onClick={() => setOpen(true)}>
                 <span className="text-sm flex items-center gap-2 group">
                     Give Review
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-2 transition-all duration-500" />

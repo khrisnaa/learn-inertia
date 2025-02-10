@@ -7,15 +7,15 @@ import {
 } from "@/Components/ui/carousel";
 import React from "react";
 
-const ReviewImageCarousel = () => {
+const ReviewImageCarousel = ({ images }) => {
     return (
         <Carousel className="pb-12">
             <CarouselContent>
-                {Array.from({ length: 5 }).map((_, i) => (
+                {images.map((image, i) => (
                     <CarouselItem key={i}>
                         <div className="relative overflow-hidden rounded-lg max-h-64">
                             <img
-                                src="/assets/images/dummy_hero.jpg"
+                                src={`/storage/${image.image_url}`}
                                 className="object-contain w-full h-full"
                             />
                         </div>

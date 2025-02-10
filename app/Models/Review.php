@@ -13,6 +13,7 @@ class Review extends Model
     protected $fillable = [
         'user_id',
         'tour_id',
+        'booking_id',
         'rating',
         'comment',
         'image',
@@ -28,6 +29,11 @@ class Review extends Model
     public function tour()
     {
         return $this->belongsTo(Tour::class);
+    }
+
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class);
     }
 
     public function images()
