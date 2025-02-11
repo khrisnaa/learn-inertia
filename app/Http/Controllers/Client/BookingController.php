@@ -28,13 +28,7 @@ class BookingController extends Controller
         $tour = Tour::findOrFail($request->tour_id);
         $totalPrice = $tour->price * $request->quantity;
 
-        Booking::create([
-            'tour_id' => $request->tour_id,
-            'user_id' => $request->user_id,
-            'quantity' => $request->quantity,
-            'total_price' => $totalPrice,
-            'note' => $request->note
-        ]);
+
 
         $phoneNumber = '6282266113097';
 
@@ -50,6 +44,19 @@ class BookingController extends Controller
 
         $whatsappUrl = "https://wa.me/{$phoneNumber}?text=" . urlencode($message);
 
-        return Inertia::location($whatsappUrl);
+        Booking::create([
+            'tour_id' => $request->tour_id,
+            'user_id' => $request->user_id,
+            'quantity' => $request->quantity,
+            'total_price' => $totalPrice,
+            'note' => $request->note,
+            'whatsapp_url' => $whatsappUrl
+        ]);
+
+        return Inertia::render('Client/Booking', [
+            'tour' => $tour,
+            'whatsappUrl' => $whatsappUrl,
+            'successMessage' => 'Booking confirmed!',
+        ]);
     }
 }

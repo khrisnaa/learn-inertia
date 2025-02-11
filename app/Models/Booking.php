@@ -18,7 +18,8 @@ class Booking extends Model
         'status',
         'note',
         'booking_date',
-        'transfer_proof'
+        'transfer_proof',
+        'whatsapp_url'
     ];
 
     public function user()

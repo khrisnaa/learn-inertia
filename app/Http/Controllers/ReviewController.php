@@ -50,6 +50,6 @@ class ReviewController extends Controller
             }
         }
 
-        return redirect(route('profile.edit', absolute: false));
+        return session()->flash('success', 'Review has been succesfully saved!');
     }
 }

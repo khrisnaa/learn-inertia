@@ -70,13 +70,12 @@ export default function UpdateProfileInformation({
 
                             <TextInput
                                 id="name"
-                                className="mt-1 block w-full"
+                                className="mt-1 block w-full focus:border-primary"
                                 value={data.name}
                                 onChange={(e) =>
                                     setData("name", e.target.value)
                                 }
                                 required
-                                isFocused
                                 autoComplete="name"
                             />
 
@@ -92,7 +91,7 @@ export default function UpdateProfileInformation({
                             <TextInput
                                 id="email"
                                 type="email"
-                                className="mt-1 block w-full"
+                                className="mt-1 block w-full focus:border-primary"
                                 value={data.email}
                                 onChange={(e) =>
                                     setData("email", e.target.value)
@@ -114,13 +113,12 @@ export default function UpdateProfileInformation({
 
                             <TextInput
                                 id="country"
-                                className="mt-1 block w-full"
+                                className="mt-1 block w-full focus:border-primary"
                                 value={data.country}
                                 onChange={(e) =>
                                     setData("country", e.target.value)
                                 }
                                 required
-                                isFocused
                                 autoComplete="off"
                             />
 
@@ -135,13 +133,12 @@ export default function UpdateProfileInformation({
 
                             <TextInput
                                 id="city"
-                                className="mt-1 block w-full"
+                                className="mt-1 block w-full focus:border-primary"
                                 value={data.city}
                                 onChange={(e) =>
                                     setData("city", e.target.value)
                                 }
                                 required
-                                isFocused
                                 autoComplete="off"
                             />
 

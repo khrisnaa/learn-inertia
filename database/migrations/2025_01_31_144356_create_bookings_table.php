@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('note')->nullable();
             $table->timestamp('booking_date')->nullable();
             $table->string('transfer_proof')->nullable();
+            $table->text('whatsapp_url')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

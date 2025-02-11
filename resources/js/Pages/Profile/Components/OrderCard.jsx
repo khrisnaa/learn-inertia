@@ -3,9 +3,9 @@ import { ArrowDownToDot, ArrowRight } from "lucide-react";
 import React from "react";
 import ReviewModal from "../Partials/ReviewModal";
 import { cn } from "@/lib/utils";
+import { Button } from "@/Components/ui/button";
 
 const OrderCard = ({ booking }) => {
-    console.log(booking.review);
     return (
         <div className="text-primary flex gap-4">
             <div className="w-[26rem] relative h-64 overflow-hidden rounded-md">
@@ -74,6 +74,13 @@ const OrderCard = ({ booking }) => {
                         booking.status === "Completed" && (
                             <ReviewModal bookingId={booking.id} />
                         )}
+                    {booking.status === "Pending" && (
+                        <a target="_blank" href={booking.whatsapp_url}>
+                            <Button type="button" className="mt-3">
+                                Confirm on WhatsApp
+                            </Button>
+                        </a>
+                    )}
                 </div>
             </div>
         </div>

@@ -4,11 +4,30 @@ import { Label } from "@/Components/ui/label";
 import { Separator } from "@/Components/ui/separator";
 import { Textarea } from "@/Components/ui/textarea";
 import ClientLayout from "@/Layouts/ClientLayout";
-import { useForm } from "@inertiajs/react";
+import { Link, useForm, usePage } from "@inertiajs/react";
 import { ArrowDownToDot, Minus, Plus } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/Components/ui/dialog";
 
 const Booking = ({ tour, auth }) => {
+    const { props } = usePage();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const whatsappUrl = props.whatsappUrl;
+    const successMessage = props.successMessage;
+
+    useEffect(() => {
+        if (whatsappUrl) {
+            setIsModalOpen(true);
+        }
+    }, [whatsappUrl]);
+
     const { data, setData, post, errors, processing } = useForm({
         tour_id: tour.id,
         user_id: auth?.user?.id,
@@ -27,16 +46,33 @@ const Booking = ({ tour, auth }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         post("/booking", {
-            onSuccess: (response) => {
-                if (response.props.whatsapp_url) {
-                    window.location.href = response.props.whatsapp_url;
-                }
+            onSuccess: () => {
+                setQuantity(1);
             },
         });
     };
 
     return (
         <ClientLayout>
+            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>{successMessage}</DialogTitle>
+                        <DialogDescription>
+                            Your booking has been successfully completed. You
+                            can now proceed to confirm your reservation via
+                            WhatsApp.
+                            <br />
+                            <a target="_blank" href={whatsappUrl}>
+                                <Button className="mt-3">
+                                    Confirm on WhatsApp
+                                </Button>
+                            </a>
+                        </DialogDescription>
+                    </DialogHeader>
+                </DialogContent>
+            </Dialog>
+
             <div className="grid grid-cols-2 py-24">
                 <div className="col-span-1 p-12">
                     <div className="h-96 rounded-lg group overflow-hidden ">

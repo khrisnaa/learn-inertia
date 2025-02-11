@@ -1,3 +1,4 @@
+import { Toaster } from "@/Components/ui/toaster";
 import Footer from "@/Pages/Client/Partials/Footer";
 import MobileNav from "@/Pages/Client/Partials/MobileNav";
 import Navbar from "@/Pages/Client/Partials/Navbar";
@@ -28,6 +29,7 @@ const ClientLayout = ({ children }) => {
             </div>
             <MobileNav />
             {children}
+            <Toaster />
             <div className="sm:px-12 bg-accent-primary">
                 <Footer />
             </div>

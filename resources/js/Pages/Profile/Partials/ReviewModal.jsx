@@ -12,9 +12,11 @@ import { Textarea } from "@/Components/ui/textarea";
 import { Label } from "@/Components/ui/label";
 import { Input } from "@/Components/ui/input";
 import { ArrowRight, Star } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const ReviewModal = ({ bookingId }) => {
-    const { auth } = usePage().props;
+    const { auth, flash } = usePage().props;
+    const { toast } = useToast();
     const { data, setData, post, errors, processing, reset } = useForm({
         user_id: auth.user.id,
         booking_id: bookingId,
@@ -40,7 +42,13 @@ const ReviewModal = ({ bookingId }) => {
 
         post(route("review.store"), {
             onFinish: () => {
-                reset(), setOpen(false);
+                reset();
+                setOpen(false);
+                setPreviewImages([]);
+                toast({
+                    title: "Success",
+                    description: flash?.success,
+                });
             },
         });
     };
