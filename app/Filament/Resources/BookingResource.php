@@ -34,7 +34,6 @@ class BookingResource extends Resource
     {
         return $form
             ->schema([
-
                 Section::make()
                     ->schema([
                         Grid::make(2)
@@ -79,12 +78,9 @@ class BookingResource extends Resource
                     ->label('Quantity')
                     ->searchable(),
                 TextColumn::make('total_price')
-                    ->label('Price')
-                    ->getStateUsing(function ($record) {
-                        $price = $record->first()->total_price ?? 0;
-                        return '$ ' . number_format($price, 0, ',', '.');
-                    })
-                    ->searchable(),
+                    ->label('Total Price')
+                    ->getStateUsing(fn($record) => '$ ' . number_format($record->total_price ?? 0, 0, ',', '.'))
+                    ->sortable(),
                 TextColumn::make('booking_date')
                     ->label('Book Date')
                     ->sortable()
@@ -102,7 +98,7 @@ class BookingResource extends Resource
                 Action::make('manageBooking')
                     ->label('Manage Booking')
                     ->modalHeading('Manage Booking')
-                    ->form([
+                    ->form(fn(Booking $record) => [
                         Select::make('status')
                             ->label('Booking Status')
                             ->options([
@@ -111,14 +107,17 @@ class BookingResource extends Resource
                                 'Canceled' => 'Canceled',
                                 'Completed' => 'Completed',
                             ])
+                            ->default($record->status)
                             ->required(),
 
                         DatePicker::make('booking_date')
                             ->label('Booking Date')
+                            ->default($record->booking_date)
                             ->required(),
 
                         FileUpload::make('transfer_proof')
                             ->label('Transfer Proof')
+                            ->default($record->transfer_proof)
                             ->directory('transfer-proofs')
                             ->image()
                             ->nullable(),
@@ -136,7 +135,6 @@ class BookingResource extends Resource
                             ->success()
                             ->send();
                     })
-
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

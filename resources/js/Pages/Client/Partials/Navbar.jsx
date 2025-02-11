@@ -73,7 +73,7 @@ const Navbar = () => {
                     </Dropdown>
                 ) : (
                     <Link
-                        className="text-base px-4 hover:text-primary hover:scale-105 transition-all duration-300"
+                        className="text-base px-4  hover:scale-105 transition-all duration-300"
                         href={route("login")}
                     >
                         Log in

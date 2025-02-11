@@ -8,7 +8,7 @@ import { Button } from "@/Components/ui/button";
 const OrderCard = ({ booking }) => {
     return (
         <div className="text-primary flex gap-4">
-            <div className="w-[26rem] relative h-64 overflow-hidden rounded-md">
+            <div className="w-[40rem] h-full relative aspect-video overflow-hidden rounded-md">
                 <img src={`/storage/${booking.tour.thumbnail}`} />
                 <div
                     className={cn(
@@ -28,7 +28,7 @@ const OrderCard = ({ booking }) => {
                     {booking.status}
                 </div>
             </div>
-            <div className="space-y-8">
+            <div className="space-y-8 w-full">
                 <div className="space-y-4">
                     <div className="space-y-2">
                         <h4 className="font-light text-3xl">

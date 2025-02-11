@@ -2,6 +2,7 @@ import { Button } from "@/Components/ui/button";
 import { ChevronRight } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import CategoryButton from "./CategoryButton";
+import { Link } from "@inertiajs/react";
 
 const ImageAccrodion = ({ testimonials }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -17,7 +18,7 @@ const ImageAccrodion = ({ testimonials }) => {
                     }`}
                 >
                     <img
-                        src={testimonial.image}
+                        src={`/storage/${testimonial?.images[0]?.image_url}`}
                         className="object-cover w-full h-full"
                     />
                     <div className="absolute inset-0 p-2 sm:p-8 flex flex-col justify-between">
@@ -39,7 +40,7 @@ const ImageAccrodion = ({ testimonials }) => {
                                             : "translate-y-2 "
                                     } `}
                                 >
-                                    "{testimonial.testimonial}"
+                                    "{testimonial.comment}"
                                 </h4>
                                 <div
                                     className={`text-sm font-extralight pb-2 line-clamp-2 transition-all duration-500 ease-in-out transform ${
@@ -49,25 +50,28 @@ const ImageAccrodion = ({ testimonials }) => {
                                     }`}
                                 >
                                     <p className="text-secondary">
-                                        {testimonial.name}
+                                        {testimonial.user.name}
                                     </p>
                                     <span className="text-xs ">
-                                        {testimonial.location}
+                                        {testimonial.user.city},{" "}
+                                        {testimonial.user.country}
                                     </span>
                                 </div>
                             </div>
 
-                            <Button
-                                variant="secondary"
-                                className={`rounded-full   text-sm w-full flex justify-between ${
-                                    selectedIndex == i
-                                        ? ""
-                                        : "bg-transparent invisible border border-secondary text-secondary"
-                                }`}
-                            >
-                                <span>More Details</span>
-                                <ChevronRight />
-                            </Button>
+                            <Link href={`/explore/${testimonial.tour_id}`}>
+                                <Button
+                                    variant="secondary"
+                                    className={`rounded-full text-sm w-full flex justify-between ${
+                                        selectedIndex == i
+                                            ? ""
+                                            : "bg-transparent invisible border border-secondary text-secondary"
+                                    }`}
+                                >
+                                    <span>About the tour</span>
+                                    <ChevronRight />
+                                </Button>
+                            </Link>
                         </div>
                         <div className="absolute z-[1] inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                     </div>

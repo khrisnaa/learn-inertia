@@ -6,6 +6,7 @@ import {
     usePrevNextButtons,
 } from "../Components/ParallaxCarouselButtons";
 import { ArrowBigRight, MoveRight } from "lucide-react";
+import { Link } from "@inertiajs/react";
 
 const TWEEN_FACTOR_BASE = 0.2;
 
@@ -103,7 +104,11 @@ const ParallaxCarousel = (props) => {
             <div className="overflow-hidden rounded-lg" ref={emblaRef}>
                 <div className="-ml-4 flex">
                     {tours.map((tour, index) => (
-                        <div className="flex-[0_0_80%] pl-4" key={index}>
+                        <Link
+                            href={`/explore/${tour.id}`}
+                            className="flex-[0_0_80%] pl-4"
+                            key={index}
+                        >
                             <div className="h-full overflow-hidden rounded-lg">
                                 <div
                                     id="parallax-layer"
@@ -116,7 +121,7 @@ const ParallaxCarousel = (props) => {
                                     />
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

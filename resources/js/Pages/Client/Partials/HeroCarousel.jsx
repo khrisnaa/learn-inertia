@@ -87,6 +87,7 @@ const HeroCarousel = (props) => {
                                 image={`/storage/${tour.thumbnail}`}
                                 title={tour.name}
                                 desc={tour.location}
+                                link={`/explore/${tour.id}`}
                             />
                         ))}
                     </div>

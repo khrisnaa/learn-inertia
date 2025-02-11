@@ -1,7 +1,8 @@
+import { Link } from "@inertiajs/react";
 import React from "react";
 
 export const Thumb = (props) => {
-    const { selected, index, onClick, image, title, desc } = props;
+    const { selected, index, onClick, image, title, desc, link } = props;
 
     return (
         <div
@@ -32,9 +33,12 @@ export const Thumb = (props) => {
                             selected ? "hidden md:flex" : "hidden  "
                         }`}
                     >
-                        <h3 className="text-xl tracking-custom line-clamp-2 custom-spacing">
+                        <Link
+                            href={link}
+                            className="text-xl hover:text-secondary/80 transition-all duration-300 tracking-custom line-clamp-2 custom-spacing"
+                        >
                             {title}
-                        </h3>
+                        </Link>
                         <p className="line-clamp-1">{desc}</p>
                     </div>
                 </div>

@@ -10,8 +10,8 @@ class CreateTour extends CreateRecord
 {
     protected static string $resource = TourResource::class;
 
-    // protected function getRedirectUrl(): string
-    // {
-    //     return $this->getResource()::getUrl('index');
-    // }
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

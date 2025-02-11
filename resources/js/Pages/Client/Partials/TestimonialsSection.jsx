@@ -10,9 +10,8 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/Components/ui/carousel";
-import testimonials from "@/data/testimonials";
 
-const TestimonialsSection = () => {
+const TestimonialsSection = ({ reviews: testimonials }) => {
     const [chunkSize, setChunkSize] = useState(window.innerWidth < 768 ? 2 : 4);
 
     useEffect(() => {

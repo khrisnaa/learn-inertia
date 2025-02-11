@@ -9,8 +9,15 @@ import ContactSection from "./Partials/ContactSection";
 
 const OPTIONS = { loop: true };
 
-const Home = ({ highlightTours, recommendedTours, faqs, categories, auth }) => {
+const Home = ({
+    highlightTours,
+    recommendedTours,
+    faqs,
+    categories,
+    reviews,
+}) => {
     const tours = highlightTours.map((highlightTour) => highlightTour.tour);
+
     return (
         <ClientLayout>
             <Carousel slides={tours} options={OPTIONS} />
@@ -19,7 +26,7 @@ const Home = ({ highlightTours, recommendedTours, faqs, categories, auth }) => {
                 categories={categories}
                 recommendedTours={recommendedTours}
             />
-            <TestimonialsSection />
+            <TestimonialsSection reviews={reviews} />
             <FaqSection faqs={faqs} />
             <ContactSection />
         </ClientLayout>

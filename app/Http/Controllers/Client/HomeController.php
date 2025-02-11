@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Faq;
 use App\Models\HeroSlider;
+use App\Models\Review;
 use App\Models\Tour;
 
 class HomeController extends Controller
@@ -17,6 +18,11 @@ class HomeController extends Controller
 
         $faqs = Faq::all();
         $categories = Category::all();
-        return inertia('Client/Home', compact('highlightTours', 'recommendedTours', 'faqs', 'categories'));
+
+        $reviews = Review::with(['images', 'user'])->where('is_active', true)
+            ->where('is_highlight', true)
+            ->get();
+
+        return inertia('Client/Home', compact('highlightTours', 'recommendedTours', 'faqs', 'categories', 'reviews'));
     }
 }

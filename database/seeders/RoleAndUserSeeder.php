@@ -27,13 +27,46 @@ class RoleAndUserSeeder extends Seeder
         $admin->assignRole($adminRole);
 
         // Buat Member
-        $member = User::firstOrCreate([
-            'email' => 'member@example.com',
+        $member1 = User::firstOrCreate([
+            'email' => 'john.doe@example.com',
         ], [
-            'name' => 'Member User',
+            'name' => 'John Doe',
             'password' => bcrypt('password123'),
+            'city' => 'New York',
+            'country' => 'USA',
         ]);
-        $member->assignRole($memberRole);
+        $member1->assignRole($memberRole);
+
+        $member2 = User::firstOrCreate([
+            'email' => 'jane.smith@example.com',
+        ], [
+            'name' => 'Jane Smith',
+            'password' => bcrypt('password123'),
+            'city' => 'Los Angeles',
+            'country' => 'USA',
+        ]);
+        $member2->assignRole($memberRole);
+
+        $member3 = User::firstOrCreate([
+            'email' => 'michael.jordan@example.com',
+        ], [
+            'name' => 'Michael Jordan',
+            'password' => bcrypt('password123'),
+            'city' => 'Chicago',
+            'country' => 'USA',
+        ]);
+        $member3->assignRole($memberRole);
+
+        $member4 = User::firstOrCreate([
+            'email' => 'emma.watson@example.com',
+        ], [
+            'name' => 'Emma Watson',
+            'password' => bcrypt('password123'),
+            'city' => 'London',
+            'country' => 'UK',
+        ]);
+        $member4->assignRole($memberRole);
+
 
         $this->command->info('Admin & Member created successfully.');
     }
