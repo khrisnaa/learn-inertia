@@ -7,6 +7,7 @@ import ClientLayout from "@/Layouts/ClientLayout";
 import OrderHistory from "./Partials/OrderHistory";
 
 export default function Edit({ mustVerifyEmail, status, bookings }) {
+    console.log(bookings);
     return (
         <ClientLayout>
             <Head title="Profile" />

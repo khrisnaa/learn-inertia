@@ -5,6 +5,7 @@ import ReviewModal from "../Partials/ReviewModal";
 import { cn } from "@/lib/utils";
 
 const OrderCard = ({ booking }) => {
+    console.log(booking.review);
     return (
         <div className="text-primary flex gap-4">
             <div className="w-[26rem] relative h-64 overflow-hidden rounded-md">
@@ -69,7 +70,7 @@ const OrderCard = ({ booking }) => {
                             (${booking.quantity} pax)
                         </span>
                     </div>
-                    {booking.reviews == [] &&
+                    {booking.review == null &&
                         booking.status === "Completed" && (
                             <ReviewModal bookingId={booking.id} />
                         )}

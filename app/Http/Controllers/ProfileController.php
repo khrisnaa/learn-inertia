@@ -22,7 +22,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        $bookings = Booking::where('user_id', $user->id)->with(['tour', 'reviews',])->get();
+        $bookings = Booking::where('user_id', $user->id)->with(['tour', 'review',])->get();
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
