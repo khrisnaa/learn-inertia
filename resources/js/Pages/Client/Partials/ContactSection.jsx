@@ -3,8 +3,11 @@ import SectionLabel from "../Components/SectionLabel";
 import { ChevronRight, CircleCheck, CircleParking } from "lucide-react";
 import ExploreButton from "../Components/ExploreButton";
 import { Button } from "@/Components/ui/button";
+import { usePage } from "@inertiajs/react";
 
 const ContactSection = () => {
+    const { contact } = usePage().props;
+
     return (
         <div className=" w-full bg-accent-primary px-6 py-12 sm:p-12">
             <div className="flex flex-col sm:flex-row">
@@ -32,17 +35,17 @@ const ContactSection = () => {
                         <div className="text-sm flex flex-col items-end">
                             <address className="not-italic space-y-2">
                                 <p className="font-medium text-end">
-                                    Company Name
-                                </p>
-                                <p className="text-end">123 Main Street</p>
-                                <p className="text-end">
-                                    Cityville, State, 12345
+                                    {contact.company_name}
                                 </p>
                                 <p className="text-end">
-                                    Phone: +1 (123) 456-7890
+                                    {contact.city}, {contact.country}
+                                </p>
+                                <p className="text-end">{contact.address}</p>
+                                <p className="text-end">
+                                    Phone: {contact.phone}
                                 </p>
                                 <p className="text-end">
-                                    Email: info@company.com
+                                    Email: {contact.email}
                                 </p>
                             </address>
                         </div>
