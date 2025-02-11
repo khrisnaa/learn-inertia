@@ -12,8 +12,12 @@ const ReviewCard = ({ review }) => {
             <div className="flex gap-4 items-center">
                 <Avatar>
                     <AvatarImage
-                        src="https://github.com/khrisnaa.png"
-                        alt="@shadcn"
+                        src={
+                            review.user.avatar
+                                ? `/storage/${review.user.avatar}`
+                                : "https://github.com/khrisnaa.png"
+                        }
+                        alt="avatar"
                     />
                 </Avatar>
                 <div>

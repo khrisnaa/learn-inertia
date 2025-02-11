@@ -5,9 +5,11 @@ import SectionLabel from "../Components/SectionLabel";
 import { CircleCheck } from "lucide-react";
 import DetailCarousel from "../Partials/DetailCarousel";
 import { Button } from "@/Components/ui/button";
+import ReviewList from "../Partials/ReviewList";
+import { ScrollArea } from "@/Components/ui/scroll-area";
+import TourDetails from "../Partials/TourDetails";
 
 const Show = ({ tour }) => {
-    console.log(tour);
     return (
         <ClientLayout>
             <div className="min-h-screen px-6 py-12  sm:px-12 pt-28">
@@ -19,7 +21,7 @@ const Show = ({ tour }) => {
                             <CircleCheck className="text-muted-foreground  w-5 h-5" />
                         }
                     />
-                    <DetailCarousel tour={tour} />
+                    <TourDetails tour={tour} />
                 </div>
             </div>
         </ClientLayout>

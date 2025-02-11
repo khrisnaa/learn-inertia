@@ -10,26 +10,40 @@ const ReviewList = () => {
     const firstHalf = tour.reviews.slice(0, middleIndex);
     const secondHalf = tour.reviews.slice(middleIndex);
 
-    console.log(tour.reviews);
-
     return (
         <div className="py-12 sticky top-24">
-            <ScrollArea className="h-screen">
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
-                        {firstHalf.map((review, i) => (
-                            <ReviewCard review={review} key={i} />
-                        ))}
-                    </div>
-                    <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
-                        {secondHalf.map((review, i) => (
-                            <ReviewCard review={review} key={i} />
-                        ))}
-                    </div>
+            <div className="grid grid-cols-2 gap-4">
+                <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
+                    {firstHalf.map((review, i) => (
+                        <ReviewCard review={review} key={i} />
+                    ))}
                 </div>
-            </ScrollArea>
+                <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
+                    {secondHalf.map((review, i) => (
+                        <ReviewCard review={review} key={i} />
+                    ))}
+                </div>
+            </div>
         </div>
     );
+    // return (
+    //     <div className="py-12 sticky top-24">
+    //         <ScrollArea className="h-screen overflow-y-auto  w-full ">
+    //             <div className="grid grid-cols-2 gap-4">
+    //                 <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
+    //                     {firstHalf.map((review, i) => (
+    //                         <ReviewCard review={review} key={i} />
+    //                     ))}
+    //                 </div>
+    //                 <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
+    //                     {secondHalf.map((review, i) => (
+    //                         <ReviewCard review={review} key={i} />
+    //                     ))}
+    //                 </div>
+    //             </div>
+    //         </ScrollArea>
+    //     </div>
+    // );
 };
 
 export default ReviewList;

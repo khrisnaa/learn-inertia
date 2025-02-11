@@ -49,7 +49,11 @@ const Navbar = () => {
                         <Dropdown.Trigger>
                             <Avatar className="cursor-pointer size-8 md:size-10">
                                 <AvatarImage
-                                    src={`/storage/${auth.user.avatar}`}
+                                    src={
+                                        auth.user.avatar
+                                            ? `/storage/${auth.user.avatar}`
+                                            : "https://github.com/khrisnaa.png"
+                                    }
                                 />
                                 <AvatarFallback>CN</AvatarFallback>
                             </Avatar>
