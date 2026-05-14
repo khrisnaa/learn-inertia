@@ -6,6 +6,8 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class TourSeeder extends Seeder
 {
@@ -98,7 +100,7 @@ class TourSeeder extends Seeder
                 'location' => 'Way Kambas, Sumatra',
                 'price' => 150.00,
                 'overview' => 'Spot Sumatran elephants, tigers, and rhinos in their natural habitat.',
-                'thumbnail' => '/assets/imagesrainforest.jpg',
+                'thumbnail' => '/assets/images/rainforest.jpg',
                 'is_recommended' => false,
                 'is_highlighted' => false,
                 'categories' => ['Wildlife', 'Rainforest', 'Safari'],
@@ -270,6 +272,19 @@ class TourSeeder extends Seeder
 
         foreach ($tours as $tour) {
             $tourId = Str::uuid();
+
+            // Handle thumbnail
+            $thumbnailPath = $tour['thumbnail'];
+            if (Str::startsWith($thumbnailPath, '/assets/')) {
+                $sourcePath = public_path(ltrim($thumbnailPath, '/'));
+                if (File::exists($sourcePath)) {
+                    $filename = basename($sourcePath);
+                    $newPath = 'tour-thumbnails/' . Str::random(10) . '_' . $filename;
+                    Storage::disk('public')->put($newPath, File::get($sourcePath));
+                    $thumbnailPath = $newPath;
+                }
+            }
+
             DB::table('tours')->insert([
                 'id' => $tourId,
                 'name' => $tour['name'],
@@ -278,7 +293,7 @@ class TourSeeder extends Seeder
                 'location' => $tour['location'],
                 'price' => $tour['price'],
                 'overview' => $tour['overview'],
-                'thumbnail' => $tour['thumbnail'],
+                'thumbnail' => $thumbnailPath,
             ]);
 
             foreach ($tour['categories'] as $categoryName) {
@@ -305,10 +320,21 @@ class TourSeeder extends Seeder
             }
 
             foreach ($tour['images'] as $imageUrl) {
+                $imagePath = $imageUrl;
+                if (Str::startsWith($imagePath, '/assets/')) {
+                    $sourcePath = public_path(ltrim($imagePath, '/'));
+                    if (File::exists($sourcePath)) {
+                        $filename = basename($sourcePath);
+                        $newPath = 'tour-images/' . Str::random(10) . '_' . $filename;
+                        Storage::disk('public')->put($newPath, File::get($sourcePath));
+                        $imagePath = $newPath;
+                    }
+                }
+
                 DB::table('tour_images')->insert([
                     'id' => Str::uuid(),
                     'tour_id' => $tourId,
-                    'image_url' => $imageUrl,
+                    'image_url' => $imagePath,
                 ]);
             }
         }

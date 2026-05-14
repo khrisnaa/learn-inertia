@@ -2,6 +2,7 @@ import React from "react";
 import { Marquee } from "@/Components/ui/marquee";
 import { motion } from "motion/react";
 const CategoryScroll = ({ categories }) => {
+    const xx = "data";
     return (
         <div className="h-full overflow-hidden relative">
             <div className="flex flex-col z-[1] relative items-end gap-4 p-4 px-8">

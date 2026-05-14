@@ -59,7 +59,7 @@ const Favorites = ({ tours: wishlists }) => {
                             />
                             */}
                         </Link>
-                        <div className=" row-span-1 rounded-lg ">
+                        <div className=" row-span-1 rounded-lg  ">
                             <Carousel>
                                 <CarouselContent className="h-full">
                                     {tours.map((tour, i) => (

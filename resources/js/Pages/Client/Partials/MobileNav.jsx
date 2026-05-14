@@ -9,7 +9,7 @@ const MobileNav = () => {
     const isActive = (path) => url === path;
     return (
         <div className="sm:hidden z-50 fixed bottom-0 left-0 w-ful px-4 py-4 w-full">
-            <nav className="flex bg-white max-w-96 mx-auto py-2 px-4 sm:px-12 rounded-full justify-between">
+            <nav className="flex bg-white max-w-72 mx-auto py-2 px-4 sm:px-12 rounded-full justify-between">
                 <Link
                     href="/"
                     className={cn(

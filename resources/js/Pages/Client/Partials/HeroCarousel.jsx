@@ -47,7 +47,7 @@ const HeroCarousel = (props) => {
                                 />
                                 <div
                                     className={cn(
-                                        "absolute transition-all duration-1000  top-1/2 -translate-y-1/2",
+                                        "absolute transition-all  duration-1000  top-1/2 -translate-y-1/2",
                                         selectedIndex == i
                                             ? "left-0 opacity-100"
                                             : "left-64 opacity-0"
